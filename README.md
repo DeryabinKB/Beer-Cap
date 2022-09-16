@@ -1,1 +1,1 @@
-# Beer cap
+# Beer cup
