@@ -1,1 +1,1 @@
-# Beer cup
+# Beer mug
