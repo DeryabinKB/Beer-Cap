@@ -174,6 +174,9 @@ namespace BeerMug.Model
             }
         }
 
+        /// <summary>
+        /// Диаметр горлышка кружки
+        /// </summary>
         public double MugNeckDiametr
         {
             get

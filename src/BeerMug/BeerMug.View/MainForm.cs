@@ -141,8 +141,7 @@ namespace BeerMug.View
             TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
             TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
             TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
-            var builder = new BeerMugBuilder();
-            builder.Builder(_beerMugParametr);
+            
         }
 
         private void MaximumSizeButton_Click(object sender, EventArgs e)
