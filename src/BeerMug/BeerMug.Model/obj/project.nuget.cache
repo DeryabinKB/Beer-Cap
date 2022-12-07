@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "471Vm4WUwUDbAGgXxlqYMOvMFZoz4jggif/q0j4/j4RP66sCh1Fnv8IJcN8GlVIW7VzNkrWtbSWsxZGfKdnL1w==",
+  "dgSpecHash": "4xU4oYdAISoeGVqU7Kc0AVvIEZVnO4y70K2BNsi4gtuiweWD5++uh8ran60ybJjw0nRTVMiHawoGqJ2oYAFFVA==",
   "success": true,
-  "projectFilePath": "E:\\NewBeerMug\\beer\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj",
+  "projectFilePath": "C:\\Users\\Kein\\source\\repos\\Beer-Mug\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
