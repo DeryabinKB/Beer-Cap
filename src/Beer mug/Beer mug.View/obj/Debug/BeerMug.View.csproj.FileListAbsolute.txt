@@ -1,0 +1,11 @@
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\bin\Debug\Beer mug.exe.config
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\bin\Debug\Beer mug.exe
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\bin\Debug\Beer mug.pdb
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\obj\Debug\BeerMug.View.csproj.AssemblyReference.cache
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\obj\Debug\BeerMug.View.csproj.SuggestedBindingRedirects.cache
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\obj\Debug\Beer_mug.Beer_Mug.resources
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\obj\Debug\Beer_mug.Properties.Resources.resources
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\obj\Debug\BeerMug.View.csproj.GenerateResource.cache
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\obj\Debug\BeerMug.View.csproj.CoreCompileInputs.cache
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\obj\Debug\Beer mug.exe
+E:\Учёба\ОРСАПР\Beer mug\Beer mug\obj\Debug\Beer mug.pdb
