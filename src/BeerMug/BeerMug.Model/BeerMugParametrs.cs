@@ -26,6 +26,9 @@ namespace BeerMug.Model
         /// </summary>
         private double _bottomThickness;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private double _heightNeckBottom;
 
         /// <summary>
@@ -65,7 +68,7 @@ namespace BeerMug.Model
                 _parameterCheck.RangeCheck
                     (value, min, max,
                     MugParametersType.BelowBottomDiametr, Parameters);
-                if (value != HighBottomDiametr - 30)
+                if (value + 30 == HighBottomDiametr)
                 {
                     Parameters.Add(MugParametersType.BelowBottomDiametr,
                         "Below bottom diametr must be = high bottom diametr + 30");
@@ -84,7 +87,6 @@ namespace BeerMug.Model
             {
                 return _highBottomDiametr;
             }
-
             set
             {
                 const double min = 80;
@@ -92,7 +94,7 @@ namespace BeerMug.Model
                 _parameterCheck.RangeCheck
                     (value, min, max,
                     MugParametersType.HighBottomDiametr, Parameters);
-                if (value != BelowBottomDiametr + 30)
+                if (value - BelowBottomDiametr == 30)
                 {
                     Parameters.Add(MugParametersType.HighBottomDiametr,
                         "High bottom diametr must be = below bottom diametr + 30");
@@ -118,7 +120,7 @@ namespace BeerMug.Model
                 _parameterCheck.RangeCheck
                     (value, min, max,
                     MugParametersType.BottomThickness, Parameters);
-                if (value != HeightNeckBottom * 0.1)
+                if (value * 10 == HeightNeckBottom)
                 {
                     Parameters.Add(MugParametersType.BottomThickness,
                         "Bottom thickness must be = Height neck bottom * 0.1");
@@ -141,10 +143,11 @@ namespace BeerMug.Model
             {
                 const double min = 100;
                 const double max = 165;
+                double valueCheck = value;
                 _parameterCheck.RangeCheck
                     (value, min, max,
                     MugParametersType.HeightNeckBottom, Parameters);
-                if (value != BottomThickness * 10)
+                if (valueCheck * 0.1 == BottomThickness)
                 {
                     Parameters.Add(MugParametersType.HeightNeckBottom,
                         "Height neck bottom must be = Bottom thickness * 10");
@@ -153,6 +156,7 @@ namespace BeerMug.Model
                 _heightNeckBottom = value;
             }
         }
+
         public double WallThickness
         {
             get
@@ -169,6 +173,7 @@ namespace BeerMug.Model
                 _wallThickness = value;
             }
         }
+
         public double MugNeckDiametr
         {
             get

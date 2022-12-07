@@ -11,6 +11,19 @@
         "runtime": {
           "bin/placeholder/BeerMug.Model.dll": {}
         }
+      },
+      "KompasConnector/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "BeerMug.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/KompasConnector.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/KompasConnector.dll": {}
+        }
       }
     }
   },
@@ -19,11 +32,17 @@
       "type": "project",
       "path": "../BeerMug.Model/BeerMug.Model.csproj",
       "msbuildProject": "../BeerMug.Model/BeerMug.Model.csproj"
+    },
+    "KompasConnector/1.0.0": {
+      "type": "project",
+      "path": "../KompasConnector/KompasConnector.csproj",
+      "msbuildProject": "../KompasConnector/KompasConnector.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "BeerMug.Model >= 1.0.0"
+      "BeerMug.Model >= 1.0.0",
+      "KompasConnector >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -61,6 +80,9 @@
           "projectReferences": {
             "E:\\NewBeerMug\\beer\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj": {
               "projectPath": "E:\\NewBeerMug\\beer\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj"
+            },
+            "E:\\NewBeerMug\\beer\\src\\BeerMug\\KompasConnector\\KompasConnector.csproj": {
+              "projectPath": "E:\\NewBeerMug\\beer\\src\\BeerMug\\KompasConnector\\KompasConnector.csproj"
             }
           }
         }

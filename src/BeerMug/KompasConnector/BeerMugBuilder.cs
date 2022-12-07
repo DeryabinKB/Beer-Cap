@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeerMug.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +12,14 @@ namespace KompasConnector
         /// <summary>
         /// Сапр апи.
         /// </summary>
-        //private KompasConnector _apiService = new KompasConnector();
+        private KompasConnector _apiService = new KompasConnector();
 
-        /// <summary>
-        /// Метод для создания раковины.
-        /// </summary>
-        /// <param name="tableParameters">Параметры стола</param>
-        /// <param name="apiService">Сапр апи</param>
-        //public void BuildSink()
-        //{
-        //    _apiService.CreateDocument();
-        //}
+        public void Builder(MugParameters mugParameters)
+        {
+            _apiService.StartKompas();
+            _apiService.CreateDocument();
+            _apiService.SetProperties();
+
+        }
     }
 }

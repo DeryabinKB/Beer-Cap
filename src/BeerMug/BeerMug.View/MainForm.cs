@@ -5,6 +5,7 @@ using BeerMug.Model;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using TextBox = System.Windows.Forms.TextBox;
+using KompasConnector;
 
 namespace BeerMug.View
 {
@@ -71,6 +72,7 @@ namespace BeerMug.View
                 if (textBox == lowerRadiusOfTheBottomTextBox)
                 {
                     TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
                     lowerRadiusOfTheBottomTextBox.Focus();
                 }
                 else if (textBox == bottomThicknessTextBox)
@@ -78,6 +80,11 @@ namespace BeerMug.View
                     TextBoxValidator_TextChanged(highTextBox, e);
                     TextBoxValidator_TextChanged(outerDiametrTextBox, e);
                     bottomThicknessTextBox.Focus();
+                }
+                else if (textBox == upperRadiusOfTheBottomTextBox)
+                {
+                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
+                    upperRadiusOfTheBottomTextBox.Focus();
                 }
             }
             catch
@@ -134,6 +141,8 @@ namespace BeerMug.View
             TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
             TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
             TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
+            var builder = new BeerMugBuilder();
+            builder.Builder(_beerMugParametr);
         }
 
         private void MaximumSizeButton_Click(object sender, EventArgs e)
@@ -141,7 +150,7 @@ namespace BeerMug.View
             outerDiametrTextBox.Text = "100";
             thicknessTextBox.Text = "7";
             highTextBox.Text = "165";
-            bottomThicknessTextBox.Text = "16.5";
+            bottomThicknessTextBox.Text = "16,5";
             upperRadiusOfTheBottomTextBox.Text = "100";
             lowerRadiusOfTheBottomTextBox.Text = "70";
             TextBoxValidator_TextChanged(outerDiametrTextBox, e);
@@ -168,8 +177,8 @@ namespace BeerMug.View
             }
             else
             {
-                //var builder = new Builder();
-                //builder.BuildSink();
+                var builder = new BeerMugBuilder();
+                builder.Builder(_beerMugParametr);
             }
         }
     }

@@ -52,7 +52,6 @@
             this.MinimumSizeButtom = new System.Windows.Forms.Button();
             this.MaximumSizeButton = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.correctLable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -290,22 +289,12 @@
             this.pictureBox2.TabIndex = 34;
             this.pictureBox2.TabStop = false;
             // 
-            // correctLable
-            // 
-            this.correctLable.AutoSize = true;
-            this.correctLable.Location = new System.Drawing.Point(219, 9);
-            this.correctLable.Name = "correctLable";
-            this.correctLable.Size = new System.Drawing.Size(13, 15);
-            this.correctLable.TabIndex = 35;
-            this.correctLable.Text = "1";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1223, 424);
-            this.Controls.Add(this.correctLable);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.MaximumSizeButton);
             this.Controls.Add(this.MinimumSizeButtom);
@@ -364,6 +353,5 @@
         private System.Windows.Forms.Button MinimumSizeButtom;
         private System.Windows.Forms.Button MaximumSizeButton;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private Label correctLable;
     }
 }

@@ -46,3 +46,9 @@ E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\obj\Debug\net6.0-windows\refint\Beer
 E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\obj\Debug\net6.0-windows\BeerMug.View.pdb
 E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\obj\Debug\net6.0-windows\BeerMug.View.genruntimeconfig.cache
 E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\obj\Debug\net6.0-windows\ref\BeerMug.View.dll
+E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\bin\Debug\net6.0-windows\KompasConnector.deps.json
+E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\bin\Debug\net6.0-windows\KompasConnector.runtimeconfig.json
+E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\bin\Debug\net6.0-windows\KompasConnector.exe
+E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\bin\Debug\net6.0-windows\KompasConnector.dll
+E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\bin\Debug\net6.0-windows\Kompas6API5.dll
+E:\NewBeerMug\beer\src\BeerMug\BeerMug.View\bin\Debug\net6.0-windows\KompasConnector.pdb
