@@ -26,7 +26,7 @@ namespace BeerMug.Model
             {
                 if (IsRangeOut(value))
                 {
-                    throw new ArgumentException($"Value should be bigger than {_minValue} and lower than {_maxValue}"); // Не могу понять где он переприсваивает, уже весь путь прогнал через отладку и всё равно нихера и ещё одна ошибка - не пашет валидация
+                    throw new ArgumentException($"Value should be bigger than {_minValue} and lower than {_maxValue}"); 
                 }
                 _value = value;
             }
