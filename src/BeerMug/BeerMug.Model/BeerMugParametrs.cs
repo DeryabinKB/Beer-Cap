@@ -75,7 +75,7 @@ namespace BeerMug.Model
                         _parameters.TryGetValue(MugParametersType.HeightNeckBottom, out var parameter);
                         double checkValue = value;
                         double checkParametr = parameter.Value;
-                        if (checkValue * 10 == checkParametr)
+                        if (checkValue * 10 != checkParametr)
                         {
                             throw new Exception(
                                 "Height depends on the bottom thickness in the ratio (Bottom thickness * 10)");
@@ -87,7 +87,7 @@ namespace BeerMug.Model
                         _parameters.TryGetValue(MugParametersType.MugNeckDiametr, out var parameter);
                         double checkValue = value;
                         double checkParametr = parameter.Value;
-                        if (checkValue == checkParametr)
+                        if (checkValue != checkParametr)
                         {
                             throw new Exception(
                                 "High bottom diametr depends on the Mug neck diametr in the ratio (Bottom diametr * 1)");
@@ -99,10 +99,10 @@ namespace BeerMug.Model
                         _parameters.TryGetValue(MugParametersType.HighBottomDiametr, out var parameter);
                         double checkValue = value;
                         double checkParametr = parameter.Value;
-                        if ((checkParametr - 30) == checkValue)
+                        if ((checkParametr - 30) != checkValue)
                         {
                             throw new Exception(
-                                "Below bottom diametr depends on the Mug neck diametr in the ratio (Below bottom diametr +30)");
+                                "Below bottom diametr depends on the Mug neck diametr in the ratio (Below bottom diametr -30)");
                         }
                         break;
                     }

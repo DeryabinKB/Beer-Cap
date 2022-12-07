@@ -133,7 +133,7 @@ namespace BeerMug.View
 
         private void MainForm_Load_1(object sender, EventArgs e)
         {
-            SetDefaultValues(90, 6, 130, 13, 90, 60);
+            SetDefaultValues(60, 90, 13, 130, 6, 90);
         }
 
         private void MinimumSizeButtom_Click_1(object sender, EventArgs e)
