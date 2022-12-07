@@ -9,60 +9,22 @@ namespace BeerMug.Model
     public class BeerMugParametr
     {
         /// <summary>
-        /// Значение параметра.
+        /// Проверка диапазона.
         /// </summary>
-        private double _value;
-
-        /// <summary>
-        /// Возврат и установка значения параметра.
-        /// </summary>
-        public double Value
+        /// <param name="value"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <param name="parameters"></param>
+        /// <param name="errors"></param>
+        public void RangeCheck(double value, double min, double max,
+           MugParametersType parameters, Dictionary<MugParametersType, string> errors)
         {
-            get
+            errors.Remove(parameters);
+            if (value < min || value > max)
             {
-                return _value;
+                errors.Add(parameters, "Out of range");
+                throw new ArgumentOutOfRangeException();
             }
-            set
-            {
-                if (IsRangeOut(value))
-                {
-                    throw new ArgumentException($"Value should be bigger than {_minValue} and lower than {_maxValue}"); 
-                }
-                _value = value;
-            }
-        }
-
-        /// <summary>
-        /// Минимальное значение параметра.
-        /// </summary>
-        private readonly double _minValue = 0;
-
-        /// <summary>
-        /// Максимальное значение параметра.
-        /// </summary>
-        private readonly double _maxValue = 150;
-
-        /// <summary>
-        /// Конструктор пивной кружки.
-        /// </summary>
-        /// <param name="value">Значение параметра.</param>
-        /// <param name="minValue">Минимальное значение параметра.</param>
-        /// <param name="maxValue">Максимальное значение параметра.</param>
-        public BeerMugParametr(double value, double minValue, double maxValue)
-        {
-            _minValue = minValue;
-            _maxValue = maxValue;
-            Value = value;
-        }
-
-        /// <summary>
-        /// Проверка принадлежности параметра к диапазону допустимых значений.
-        /// </summary>
-        /// <param name="value">Значение параметра.</param>
-        /// <returns></returns>
-        private bool IsRangeOut(double value)
-        {
-            return value < _minValue || value > _maxValue;
         }
     }
 }

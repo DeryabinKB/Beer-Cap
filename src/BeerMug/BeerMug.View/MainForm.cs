@@ -11,160 +11,166 @@ namespace BeerMug.View
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Цвет поля с некорректным значением
+        /// Экземпляр класса ChangeableParametrs
         /// </summary>
+        private MugParameters _beerMugParametr = new MugParameters();
+
+        /// <summary>
+        /// Цвет корректно заполненного поля
+        /// </summary>  
+        private Color _correctColor = Color.White;
+
+        /// <summary>
+        /// Цвет не корректно заполненного поля
+        /// </summary>  
         private Color _incorrectColor = Color.LightPink;
 
         /// <summary>
-        /// Параметры пивной кружки.
+        /// Словарь, cвязывающий параметр пивной кружки
+        /// и его текстбокс
         /// </summary>
-        private readonly MugParameters Parameters;
-
-        /// <summary>
-        /// Хранит поле с текстом и его ошибки.
-        /// </summary>
-        private readonly Dictionary<TextBox, string> TextBoxAndError;
-
-        // <summary>
-        /// Хранит поле с текстом и соответстующий тип параметра.
-        /// </summary>
-        private readonly Dictionary<TextBox, MugParametersType> TextBoxToParameterType;
+        private Dictionary<TextBox, Action<double>> _textBox
+            = new Dictionary<TextBox, Action<double>>();
 
         public MainForm()
         {
             InitializeComponent();
-            Parameters = new MugParameters();
-            TextBoxToParameterType = new Dictionary<TextBox, MugParametersType>
-            {
-                { lowerRadiusOfTheBottomTextBox, MugParametersType.BelowBottomDiametr },
-                { upperRadiusOfTheBottomTextBox, MugParametersType.HighBottomDiametr },
-                { bottomThicknessTextBox, MugParametersType.BottomThickness },
-                { highTextBox, MugParametersType.HeightNeckBottom },
-                { thicknessTextBox, MugParametersType.WallThickness },
-                { outerDiametrTextBox, MugParametersType.MugNeckDiametr }
-            };
-
-            TextBoxAndError = new Dictionary<TextBox, string>
-            {
-                { lowerRadiusOfTheBottomTextBox, "" },
-                { upperRadiusOfTheBottomTextBox, "" },
-                { bottomThicknessTextBox, "" },
-                { highTextBox, "" },
-                { thicknessTextBox, "" },
-                { outerDiametrTextBox, "" }
-            };
-
+            _textBox = new Dictionary<TextBox, Action<double>>();
+            _textBox.Add(outerDiametrTextBox, (outerDiametr)
+                => _beerMugParametr.MugNeckDiametr = outerDiametr);
+            _textBox.Add(thicknessTextBox, (wallThickness)
+                => _beerMugParametr.WallThickness = wallThickness);
+            _textBox.Add(highTextBox, (high)
+                => _beerMugParametr.HighBottomDiametr = high);
+            _textBox.Add(bottomThicknessTextBox, (bottomThickness)
+                => _beerMugParametr.BottomThickness = bottomThickness);
+            _textBox.Add(upperRadiusOfTheBottomTextBox, (highBottomDiametr)
+                => _beerMugParametr.HighBottomDiametr = highBottomDiametr);
+            _textBox.Add(lowerRadiusOfTheBottomTextBox, (lowBottomDiametr)
+                => _beerMugParametr.HighBottomDiametr = lowBottomDiametr);
         }
 
         /// <summary>
-        /// Установка стандартных значений в форму.
-        /// </summary>
-        /// <param name="belowBottomDiametrValue">Значение нижнего радиуса дна</param>
-        /// <param name="highBottomDiametrValue">Значение верхнего радиуса дна</param>
-        /// <param name="bottomThicknessValue">Значение толщины дна</param>
-        /// <param name="heightNeckBottomValue">Значение высоты кружки</param>
-        /// <param name="wallThicknessValue">Значение толщины стенок кружки</param>
-        /// <param name="mugNeckDiametrValue">Значение внешнего диаметра кружки</param>
-        private void SetDefaultValues(double belowBottomDiametrValue, double highBottomDiametrValue,
-          double bottomThicknessValue, double heightNeckBottomValue, double wallThicknessValue, double mugNeckDiametrValue)
-        {
-            Parameters.SetParametrValue(MugParametersType.BelowBottomDiametr, belowBottomDiametrValue);
-            Parameters.SetParametrValue(MugParametersType.HighBottomDiametr, highBottomDiametrValue);
-            Parameters.SetParametrValue(MugParametersType.BottomThickness, bottomThicknessValue);
-            Parameters.SetParametrValue(MugParametersType.HeightNeckBottom, heightNeckBottomValue);
-            Parameters.SetParametrValue(MugParametersType.WallThickness, wallThicknessValue);
-            Parameters.SetParametrValue(MugParametersType.MugNeckDiametr, mugNeckDiametrValue);
-
-            lowerRadiusOfTheBottomTextBox.Text = belowBottomDiametrValue.ToString();
-            upperRadiusOfTheBottomTextBox.Text = highBottomDiametrValue.ToString();
-            bottomThicknessTextBox.Text = bottomThicknessValue.ToString();
-            highTextBox.Text = heightNeckBottomValue.ToString();
-            outerDiametrTextBox.Text = mugNeckDiametrValue.ToString();
-            thicknessTextBox.Text = wallThicknessValue.ToString();
-        }
-
-        /// <summary>
-        /// Установка значений параметров.
+        /// Валидация для текстбоксов.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SetParametr(object sender, EventArgs e)
+        private void TextBoxValidator_TextChanged(object sender, EventArgs e)
         {
-            var textBox = sender as TextBox;
-            var isType = TextBoxToParameterType.TryGetValue(textBox, out var type);
-            double.TryParse(textBox.Text, out var value);
-            if (!isType) return;
+            TextBox textBox = (TextBox)sender;
+            textBox.Focus();
+            if (textBox.Text == string.Empty || textBox.Text == ",")
+            {
+                textBox.Text = string.Empty;
+                return;
+            }
             try
             {
-                Parameters.SetParametrValue(type, value);
-                TextBoxAndError[textBox] = "";
-                correctLable.Text = "";
+                _textBox[textBox](double.Parse(textBox.Text));
+                textBox.BackColor = _correctColor;
+                if (textBox == lowerRadiusOfTheBottomTextBox)
+                {
+                    TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+                    lowerRadiusOfTheBottomTextBox.Focus();
+                }
+                else if (textBox == bottomThicknessTextBox)
+                {
+                    TextBoxValidator_TextChanged(highTextBox, e);
+                    TextBoxValidator_TextChanged(outerDiametrTextBox, e);
+                    bottomThicknessTextBox.Focus();
+                }
             }
-            catch (Exception error)
+            catch
             {
-                TextBoxAndError[textBox] = error.Message;
-                correctLable.Text = "damn";
                 textBox.BackColor = _incorrectColor;
-
             }
         }
 
-        private bool CheckTextBoxes()
+        /// <summary>
+        /// Проверка, чтобы textbox содержал только одну запятую и цифры.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CheckForCommasAndNumbers_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var isError = true;
-            foreach (var item in
-                     TextBoxAndError.Where(item => item.Value != ""))
+            if (!(char.IsControl(e.KeyChar))
+                && !(char.IsDigit(e.KeyChar))
+                && !((e.KeyChar == ',')
+                     && (((TextBox)sender).Text.IndexOf(",") == -1)
+                    ))
             {
-                isError = false;
-                correctLable.Text = ($"in the field{item.Key} error: {item.Value}");
+                e.Handled = true;
             }
-            return isError;
         }
 
-        private void MinimumSizeButtom_Click_1(object sender, EventArgs e)
+        /// <summary>
+        /// Проверка, чтобы textbox содержал только цифры.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void IntegerCheck_KeyPress(object sender, KeyPressEventArgs e)
         {
-            SetDefaultValues(50, 80, 10, 165, 5, 80);
-        }
-
-        private void MaximumSizeButton_Click_1(object sender, EventArgs e)
-        {
-            SetDefaultValues(70, 100, 16.5, 165, 7, 100);
-        }
-
-        private void AverageSizeButton_Click_1(object sender, EventArgs e)
-        {
-            SetDefaultValues(60, 90, 13.25, 132.5, 6, 90);
-        }
-
-        private void buildButton_Click_1(object sender, EventArgs e)
-        {
-            if (CheckTextBoxes())
+            if (!(char.IsControl(e.KeyChar))
+                && !(char.IsDigit(e.KeyChar))
+                && !((e.KeyChar == ',')
+                && (((TextBox)sender).Text.IndexOf(",") == 1)
+            ))
             {
-                // call builder
+                e.Handled = true;
+            }
+        }
+
+        private void MinimumSizeButtom_Click(object sender, EventArgs e)
+        {
+            outerDiametrTextBox.Text = "80";
+            thicknessTextBox.Text = "5";
+            highTextBox.Text = "100";
+            bottomThicknessTextBox.Text ="10";
+            upperRadiusOfTheBottomTextBox.Text ="80";
+            lowerRadiusOfTheBottomTextBox.Text ="50";
+            TextBoxValidator_TextChanged(outerDiametrTextBox, e);
+            TextBoxValidator_TextChanged(thicknessTextBox, e);
+            TextBoxValidator_TextChanged(highTextBox, e);
+            TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
+            TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+            TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
+        }
+
+        private void MaximumSizeButton_Click(object sender, EventArgs e)
+        {
+            outerDiametrTextBox.Text = "100";
+            thicknessTextBox.Text = "7";
+            highTextBox.Text = "165";
+            bottomThicknessTextBox.Text = "16.5";
+            upperRadiusOfTheBottomTextBox.Text = "100";
+            lowerRadiusOfTheBottomTextBox.Text = "70";
+            TextBoxValidator_TextChanged(outerDiametrTextBox, e);
+            TextBoxValidator_TextChanged(thicknessTextBox, e);
+            TextBoxValidator_TextChanged(highTextBox, e);
+            TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
+            TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+            TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
+        }
+
+        private void buildButton_Click(object sender, EventArgs e)
+        {
+            if (outerDiametrTextBox.Text == string.Empty ||
+                 thicknessTextBox.Text == string.Empty ||
+                 highTextBox.Text == string.Empty ||
+                 bottomThicknessTextBox.Text == string.Empty ||
+                 upperRadiusOfTheBottomTextBox.Text == string.Empty ||
+                 lowerRadiusOfTheBottomTextBox.Text == string.Empty ||
+                 _beerMugParametr.Parameters.Count > 0)
+            {
+                MessageBox.Show("Fill all fields correctly", "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             else
             {
-                outerDiametrTextBox.BackColor = _incorrectColor;
-                MessageBox.Show(@"Fill all parametrs");
+                //var builder = new Builder();
+                //builder.BuildSink();
             }
         }
-
-        //private void outerDiametrTextBox_TextChanged(object sender, EventArgs e)
-        //{
-        //    MugParametersType type = new MugParametersType();
-        //    type = MugParametersType.MugNeckDiametr;
-        //    double number;
-        //    double.TryParse(string.Join("", outerDiametrTextBox.Text.Where(c => char.IsDigit(c))), out number);
-        //    Parameters.SetParametrValue(type, number);
-        //}
-
-        //private void thicknessTextBox_TextChanged(object sender, EventArgs e)
-        //{
-        //    MugParametersType type = new MugParametersType();
-        //    type = MugParametersType.WallThickness;
-        //    double number;
-        //    double.TryParse(string.Join("", thicknessTextBox.Text.Where(c => char.IsDigit(c))), out number);
-        //    Parameters.SetParametrValue(type, number);
-        //}
     }
 }

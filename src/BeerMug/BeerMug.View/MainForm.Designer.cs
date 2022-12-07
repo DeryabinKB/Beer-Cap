@@ -51,7 +51,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.MinimumSizeButtom = new System.Windows.Forms.Button();
             this.MaximumSizeButton = new System.Windows.Forms.Button();
-            this.AverageSizeButton = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.correctLable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,14 +59,14 @@
             // 
             // buildButton
             // 
-            this.buildButton.Location = new System.Drawing.Point(144, 408);
+            this.buildButton.Location = new System.Drawing.Point(154, 363);
             this.buildButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buildButton.Name = "buildButton";
             this.buildButton.Size = new System.Drawing.Size(122, 27);
             this.buildButton.TabIndex = 0;
             this.buildButton.Text = "Build model";
             this.buildButton.UseVisualStyleBackColor = true;
-            this.buildButton.Click += new System.EventHandler(this.buildButton_Click_1);
+            this.buildButton.Click += new System.EventHandler(this.buildButton_Click);
             // 
             // pictureBox1
             // 
@@ -106,7 +105,8 @@
             this.outerDiametrTextBox.Name = "outerDiametrTextBox";
             this.outerDiametrTextBox.Size = new System.Drawing.Size(116, 23);
             this.outerDiametrTextBox.TabIndex = 4;
-            //this.outerDiametrTextBox.TextChanged += new System.EventHandler(this.outerDiametrTextBox_TextChanged);
+            this.outerDiametrTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.outerDiametrTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // thicknessTextBox
             // 
@@ -115,7 +115,8 @@
             this.thicknessTextBox.Name = "thicknessTextBox";
             this.thicknessTextBox.Size = new System.Drawing.Size(116, 23);
             this.thicknessTextBox.TabIndex = 5;
-            //this.thicknessTextBox.TextChanged += new System.EventHandler(this.thicknessTextBox_TextChanged);
+            this.thicknessTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.thicknessTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // highTextBox
             // 
@@ -124,6 +125,8 @@
             this.highTextBox.Name = "highTextBox";
             this.highTextBox.Size = new System.Drawing.Size(116, 23);
             this.highTextBox.TabIndex = 6;
+            this.highTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.highTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // HighLabel
             // 
@@ -142,6 +145,8 @@
             this.upperRadiusOfTheBottomTextBox.Name = "upperRadiusOfTheBottomTextBox";
             this.upperRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
             this.upperRadiusOfTheBottomTextBox.TabIndex = 8;
+            this.upperRadiusOfTheBottomTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.upperRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // UpperRadiusOfTheBottomLabel
             // 
@@ -160,6 +165,8 @@
             this.lowerRadiusOfTheBottomTextBox.Name = "lowerRadiusOfTheBottomTextBox";
             this.lowerRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
             this.lowerRadiusOfTheBottomTextBox.TabIndex = 10;
+            this.lowerRadiusOfTheBottomTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.lowerRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // LowerRadiusOfTheBottomLabel
             // 
@@ -208,6 +215,8 @@
             this.bottomThicknessTextBox.Name = "bottomThicknessTextBox";
             this.bottomThicknessTextBox.Size = new System.Drawing.Size(116, 23);
             this.bottomThicknessTextBox.TabIndex = 15;
+            this.bottomThicknessTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.bottomThicknessTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForCommasAndNumbers_KeyPress);
             // 
             // BottomThicknessLabel
             // 
@@ -258,29 +267,18 @@
             this.MinimumSizeButtom.TabIndex = 31;
             this.MinimumSizeButtom.Text = "Minimum size";
             this.MinimumSizeButtom.UseVisualStyleBackColor = true;
-            this.MinimumSizeButtom.Click += new System.EventHandler(this.MinimumSizeButtom_Click_1);
+            this.MinimumSizeButtom.Click += new System.EventHandler(this.MinimumSizeButtom_Click);
             // 
             // MaximumSizeButton
             // 
-            this.MaximumSizeButton.Location = new System.Drawing.Point(144, 363);
+            this.MaximumSizeButton.Location = new System.Drawing.Point(296, 363);
             this.MaximumSizeButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximumSizeButton.Name = "MaximumSizeButton";
             this.MaximumSizeButton.Size = new System.Drawing.Size(122, 27);
             this.MaximumSizeButton.TabIndex = 32;
             this.MaximumSizeButton.Text = "Maximum size";
             this.MaximumSizeButton.UseVisualStyleBackColor = true;
-            this.MaximumSizeButton.Click += new System.EventHandler(this.MaximumSizeButton_Click_1);
-            // 
-            // AverageSizeButton
-            // 
-            this.AverageSizeButton.Location = new System.Drawing.Point(273, 363);
-            this.AverageSizeButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.AverageSizeButton.Name = "AverageSizeButton";
-            this.AverageSizeButton.Size = new System.Drawing.Size(122, 27);
-            this.AverageSizeButton.TabIndex = 33;
-            this.AverageSizeButton.Text = "Average size";
-            this.AverageSizeButton.UseVisualStyleBackColor = true;
-            this.AverageSizeButton.Click += new System.EventHandler(this.AverageSizeButton_Click_1);
+            this.MaximumSizeButton.Click += new System.EventHandler(this.MaximumSizeButton_Click);
             // 
             // pictureBox2
             // 
@@ -306,10 +304,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1223, 449);
+            this.ClientSize = new System.Drawing.Size(1223, 424);
             this.Controls.Add(this.correctLable);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.AverageSizeButton);
             this.Controls.Add(this.MaximumSizeButton);
             this.Controls.Add(this.MinimumSizeButtom);
             this.Controls.Add(this.label12);
@@ -335,7 +332,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
             this.Text = "Beer mug";
-            //this.Load += new System.EventHandler(this.MainForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -367,7 +363,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button MinimumSizeButtom;
         private System.Windows.Forms.Button MaximumSizeButton;
-        private System.Windows.Forms.Button AverageSizeButton;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Label correctLable;
     }
