@@ -25,8 +25,8 @@ namespace BeerMug.Model
             {
                 { MugParametersType.BelowBottomDiametr, new BeerMugParametr(60, 50, 70) },
                 { MugParametersType.HighBottomDiametr, new BeerMugParametr(90, 80, 100) },
-                { MugParametersType.BottomThickness, new BeerMugParametr(13, 10, 16.5) },
-                { MugParametersType.HeightNeckBottom, new BeerMugParametr(130, 100, 165) },
+                { MugParametersType.BottomThickness, new BeerMugParametr(13.25, 10, 16.5) },
+                { MugParametersType.HeightNeckBottom, new BeerMugParametr(132.5, 100, 165) },
                 { MugParametersType.WallThickness, new BeerMugParametr(6, 5, 7) },
                 { MugParametersType.MugNeckDiametr, new BeerMugParametr(90, 80, 100) },
             };

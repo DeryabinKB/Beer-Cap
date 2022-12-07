@@ -57,16 +57,6 @@ namespace BeerMug.View
         }
 
         /// <summary>
-        /// Установка стандартных значений при загрузке формы.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            SetDefaultValues(90, 6, 130, 13, 90, 60);
-        }
-
-        /// <summary>
         /// Установка стандартных значений в форму.
         /// </summary>
         /// <param name="belowBottomDiametrValue">Значение нижнего радиуса дна</param>
@@ -131,25 +121,19 @@ namespace BeerMug.View
             return isError;
         }
 
-        private void MainForm_Load_1(object sender, EventArgs e)
-        {
-            SetDefaultValues(60, 90, 13, 130, 6, 90);
-        }
-
         private void MinimumSizeButtom_Click_1(object sender, EventArgs e)
         {
-            SetDefaultValues(80, 5, 100, 10, 80, 50);
+            SetDefaultValues(50, 80, 10, 165, 5, 80);
         }
 
         private void MaximumSizeButton_Click_1(object sender, EventArgs e)
         {
-            SetDefaultValues(100, 7, 165, 16.5, 100, 70);
-
+            SetDefaultValues(70, 100, 16.5, 165, 7, 100);
         }
 
         private void AverageSizeButton_Click_1(object sender, EventArgs e)
         {
-            SetDefaultValues(90, 6, 132.5, 13.25, 90, 60);
+            SetDefaultValues(60, 90, 13.25, 132.5, 6, 90);
         }
 
         private void buildButton_Click_1(object sender, EventArgs e)
