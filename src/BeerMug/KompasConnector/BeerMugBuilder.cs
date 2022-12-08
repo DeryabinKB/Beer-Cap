@@ -26,10 +26,11 @@ namespace KompasConnector
             var neck = mugParameters.MugNeckDiametr/2;
             var bottomThickness = mugParameters.BottomThickness;
             var high = mugParameters.HeightNeckBottom;
-            var wallThickness = mugParameters.WallThickness;
+            var wallThickness = mugParameters.WallThickness/2;
             var lowerBottom = mugParameters.BelowBottomDiametr/2;
             BuildBottom(lowerBottom, upperBottom, bottomThickness);
             BuildBody(upperBottom, bottomThickness, high, wallThickness, neck);
+            BuildHand(high, neck, bottomThickness);
         }
 
         private void BuildBottom(double lowerBottom, double upperBottom, double bottomThickness)
@@ -47,55 +48,69 @@ namespace KompasConnector
             var pointBelowEnd = new Point2D(lowerBottom, 0);
             var pointBelowBezier = new Point2D(lowerBottom, 0);
             var pointUpperBezier = new Point2D(upperBottom, -bottomThickness);
-            var check = lowerBottom + (upperBottom - lowerBottom)/4 ;
-            var pointMiddle = new Point2D(check, bottomThickness / 8);
+            var check = lowerBottom + (upperBottom - lowerBottom) / 2;
+            var pointMiddle = new Point2D(check, bottomThickness / 20);
             sketch.CreateLineSeg(pointBelow, pointBelowEnd, 1);
             sketch.ArcBy3Point(pointBelowBezier, pointMiddle, pointUpperBezier);
-
             sketch.EndEdit();
-            _connector.ExtrudeRotation(sketch);
-
-            ////Верхний радиус
-            //var pointUpper = new Point2D(0, 0);
-            //var pointUpperEnd = new Point2D(upperBottom, bottomThickness);
-            //sketch = _connector.CreateSketch(3, bottomThickness);
-            //sketch.CreateLineSeg(pointUpper, pointUpperEnd, 1);
-            //sketch.EndEdit();
-            //_connector.ExtrudeRotation(sketch);
-
-            //Их соединение
-            
+            _connector.ExtrudeRotation(sketch);            
         }
 
         private void BuildBody(double upperBottom, double bottomThickness, double high, double wallThickness, double neck)
         {
+            // Построение основы кружки
+
+            //Создание осевой линии
             var centralStart = new Point2D(0, -250);
             var centralEnd = new Point2D(0, 250);
-            var atMiddle = -45;
+
+            // Переменная для дуги
+            var atMiddle = -upperBottom*1.3;
+            
+
+            // Переменные дуги на верхнем основании дна
             var pointStart = new Point2D(upperBottom, -bottomThickness);
+            var pointMiddle = new Point2D(-atMiddle, atMiddle);
             var pointEnd = new Point2D(upperBottom, -high);
-            if (upperBottom > 45)
-            {
-                atMiddle = 70;
-            }
-            else
-            {
-                atMiddle = 45;
-            }
-            var pointMiddle = new Point2D(atMiddle, -atMiddle);
+
+
+
+            // Создание скетча
             var sketch = _connector.CreateSketch(2);
+
+            ////Построение осевой линии
             sketch.CreateLineSeg(centralStart, centralEnd, 3);
+
+            ////Создание дуг
             sketch.ArcBy3Point(pointStart, pointMiddle, pointEnd);
+
+
             sketch.EndEdit();
             _connector.ExtrudeRotation(sketch);
 
-            var cutPointStart = new Point2D(neck - wallThickness, -bottomThickness);
-            var cutPointEnd = new Point2D(neck - wallThickness, -high);
+            var atMiddle2 = upperBottom * 1.25;
+            //Переменные внутренней стенки кружки
+            var insideStart = new Point2D(upperBottom - wallThickness, -bottomThickness);
+            var insadeMiddle = new Point2D(atMiddle2, -atMiddle2);
+            var insideEnd = new Point2D(upperBottom - wallThickness, -high);
+
             sketch = _connector.CreateSketch(2);
             sketch.CreateLineSeg(centralStart, centralEnd, 3);
-            sketch.ArcBy3Point(cutPointStart, pointMiddle, cutPointEnd);
+
+            sketch.ArcBy3Point(insideStart, insadeMiddle, insideEnd);
             sketch.EndEdit();
-            _connector.CutExtrude(sketch, high, false);
+            _connector.CutExtrudeRotation(sketch, 360);
+        }
+
+        private void BuildHand(double high, double neck, double bottomThickness)
+        {
+            var sketch = _connector.CreateSketch(2);
+            var start = new Point2D(-neck, -high);
+            var end = new Point2D(-neck, -bottomThickness);
+            var myRand = bottomThickness/2;
+            var middle = new Point2D(myRand, myRand);
+            sketch.ArcBy3Point(start, middle, end);
+            sketch.EndEdit();
         }
 
     }

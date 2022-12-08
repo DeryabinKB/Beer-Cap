@@ -88,5 +88,11 @@ namespace KompasConnector
             _document2D.ksBezierPoint(start);
             _document2D.ksBezierPoint(end);
         }
+        public void ArcByPoint(Point2D center, double rad, Point2D start, Point2D end)
+        {
+            _document2D.ksArcByPoint(center.X, center.Y, rad, start.X, start.Y, end.X, end.Y, 1, 1);
+        }
+
+        
     }
 }

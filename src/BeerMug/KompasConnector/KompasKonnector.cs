@@ -172,5 +172,19 @@ namespace KompasConnector
             return cylinderFaces;
         }
 
+        /// <summary>
+        /// Sketch rotation extrusion.
+        /// </summary>
+        /// <param name="kompasSketch">Kompas sketch.</param>
+        public void CutExtrudeRotation(KompasSketch kompasSketch, int angle)
+        {
+            ksEntity bossRotated = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_cutRotated);
+            ksCutRotatedDefinition bossRotatedDefinition = (ksCutRotatedDefinition)bossRotated.GetDefinition();
+            bossRotatedDefinition.directionType = (short)Direction_Type.dtNormal;
+            bossRotatedDefinition.SetSketch(kompasSketch.Sketch);
+            bossRotatedDefinition.SetSideParam(true, angle);
+            bossRotated.Create();
+        }
+
     }
 }
