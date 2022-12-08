@@ -29,7 +29,7 @@ namespace KompasConnector
             var wallThickness = mugParameters.WallThickness;
             var lowerBottom = mugParameters.BelowBottomDiametr/2;
             BuildBottom(lowerBottom, upperBottom, bottomThickness);
-            //BuildBody(upperBottom, bottomThickness, high, wallThickness);
+            BuildBody(upperBottom, bottomThickness, high, wallThickness, neck);
         }
 
         private void BuildBottom(double lowerBottom, double upperBottom, double bottomThickness)
@@ -37,6 +37,8 @@ namespace KompasConnector
             //Осевая линия
             var centralStart = new Point2D(0, -250);
             var centralEnd = new Point2D(0, 250);
+
+            //Создание скетча на осях
             var sketch = _connector.CreateSketch(2);
             sketch.CreateLineSeg(centralStart, centralEnd, 3);
 
@@ -45,10 +47,11 @@ namespace KompasConnector
             var pointBelowEnd = new Point2D(lowerBottom, 0);
             var pointBelowBezier = new Point2D(lowerBottom, 0);
             var pointUpperBezier = new Point2D(upperBottom, -bottomThickness);
-            var check = lowerBottom + (upperBottom - lowerBottom) / 2;
+            var check = lowerBottom + (upperBottom - lowerBottom)/4 ;
             var pointMiddle = new Point2D(check, bottomThickness / 8);
             sketch.CreateLineSeg(pointBelow, pointBelowEnd, 1);
             sketch.ArcBy3Point(pointBelowBezier, pointMiddle, pointUpperBezier);
+
             sketch.EndEdit();
             _connector.ExtrudeRotation(sketch);
 
@@ -64,17 +67,36 @@ namespace KompasConnector
             
         }
 
-        //private void BuildBody(double upperBottom, double bottomThickness, double high, double wallThickness)
-        //{
-        //    var pointUpperBezier = new Point2D(upperBottom, -bottomThickness);
-        //    var pointStart = new Point2D(upperBottom, -bottomThickness);
-        //    var pointEnd = new Point2D(upperBottom, -high);
-        //    var pointMiddle = new Point2D(0, high/2);
-        //    var sketch = _connector.CreateSketch(2);
-        //    sketch.ArcBy3Point(pointStart, pointMiddle, pointEnd);
-        //    sketch.EndEdit();
-        //    _connector.ExtrudeRotation(sketch);
-        //}
+        private void BuildBody(double upperBottom, double bottomThickness, double high, double wallThickness, double neck)
+        {
+            var centralStart = new Point2D(0, -250);
+            var centralEnd = new Point2D(0, 250);
+            var atMiddle = -45;
+            var pointStart = new Point2D(upperBottom, -bottomThickness);
+            var pointEnd = new Point2D(upperBottom, -high);
+            if (upperBottom > 45)
+            {
+                atMiddle = 70;
+            }
+            else
+            {
+                atMiddle = 45;
+            }
+            var pointMiddle = new Point2D(atMiddle, -atMiddle);
+            var sketch = _connector.CreateSketch(2);
+            sketch.CreateLineSeg(centralStart, centralEnd, 3);
+            sketch.ArcBy3Point(pointStart, pointMiddle, pointEnd);
+            sketch.EndEdit();
+            _connector.ExtrudeRotation(sketch);
+
+            var cutPointStart = new Point2D(neck - wallThickness, -bottomThickness);
+            var cutPointEnd = new Point2D(neck - wallThickness, -high);
+            sketch = _connector.CreateSketch(2);
+            sketch.CreateLineSeg(centralStart, centralEnd, 3);
+            sketch.ArcBy3Point(cutPointStart, pointMiddle, cutPointEnd);
+            sketch.EndEdit();
+            _connector.CutExtrude(sketch, high, false);
+        }
 
     }
 }

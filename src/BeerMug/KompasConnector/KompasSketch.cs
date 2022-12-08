@@ -84,7 +84,6 @@ namespace KompasConnector
 
         public void CreateBezier(Point2D start, Point2D end)
         {
-            double ang = 30;
             _document2D.ksBezier(1, 2);
             _document2D.ksBezierPoint(start);
             _document2D.ksBezierPoint(end);
