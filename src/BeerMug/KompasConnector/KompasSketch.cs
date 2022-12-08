@@ -76,5 +76,18 @@ namespace KompasConnector
         {
             _document2D.ksLineSeg(start.X, start.Y, end.X, end.Y, style);
         }
+
+        public void ArcBy3Point(Point2D start, Point2D middle, Point2D end)
+        {
+            _document2D.ksArcBy3Points(start.X, start.Y, middle.X, middle.Y, end.X, end.Y, 1);
+        }
+
+        public void CreateBezier(Point2D start, Point2D end)
+        {
+            double ang = 30;
+            _document2D.ksBezier(1, 2);
+            _document2D.ksBezierPoint(start);
+            _document2D.ksBezierPoint(end);
+        }
     }
 }

@@ -104,6 +104,7 @@
             this.outerDiametrTextBox.Name = "outerDiametrTextBox";
             this.outerDiametrTextBox.Size = new System.Drawing.Size(116, 23);
             this.outerDiametrTextBox.TabIndex = 4;
+            this.outerDiametrTextBox.Text = "80";
             this.outerDiametrTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
             this.outerDiametrTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
@@ -114,6 +115,7 @@
             this.thicknessTextBox.Name = "thicknessTextBox";
             this.thicknessTextBox.Size = new System.Drawing.Size(116, 23);
             this.thicknessTextBox.TabIndex = 5;
+            this.thicknessTextBox.Text = "5";
             this.thicknessTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
             this.thicknessTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
@@ -124,6 +126,7 @@
             this.highTextBox.Name = "highTextBox";
             this.highTextBox.Size = new System.Drawing.Size(116, 23);
             this.highTextBox.TabIndex = 6;
+            this.highTextBox.Text = "100";
             this.highTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
             this.highTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
@@ -144,6 +147,7 @@
             this.upperRadiusOfTheBottomTextBox.Name = "upperRadiusOfTheBottomTextBox";
             this.upperRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
             this.upperRadiusOfTheBottomTextBox.TabIndex = 8;
+            this.upperRadiusOfTheBottomTextBox.Text = "80";
             this.upperRadiusOfTheBottomTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
             this.upperRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
@@ -164,6 +168,7 @@
             this.lowerRadiusOfTheBottomTextBox.Name = "lowerRadiusOfTheBottomTextBox";
             this.lowerRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
             this.lowerRadiusOfTheBottomTextBox.TabIndex = 10;
+            this.lowerRadiusOfTheBottomTextBox.Text = "50";
             this.lowerRadiusOfTheBottomTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
             this.lowerRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
@@ -214,6 +219,7 @@
             this.bottomThicknessTextBox.Name = "bottomThicknessTextBox";
             this.bottomThicknessTextBox.Size = new System.Drawing.Size(116, 23);
             this.bottomThicknessTextBox.TabIndex = 15;
+            this.bottomThicknessTextBox.Text = "10";
             this.bottomThicknessTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
             this.bottomThicknessTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForCommasAndNumbers_KeyPress);
             // 

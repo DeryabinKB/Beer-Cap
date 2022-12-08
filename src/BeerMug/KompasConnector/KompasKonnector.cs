@@ -114,9 +114,9 @@ namespace KompasConnector
         {
             ksEntity bossRotated = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_bossRotated);
             ksBossRotatedDefinition bossRotatedDefinition = (ksBossRotatedDefinition)bossRotated.GetDefinition();
-            bossRotatedDefinition.directionType = (short)Direction_Type.dtNormal;
+            bossRotatedDefinition.directionType = (short)Direction_Type.dtReverse;
             bossRotatedDefinition.SetSketch(kompasSketch.Sketch);
-            bossRotatedDefinition.SetSideParam(true, 180);
+            bossRotatedDefinition.SetSideParam(true, 360);
             bossRotated.Create();
         }
 

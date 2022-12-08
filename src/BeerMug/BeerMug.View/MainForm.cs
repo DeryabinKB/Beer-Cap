@@ -72,16 +72,29 @@ namespace BeerMug.View
                 if (textBox == lowerRadiusOfTheBottomTextBox)
                 {
                     TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
-                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
                     lowerRadiusOfTheBottomTextBox.Focus();
                 }
-                else if (textBox == bottomThicknessTextBox)
+                if (textBox == bottomThicknessTextBox)
                 {
-                    TextBoxValidator_TextChanged(highTextBox, e);
                     TextBoxValidator_TextChanged(outerDiametrTextBox, e);
                     bottomThicknessTextBox.Focus();
                 }
-                else if (textBox == upperRadiusOfTheBottomTextBox)
+                if (textBox == upperRadiusOfTheBottomTextBox)
+                {
+                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
+                    upperRadiusOfTheBottomTextBox.Focus();
+                }
+                if (textBox == lowerRadiusOfTheBottomTextBox)
+                {
+                    TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+                    lowerRadiusOfTheBottomTextBox.Focus();
+                }
+                if (textBox == bottomThicknessTextBox)
+                {
+                    TextBoxValidator_TextChanged(outerDiametrTextBox, e);
+                    bottomThicknessTextBox.Focus();
+                }
+                if (textBox == upperRadiusOfTheBottomTextBox)
                 {
                     TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
                     upperRadiusOfTheBottomTextBox.Focus();
@@ -141,7 +154,6 @@ namespace BeerMug.View
             TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
             TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
             TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
-            
         }
 
         private void MaximumSizeButton_Click(object sender, EventArgs e)
@@ -167,12 +179,14 @@ namespace BeerMug.View
                  highTextBox.Text == string.Empty ||
                  bottomThicknessTextBox.Text == string.Empty ||
                  upperRadiusOfTheBottomTextBox.Text == string.Empty ||
-                 lowerRadiusOfTheBottomTextBox.Text == string.Empty ||
+                 //lowerRadiusOfTheBottomTextBox.Text == string.Empty ||
                  _beerMugParametr.Parameters.Count > 0)
             {
-                MessageBox.Show("Fill all fields correctly", "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                //MessageBox.Show("Fill all fields correctly", "Error",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Error);
+                var builder = new BeerMugBuilder();
+                builder.Builder(_beerMugParametr);
             }
             else
             {
