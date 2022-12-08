@@ -29,8 +29,8 @@ namespace KompasConnector
 
         private void BuildBottom(double lowerBottom, double upperBottom, double bottomThickness)
         {
-            var pointBelow = new Point3D(0, 0, 0);
-            var pointUpper = new Point3D(100, 0, 0);
+            var pointBelow = new BeerMug.Model.Point3D(0, 0, 0);
+            var pointUpper = new BeerMug.Model.Point3D(0, 100, 0);
             var sketchBelow = _connector.CreateSketch(3);
             sketchBelow.CreateCircle(pointBelow, lowerBottom);
             sketchBelow.EndEdit();
