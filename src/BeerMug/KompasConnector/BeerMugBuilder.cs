@@ -22,18 +22,14 @@ namespace KompasConnector
             _connector.StartKompas();
             _connector.CreateDocument();
             _connector.SetProperties();
-            var upperBottom = 80;
-            var lowerBottom = 50;
-            var bottomThickness = 10;
-            var high = 100;
-            var wallThickness = 5;
-            //var upperBottom = mugParameters.HighBottomDiametr;
-            //var bottomThickness = mugParameters.BottomThickness;
-            //var high = mugParameters.HeightNeckBottom;
-            //var wallThickness = mugParameters.WallThickness;
-            //var lowerBottom = mugParameters.BelowBottomDiametr;
+            var upperBottom = mugParameters.HighBottomDiametr/2;
+            var neck = mugParameters.MugNeckDiametr/2;
+            var bottomThickness = mugParameters.BottomThickness;
+            var high = mugParameters.HeightNeckBottom;
+            var wallThickness = mugParameters.WallThickness;
+            var lowerBottom = mugParameters.BelowBottomDiametr/2;
             BuildBottom(lowerBottom, upperBottom, bottomThickness);
-            BuildBody(upperBottom, bottomThickness, high, wallThickness);
+            //BuildBody(upperBottom, bottomThickness, high, wallThickness);
         }
 
         private void BuildBottom(double lowerBottom, double upperBottom, double bottomThickness)
@@ -43,44 +39,42 @@ namespace KompasConnector
             var centralEnd = new Point2D(0, 250);
             var sketch = _connector.CreateSketch(2);
             sketch.CreateLineSeg(centralStart, centralEnd, 3);
-            sketch.EndEdit();
 
             //Нижняя прямая
             var pointBelow = new Point2D(0, 0);
-            var pointBelowEnd = new Point2D(0, lowerBottom);
-            sketch = _connector.CreateSketch(3);
-            sketch.CreateLineSeg(pointBelow, pointBelowEnd, 1);
-            sketch.EndEdit();
-            _connector.ExtrudeRotation(sketch);
-
-            //Верхний радиус
-            var pointUpper = new Point2D(0, 0);
-            var pointUpperEnd = new Point2D(upperBottom, bottomThickness);
-            sketch = _connector.CreateSketch(3, bottomThickness);
-            sketch.CreateLineSeg(pointUpper, pointUpperEnd, 1);
-            sketch.EndEdit();
-            _connector.ExtrudeRotation(sketch);
-
-            //Их соединение
+            var pointBelowEnd = new Point2D(lowerBottom, 0);
             var pointBelowBezier = new Point2D(lowerBottom, 0);
             var pointUpperBezier = new Point2D(upperBottom, -bottomThickness);
-            var check = lowerBottom + (upperBottom - lowerBottom)/2;
-            var pointMiddle = new Point2D(check, bottomThickness/8);
-            sketch = _connector.CreateSketch(2);
+            var check = lowerBottom + (upperBottom - lowerBottom) / 2;
+            var pointMiddle = new Point2D(check, bottomThickness / 8);
+            sketch.CreateLineSeg(pointBelow, pointBelowEnd, 1);
             sketch.ArcBy3Point(pointBelowBezier, pointMiddle, pointUpperBezier);
             sketch.EndEdit();
             _connector.ExtrudeRotation(sketch);
+
+            ////Верхний радиус
+            //var pointUpper = new Point2D(0, 0);
+            //var pointUpperEnd = new Point2D(upperBottom, bottomThickness);
+            //sketch = _connector.CreateSketch(3, bottomThickness);
+            //sketch.CreateLineSeg(pointUpper, pointUpperEnd, 1);
+            //sketch.EndEdit();
+            //_connector.ExtrudeRotation(sketch);
+
+            //Их соединение
+            
         }
 
-        private void BuildBody(double upperBottom, double bottomThickness, double high, double wallThickness)
-        {
-            var pointStart = new Point2D(upperBottom, -bottomThickness);
-            var pointEnd = new Point2D(upperBottom, -high);
-            var sketch = _connector.CreateSketch(2);
-            sketch.CreateLineSeg(pointStart, pointEnd, 1);
-            sketch.EndEdit();
-            _connector.ExtrudeRotation(sketch);
-        }
+        //private void BuildBody(double upperBottom, double bottomThickness, double high, double wallThickness)
+        //{
+        //    var pointUpperBezier = new Point2D(upperBottom, -bottomThickness);
+        //    var pointStart = new Point2D(upperBottom, -bottomThickness);
+        //    var pointEnd = new Point2D(upperBottom, -high);
+        //    var pointMiddle = new Point2D(0, high/2);
+        //    var sketch = _connector.CreateSketch(2);
+        //    sketch.ArcBy3Point(pointStart, pointMiddle, pointEnd);
+        //    sketch.EndEdit();
+        //    _connector.ExtrudeRotation(sketch);
+        //}
 
     }
 }

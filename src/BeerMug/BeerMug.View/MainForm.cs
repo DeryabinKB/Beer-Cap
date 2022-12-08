@@ -42,13 +42,13 @@ namespace BeerMug.View
             _textBox.Add(thicknessTextBox, (wallThickness)
                 => _beerMugParametr.WallThickness = wallThickness);
             _textBox.Add(highTextBox, (high)
-                => _beerMugParametr.HighBottomDiametr = high);
+                => _beerMugParametr.HeightNeckBottom = high);
             _textBox.Add(bottomThicknessTextBox, (bottomThickness)
                 => _beerMugParametr.BottomThickness = bottomThickness);
             _textBox.Add(upperRadiusOfTheBottomTextBox, (highBottomDiametr)
                 => _beerMugParametr.HighBottomDiametr = highBottomDiametr);
             _textBox.Add(lowerRadiusOfTheBottomTextBox, (lowBottomDiametr)
-                => _beerMugParametr.HighBottomDiametr = lowBottomDiametr);
+                => _beerMugParametr.BelowBottomDiametr = lowBottomDiametr);
         }
 
         /// <summary>
@@ -69,36 +69,6 @@ namespace BeerMug.View
             {
                 _textBox[textBox](double.Parse(textBox.Text));
                 textBox.BackColor = _correctColor;
-                if (textBox == lowerRadiusOfTheBottomTextBox)
-                {
-                    TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
-                    lowerRadiusOfTheBottomTextBox.Focus();
-                }
-                if (textBox == bottomThicknessTextBox)
-                {
-                    TextBoxValidator_TextChanged(outerDiametrTextBox, e);
-                    bottomThicknessTextBox.Focus();
-                }
-                if (textBox == upperRadiusOfTheBottomTextBox)
-                {
-                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
-                    upperRadiusOfTheBottomTextBox.Focus();
-                }
-                if (textBox == lowerRadiusOfTheBottomTextBox)
-                {
-                    TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
-                    lowerRadiusOfTheBottomTextBox.Focus();
-                }
-                if (textBox == bottomThicknessTextBox)
-                {
-                    TextBoxValidator_TextChanged(outerDiametrTextBox, e);
-                    bottomThicknessTextBox.Focus();
-                }
-                if (textBox == upperRadiusOfTheBottomTextBox)
-                {
-                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
-                    upperRadiusOfTheBottomTextBox.Focus();
-                }
             }
             catch
             {
@@ -179,14 +149,12 @@ namespace BeerMug.View
                  highTextBox.Text == string.Empty ||
                  bottomThicknessTextBox.Text == string.Empty ||
                  upperRadiusOfTheBottomTextBox.Text == string.Empty ||
-                 //lowerRadiusOfTheBottomTextBox.Text == string.Empty ||
+                 lowerRadiusOfTheBottomTextBox.Text == string.Empty ||
                  _beerMugParametr.Parameters.Count > 0)
             {
-                //MessageBox.Show("Fill all fields correctly", "Error",
-                //    MessageBoxButtons.OK,
-                //    MessageBoxIcon.Error);
-                var builder = new BeerMugBuilder();
-                builder.Builder(_beerMugParametr);
+                MessageBox.Show("Fill all fields correctly", "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             else
             {
