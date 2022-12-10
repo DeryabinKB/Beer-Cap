@@ -30,7 +30,9 @@ namespace KompasConnector
             var lowerBottom = mugParameters.BelowBottomDiametr/2;
             BuildBottom(lowerBottom, upperBottom, bottomThickness);
             BuildBody(upperBottom, bottomThickness, high, wallThickness, neck);
-            BuildHand(high, neck, bottomThickness);
+            BuildHandle(high, neck, bottomThickness);
+
+            _connector.Fillet(wallThickness/5);
         }
 
         private void BuildBottom(double lowerBottom, double upperBottom, double bottomThickness)
@@ -53,7 +55,7 @@ namespace KompasConnector
             sketch.CreateLineSeg(pointBelow, pointBelowEnd, 1);
             sketch.ArcBy3Point(pointBelowBezier, pointMiddle, pointUpperBezier);
             sketch.EndEdit();
-            _connector.ExtrudeRotation(sketch);            
+            _connector.ExtrudeRotation360(sketch);            
         }
 
         private void BuildBody(double upperBottom, double bottomThickness, double high, double wallThickness, double neck)
@@ -65,7 +67,7 @@ namespace KompasConnector
             var centralEnd = new Point2D(0, 250);
 
             // Переменная для дуги
-            var atMiddle = -upperBottom*1.3;
+            var atMiddle = -upperBottom*1.2;
             
 
             // Переменные дуги на верхнем основании дна
@@ -86,9 +88,9 @@ namespace KompasConnector
 
 
             sketch.EndEdit();
-            _connector.ExtrudeRotation(sketch);
+            _connector.ExtrudeRotation360(sketch);
 
-            var atMiddle2 = upperBottom * 1.25;
+            var atMiddle2 = upperBottom * 1.1;
             //Переменные внутренней стенки кружки
             var insideStart = new Point2D(upperBottom - wallThickness, -bottomThickness);
             var insadeMiddle = new Point2D(atMiddle2, -atMiddle2);
@@ -102,16 +104,43 @@ namespace KompasConnector
             _connector.CutExtrudeRotation(sketch, 360);
         }
 
-        private void BuildHand(double high, double neck, double bottomThickness)
+        private void BuildHandle(double high, double neck, double bottomThickness)
         {
-            var sketch = _connector.CreateSketch(2);
-            var start = new Point2D(-neck, -high);
-            var end = new Point2D(-neck, -bottomThickness);
-            var myRand = bottomThickness/2;
-            var middle = new Point2D(myRand, myRand);
-            sketch.ArcBy3Point(start, middle, end);
-            sketch.EndEdit();
-        }
+            //Ручка кругом
+            var sketch = _connector.CreateSketch(2, neck + bottomThickness / 2.85);
+            var pointOne = new Point2D(0, -high / 2 - 5);
+            var PointTwo = new Point2D(100, -high / 2 - 5);
+            var circleCoord = new Point2D(0, -high * 0.78);
+            sketch.CreateLineSeg(pointOne, PointTwo, 3);
+            sketch.CreateCircle(circleCoord, bottomThickness / 3);
 
+            ////ручка дугой
+            //var sketch = _connector.CreateSketch(2);
+            //var pointOne = new Point2D(0, -high/2-5);
+            //var PointTwo = new Point2D(100, -high / 2-5);
+            //sketch.CreateLineSeg(pointOne, PointTwo, 3);
+
+            //var circleStart = new Point2D(neck, -high + bottomThickness);
+            //var circleEnd = new Point2D(neck, -bottomThickness*2);
+            //var middle = neck * 2.5;
+            //var circleMiddle = new Point2D(middle, -middle);
+            //sketch.ArcBy3Point(circleStart, circleMiddle, circleEnd);
+
+
+            //// Ручка прямыми
+            //var sketch = _connector.CreateSketch(2);
+
+            //var middleHigh = new Point2D(-neck - bottomThickness * 7, -high - 10);
+            //var middleDown = new Point2D(-neck - bottomThickness * 6, -bottomThickness - 20);
+            //var start = new Point2D(-neck , -high);
+            //var end = new Point2D(-neck, -bottomThickness - 10);
+            //sketch.CreateLineSeg(start, middleHigh, 1);
+            //sketch.CreateLineSeg(middleHigh, middleDown, 1);
+            //sketch.CreateLineSeg(middleDown, end, 1);
+
+            sketch.EndEdit();
+            //_connector.Extrude(sketch, 3, true);
+            _connector.ExtrudeRotation180(sketch);
+        }
     }
 }

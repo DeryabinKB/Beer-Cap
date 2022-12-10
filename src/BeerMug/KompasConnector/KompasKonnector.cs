@@ -110,13 +110,23 @@ namespace KompasConnector
             extrudeEntity.Create();
         }
 
-        public void ExtrudeRotation(KompasSketch kompasSketch)
+        public void ExtrudeRotation360(KompasSketch kompasSketch)
         {
             ksEntity bossRotated = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_bossRotated);
             ksBossRotatedDefinition bossRotatedDefinition = (ksBossRotatedDefinition)bossRotated.GetDefinition();
             bossRotatedDefinition.directionType = (short)Direction_Type.dtNormal;
             bossRotatedDefinition.SetSketch(kompasSketch.Sketch);
             bossRotatedDefinition.SetSideParam(true, 360);
+            bossRotated.Create();
+        }
+
+        public void ExtrudeRotation180(KompasSketch kompasSketch)
+        {
+            ksEntity bossRotated = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_bossRotated);
+            ksBossRotatedDefinition bossRotatedDefinition = (ksBossRotatedDefinition)bossRotated.GetDefinition();
+            bossRotatedDefinition.directionType = (short)Direction_Type.dtNormal;
+            bossRotatedDefinition.SetSketch(kompasSketch.Sketch);
+            bossRotatedDefinition.SetSideParam(true, 181);
             bossRotated.Create();
         }
 
@@ -185,6 +195,8 @@ namespace KompasConnector
             bossRotatedDefinition.SetSideParam(true, angle);
             bossRotated.Create();
         }
+
+
 
     }
 }

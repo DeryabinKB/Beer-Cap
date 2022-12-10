@@ -30,7 +30,7 @@ namespace KompasConnector
         /// Конструктор.
         /// </summary>
         /// <param name="part"></param>
-        /// <param name="type">1 - ZY; 2 - ZX; 3 - XY.</param>
+        /// <param name="type">1 - YZ; 2 - XZ; 3 - XY.</param>
         public KompasSketch(ksPart part, int type, double offset = 0)
         {
             ksEntity plane = (ksEntity)part.NewEntity((short)Obj3dType.o3d_planeOffset);
@@ -88,6 +88,7 @@ namespace KompasConnector
             _document2D.ksBezierPoint(start);
             _document2D.ksBezierPoint(end);
         }
+
         public void ArcByPoint(Point2D center, double rad, Point2D start, Point2D end)
         {
             _document2D.ksArcByPoint(center.X, center.Y, rad, start.X, start.Y, end.X, end.Y, 1, 1);
