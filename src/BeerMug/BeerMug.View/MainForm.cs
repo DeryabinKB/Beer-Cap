@@ -152,7 +152,7 @@ namespace BeerMug.View
                  lowerRadiusOfTheBottomTextBox.Text == string.Empty ||
                  _beerMugParametr.Parameters.Count > 0)
             {
-                MessageBox.Show("Fill all fields correctly", "Error",
+                MessageBox.Show("Fill all fields correctly", "Error data",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
