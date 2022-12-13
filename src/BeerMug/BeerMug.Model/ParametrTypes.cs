@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace BeerMug.Model
 {
+    /// <summary>
+    /// Перечисление параметров пивной кружки
+    /// </summary>
     public enum MugParametersType
     {
 
         /// <summary>
         /// Диаметр дна кружки снизу.
         /// </summary>
-        BelowBottomDiametr,
+        BelowBottomDiameter,
 
         /// <summary>
         /// Диаметр дна кружки сверху.
         /// </summary>
-        HighBottomDiametr,
+        HighBottomDiameter,
 
         /// <summary>
         /// Толщина дна.
@@ -27,7 +30,7 @@ namespace BeerMug.Model
         /// <summary>
         /// Высота от горла кружки до дна.
         /// </summary>
-        HeightNeckBottom,
+        High,
 
         /// <summary>
         /// Толщина стенок кружки.

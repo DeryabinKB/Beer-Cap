@@ -11,14 +11,31 @@ using BeerMug.Model;
 
 namespace KompasConnector
 {
+    /// <summary>
+    /// Класс запуска Компас 3D и его библиотек.
+    /// </summary>
     public class KompasConnector
     {
+        /// <summary>
+        /// Объект Компас API.
+        /// </summary>
         private KompasObject _kompas;
 
+        /// <summary>
+        /// Модель.
+        /// </summary>
         private ksPart _part;
 
+        /// <summary>
+        /// Документ Компас 3D.
+        /// </summary>
         private ksDocument3D _document;
 
+        /// <summary>
+        /// Запуск Компас 3D.
+        /// </summary>
+        /// <exception cref="Exception">При неудачной попытке отрыть Компас 3D
+        /// бросается исключение</exception>
         public void StartKompas()
         {
             try
@@ -47,6 +64,11 @@ namespace KompasConnector
             }
         }
 
+        /// <summary>
+        /// Создание документа в Компас 3D.
+        /// </summary>
+        /// <exception cref="ArgumentException">При неудачной попытке создать документ в Компас 3D 
+        /// бросается исключение</exception>
         public void CreateDocument()
         {
             try
@@ -61,19 +83,34 @@ namespace KompasConnector
             }
         }
 
+        /// <summary>
+        /// Установка свойст детали.
+        /// </summary>
         public void SetProperties()
         {
             _part = (ksPart)_document.GetPart((short)Part_Type.pTop_Part);
             _part.name = "Mug";
-            _part.SetAdvancedColor(3407871, 0.8, 0.8, 0.8, 0.8);
+            _part.SetAdvancedColor(296955, 0.8, 0.8, 0.8, 0.8);
             _part.Update();
         }
 
+        /// <summary>
+        /// Создания скетча.
+        /// </summary>
+        /// <param name="type">Плоскость скетча.</param>
+        /// <param name="offset">Отступ скетча от начала координат.</param>
+        /// <returns></returns>
         public KompasSketch CreateSketch(int type, double offset = 0)
         {
             return new KompasSketch(_part, type, offset);
         }
 
+        /// <summary>
+        /// Выдавливание.
+        /// </summary>
+        /// <param name="kompasSketch">Скетч.</param>
+        /// <param name="depth">Глубина выдавливания.</param>
+        /// <param name="type">Направление выдавливания.</param>
         public void Extrude(KompasSketch kompasSketch, double depth, bool type)
         {
             ksEntity extrudeEntity = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_baseExtrusion);
@@ -92,6 +129,12 @@ namespace KompasConnector
             extrudeEntity.Create();
         }
 
+        /// <summary>
+        /// Вырезание выдавливанием.
+        /// </summary>
+        /// <param name="kompasSketch">Скетч.</param>
+        /// <param name="depth">Глубина выдавливания.</param>
+        /// <param name="type">Направление выдавливания</param>
         public void CutExtrude(KompasSketch kompasSketch, double depth, bool type)
         {
             ksEntity extrudeEntity = (ksEntity)_part.NewEntity((int)Obj3dType.o3d_cutExtrusion);
@@ -110,6 +153,10 @@ namespace KompasConnector
             extrudeEntity.Create();
         }
 
+        /// <summary>
+        /// Выдавливание вращением на 360 градусов.
+        /// </summary>
+        /// <param name="kompasSketch">Скетч.</param>
         public void ExtrudeRotation360(KompasSketch kompasSketch)
         {
             ksEntity bossRotated = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_bossRotated);
@@ -120,6 +167,10 @@ namespace KompasConnector
             bossRotated.Create();
         }
 
+        /// <summary>
+        /// Выдавливание вращением на 180 градусов.
+        /// </summary>
+        /// <param name="kompasSketch">Скетч.</param>
         public void ExtrudeRotation180(KompasSketch kompasSketch)
         {
             ksEntity bossRotated = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_bossRotated);
@@ -131,9 +182,9 @@ namespace KompasConnector
         }
 
         /// <summary>
-        /// Проводит операцию скругления на ребрах.
+        /// Скругления на ребрах окружностей.
         /// </summary>
-        /// <param name="radius"> Угол скругления. </param>
+        /// <param name="radius"> Угол скругления.</param>
         public void Fillet(double radius)
         {
             var roundedEdges = GetCylinderFaces();
@@ -183,9 +234,9 @@ namespace KompasConnector
         }
 
         /// <summary>
-        /// Sketch rotation extrusion.
+        /// Вырезание выдавливанием вокруг.
         /// </summary>
-        /// <param name="kompasSketch">Kompas sketch.</param>
+        /// <param name="kompasSketch">Скетч.</param>
         public void CutExtrudeRotation(KompasSketch kompasSketch, int angle)
         {
             ksEntity bossRotated = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_cutRotated);

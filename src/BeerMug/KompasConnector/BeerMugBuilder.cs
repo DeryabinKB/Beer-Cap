@@ -10,13 +10,20 @@ using System.Threading.Tasks;
 
 namespace KompasConnector
 {
+    /// <summary>
+    /// Класс построения пивной кружки.
+    /// </summary>
     public class BeerMugBuilder
     {
         /// <summary>
-        /// Сапр апи.
+        /// Компас коннектор.
         /// </summary>
         private KompasConnector _connector = new KompasConnector();
 
+        /// <summary>
+        /// Построение кружки по её параметрам.
+        /// </summary>
+        /// <param name="mugParameters">Параметры пивной кружки.</param>
         public void Builder(MugParameters mugParameters)
         {
             _connector.StartKompas();
@@ -25,9 +32,9 @@ namespace KompasConnector
             var upperBottom = mugParameters.HighBottomDiametr/2;
             var neck = mugParameters.MugNeckDiametr/2;
             var bottomThickness = mugParameters.BottomThickness;
-            var high = mugParameters.HeightNeckBottom;
+            var high = mugParameters.High;
             var wallThickness = mugParameters.WallThickness/2;
-            var lowerBottom = mugParameters.BelowBottomDiametr/2;
+            var lowerBottom = mugParameters.BelowBottomRadius/2;
             BuildBottom(lowerBottom, upperBottom, bottomThickness);
             BuildBody(upperBottom, bottomThickness, high, wallThickness, neck);
             BuildHandle(high, neck, bottomThickness);
@@ -35,6 +42,12 @@ namespace KompasConnector
             _connector.Fillet(wallThickness/5);
         }
 
+        /// <summary>
+        /// Построение основания пивной кружки.
+        /// </summary>
+        /// <param name="lowerBottom">Нижний радиус пивной кружки.</param>
+        /// <param name="upperBottom">Верхний радиус пивной кружки.</param>
+        /// <param name="bottomThickness">Толщина дна.</param>
         private void BuildBottom(double lowerBottom, double upperBottom, double bottomThickness)
         {
             //Осевая линия
@@ -65,45 +78,38 @@ namespace KompasConnector
             //Создание осевой линии
             var centralStart = new Point2D(0, -250);
             var centralEnd = new Point2D(0, 250);
-
             // Переменная для дуги
             var atMiddle = -upperBottom*1.2;
-            
-
             // Переменные дуги на верхнем основании дна
             var pointStart = new Point2D(upperBottom, -bottomThickness);
             var pointMiddle = new Point2D(-atMiddle, atMiddle);
             var pointEnd = new Point2D(upperBottom, -high);
-
-
-
             // Создание скетча
             var sketch = _connector.CreateSketch(2);
-
             ////Построение осевой линии
             sketch.CreateLineSeg(centralStart, centralEnd, 3);
-
             ////Создание дуг
             sketch.ArcBy3Point(pointStart, pointMiddle, pointEnd);
-
-
             sketch.EndEdit();
             _connector.ExtrudeRotation360(sketch);
-
             var atMiddle2 = upperBottom * 1.1;
             //Переменные внутренней стенки кружки
             var insideStart = new Point2D(upperBottom - wallThickness, -bottomThickness);
             var insadeMiddle = new Point2D(atMiddle2, -atMiddle2);
             var insideEnd = new Point2D(upperBottom - wallThickness, -high);
-
             sketch = _connector.CreateSketch(2);
             sketch.CreateLineSeg(centralStart, centralEnd, 3);
-
             sketch.ArcBy3Point(insideStart, insadeMiddle, insideEnd);
             sketch.EndEdit();
             _connector.CutExtrudeRotation(sketch, 360);
         }
 
+        /// <summary>
+        /// Создание ручки пивной кружки.
+        /// </summary>
+        /// <param name="high">Высота пивной кружки.</param>
+        /// <param name="neck">Радиус горла пивной кружки</param>
+        /// <param name="bottomThickness">Толщина дна пивной кружки</param>
         private void BuildHandle(double high, double neck, double bottomThickness)
         {
             //Ручка кругом
@@ -137,7 +143,6 @@ namespace KompasConnector
             //sketch.CreateLineSeg(start, middleHigh, 1);
             //sketch.CreateLineSeg(middleHigh, middleDown, 1);
             //sketch.CreateLineSeg(middleDown, end, 1);
-
             sketch.EndEdit();
             //_connector.Extrude(sketch, 3, true);
             _connector.ExtrudeRotation180(sketch);

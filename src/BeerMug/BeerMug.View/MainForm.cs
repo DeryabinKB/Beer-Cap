@@ -6,29 +6,33 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using TextBox = System.Windows.Forms.TextBox;
 using KompasConnector;
+using System.Reflection.Metadata;
 
 namespace BeerMug.View
 {
+    /// <summary>
+    /// Класс взаимодействия с формой.
+    /// </summary>
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Экземпляр класса ChangeableParametrs
+        /// Экземпляр класса MugParameters.
         /// </summary>
         private MugParameters _beerMugParametr = new MugParameters();
 
         /// <summary>
-        /// Цвет корректно заполненного поля
+        /// Цвет корректно заполненного поля.
         /// </summary>  
         private Color _correctColor = Color.White;
 
         /// <summary>
-        /// Цвет не корректно заполненного поля
+        /// Цвет не корректно заполненного поля.
         /// </summary>  
         private Color _incorrectColor = Color.LightPink;
 
         /// <summary>
         /// Словарь, cвязывающий параметр пивной кружки
-        /// и его текстбокс
+        /// и его текстбокс.
         /// </summary>
         private Dictionary<TextBox, Action<double>> _textBox
             = new Dictionary<TextBox, Action<double>>();
@@ -42,17 +46,17 @@ namespace BeerMug.View
             _textBox.Add(thicknessTextBox, (wallThickness)
                 => _beerMugParametr.WallThickness = wallThickness);
             _textBox.Add(highTextBox, (high)
-                => _beerMugParametr.HeightNeckBottom = high);
+                => _beerMugParametr.High = high);
             _textBox.Add(bottomThicknessTextBox, (bottomThickness)
                 => _beerMugParametr.BottomThickness = bottomThickness);
             _textBox.Add(upperRadiusOfTheBottomTextBox, (highBottomDiametr)
                 => _beerMugParametr.HighBottomDiametr = highBottomDiametr);
             _textBox.Add(lowerRadiusOfTheBottomTextBox, (lowBottomDiametr)
-                => _beerMugParametr.BelowBottomDiametr = lowBottomDiametr);
+                => _beerMugParametr.BelowBottomRadius = lowBottomDiametr);
         }
 
         /// <summary>
-        /// Валидация для текстбоксов.
+        /// Валидация текстбоксов.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -69,6 +73,26 @@ namespace BeerMug.View
             {
                 _textBox[textBox](double.Parse(textBox.Text));
                 textBox.BackColor = _correctColor;
+                if (textBox == outerDiametrTextBox)
+                {
+                    TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+                }
+                if (textBox == upperRadiusOfTheBottomTextBox)
+                {
+                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
+                }
+                if (textBox == lowerRadiusOfTheBottomTextBox)
+                {
+                    TextBoxValidator_TextChanged(highTextBox, e);
+                }
+                if (textBox == highTextBox)
+                {
+                    TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
+                }
+                if (textBox == bottomThicknessTextBox)
+                {
+                    TextBoxValidator_TextChanged(thicknessTextBox, e);
+                }
             }
             catch
             {
@@ -110,6 +134,11 @@ namespace BeerMug.View
             }
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку Minimum size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MinimumSizeButtom_Click(object sender, EventArgs e)
         {
             outerDiametrTextBox.Text = "80";
@@ -126,6 +155,11 @@ namespace BeerMug.View
             TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку Maximum size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MaximumSizeButton_Click(object sender, EventArgs e)
         {
             outerDiametrTextBox.Text = "100";
@@ -142,6 +176,11 @@ namespace BeerMug.View
             TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку Build button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buildButton_Click(object sender, EventArgs e)
         {
             if (outerDiametrTextBox.Text == string.Empty ||

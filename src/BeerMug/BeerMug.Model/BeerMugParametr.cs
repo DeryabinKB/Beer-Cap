@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace BeerMug.Model
 {
+    /// <summary>
+    /// Класс для обработки значений параметра пивной кружки.
+    /// </summary>
     public class BeerMugParametr
     {
         /// <summary>
         /// Проверка диапазона.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="min"></param>
-        /// <param name="max"></param>
-        /// <param name="parameters"></param>
-        /// <param name="errors"></param>
+        /// <param name="value">Значение параметра.</param>
+        /// <param name="min">Минимальное значение параметра.</param>
+        /// <param name="max">Максимальное значение параметра</param>
+        /// <param name="parameters">Тип параметра.</param>
+        /// <param name="errors">Текст ошибок.</param>
         public void RangeCheck(double value, double min, double max,
            MugParametersType parameters, Dictionary<MugParametersType, string> errors)
         {

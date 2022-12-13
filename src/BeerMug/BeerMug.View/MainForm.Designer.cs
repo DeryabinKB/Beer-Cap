@@ -52,6 +52,9 @@
             this.MinimumSizeButtom = new System.Windows.Forms.Button();
             this.MaximumSizeButton = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +73,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(433, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(461, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(383, 398);
@@ -90,7 +93,7 @@
             // ThicknessLabel
             // 
             this.ThicknessLabel.AutoSize = true;
-            this.ThicknessLabel.Location = new System.Drawing.Point(14, 89);
+            this.ThicknessLabel.Location = new System.Drawing.Point(14, 92);
             this.ThicknessLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ThicknessLabel.Name = "ThicknessLabel";
             this.ThicknessLabel.Size = new System.Drawing.Size(76, 15);
@@ -99,7 +102,7 @@
             // 
             // outerDiametrTextBox
             // 
-            this.outerDiametrTextBox.Location = new System.Drawing.Point(302, 33);
+            this.outerDiametrTextBox.Location = new System.Drawing.Point(337, 30);
             this.outerDiametrTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.outerDiametrTextBox.Name = "outerDiametrTextBox";
             this.outerDiametrTextBox.Size = new System.Drawing.Size(116, 23);
@@ -109,7 +112,7 @@
             // 
             // thicknessTextBox
             // 
-            this.thicknessTextBox.Location = new System.Drawing.Point(302, 89);
+            this.thicknessTextBox.Location = new System.Drawing.Point(337, 89);
             this.thicknessTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.thicknessTextBox.Name = "thicknessTextBox";
             this.thicknessTextBox.Size = new System.Drawing.Size(116, 23);
@@ -119,7 +122,7 @@
             // 
             // highTextBox
             // 
-            this.highTextBox.Location = new System.Drawing.Point(302, 143);
+            this.highTextBox.Location = new System.Drawing.Point(337, 143);
             this.highTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.highTextBox.Name = "highTextBox";
             this.highTextBox.Size = new System.Drawing.Size(116, 23);
@@ -130,7 +133,7 @@
             // HighLabel
             // 
             this.HighLabel.AutoSize = true;
-            this.HighLabel.Location = new System.Drawing.Point(14, 143);
+            this.HighLabel.Location = new System.Drawing.Point(14, 146);
             this.HighLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.HighLabel.Name = "HighLabel";
             this.HighLabel.Size = new System.Drawing.Size(52, 15);
@@ -139,7 +142,7 @@
             // 
             // upperRadiusOfTheBottomTextBox
             // 
-            this.upperRadiusOfTheBottomTextBox.Location = new System.Drawing.Point(302, 250);
+            this.upperRadiusOfTheBottomTextBox.Location = new System.Drawing.Point(337, 250);
             this.upperRadiusOfTheBottomTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.upperRadiusOfTheBottomTextBox.Name = "upperRadiusOfTheBottomTextBox";
             this.upperRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
@@ -159,7 +162,7 @@
             // 
             // lowerRadiusOfTheBottomTextBox
             // 
-            this.lowerRadiusOfTheBottomTextBox.Location = new System.Drawing.Point(302, 308);
+            this.lowerRadiusOfTheBottomTextBox.Location = new System.Drawing.Point(337, 303);
             this.lowerRadiusOfTheBottomTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lowerRadiusOfTheBottomTextBox.Name = "lowerRadiusOfTheBottomTextBox";
             this.lowerRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
@@ -170,7 +173,7 @@
             // LowerRadiusOfTheBottomLabel
             // 
             this.LowerRadiusOfTheBottomLabel.AutoSize = true;
-            this.LowerRadiusOfTheBottomLabel.Location = new System.Drawing.Point(14, 312);
+            this.LowerRadiusOfTheBottomLabel.Location = new System.Drawing.Point(14, 306);
             this.LowerRadiusOfTheBottomLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LowerRadiusOfTheBottomLabel.Name = "LowerRadiusOfTheBottomLabel";
             this.LowerRadiusOfTheBottomLabel.Size = new System.Drawing.Size(168, 15);
@@ -180,7 +183,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(133, 33);
+            this.label6.Location = new System.Drawing.Point(122, 33);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 15);
@@ -190,7 +193,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(106, 89);
+            this.label7.Location = new System.Drawing.Point(98, 92);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 15);
@@ -200,7 +203,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(78, 143);
+            this.label8.Location = new System.Drawing.Point(74, 146);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 15);
@@ -209,7 +212,7 @@
             // 
             // bottomThicknessTextBox
             // 
-            this.bottomThicknessTextBox.Location = new System.Drawing.Point(302, 193);
+            this.bottomThicknessTextBox.Location = new System.Drawing.Point(337, 193);
             this.bottomThicknessTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.bottomThicknessTextBox.Name = "bottomThicknessTextBox";
             this.bottomThicknessTextBox.Size = new System.Drawing.Size(116, 23);
@@ -230,7 +233,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(154, 196);
+            this.label10.Location = new System.Drawing.Point(140, 196);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 15);
@@ -240,7 +243,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(214, 254);
+            this.label11.Location = new System.Drawing.Point(190, 253);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 15);
@@ -250,7 +253,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(211, 312);
+            this.label12.Location = new System.Drawing.Point(190, 306);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(69, 15);
@@ -282,19 +285,52 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(824, 14);
+            this.pictureBox2.Location = new System.Drawing.Point(852, 12);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(385, 397);
             this.pictureBox2.TabIndex = 34;
             this.pictureBox2.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(264, 33);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 15);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "A : E = 1 : 1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(256, 146);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 15);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "C : D = 10 : 1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(273, 254);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 15);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "E - F = 30";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1223, 424);
+            this.ClientSize = new System.Drawing.Size(1244, 424);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.MaximumSizeButton);
             this.Controls.Add(this.MinimumSizeButtom);
@@ -353,5 +389,8 @@
         private System.Windows.Forms.Button MinimumSizeButtom;
         private System.Windows.Forms.Button MaximumSizeButton;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }
