@@ -6,63 +6,28 @@ using System.Threading.Tasks;
 
 namespace BeerMug.Model
 {
+    /// <summary>
+    /// Класс для обработки значений параметра пивной кружки.
+    /// </summary>
     public class BeerMugParametr
     {
         /// <summary>
-        /// Значение параметра.
-        /// </summary>
-        private double _value;
-
-        /// <summary>
-        /// Возврат и установка значения параметра.
-        /// </summary>
-        public double Value
-        {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                if (IsRangeOut(value))
-                {
-                    throw new ArgumentException($"Value should be bigger than {_minValue} and lower than {_maxValue}"); // Не могу понять где он переприсваивает, уже весь путь прогнал через отладку и всё равно нихера и ещё одна ошибка - не пашет валидация
-                }
-                _value = value;
-            }
-        }
-
-        /// <summary>
-        /// Минимальное значение параметра.
-        /// </summary>
-        private readonly double _minValue = 0;
-
-        /// <summary>
-        /// Максимальное значение параметра.
-        /// </summary>
-        private readonly double _maxValue = 150;
-
-        /// <summary>
-        /// Конструктор пивной кружки.
+        /// Проверка диапазона.
         /// </summary>
         /// <param name="value">Значение параметра.</param>
-        /// <param name="minValue">Минимальное значение параметра.</param>
-        /// <param name="maxValue">Максимальное значение параметра.</param>
-        public BeerMugParametr(double value, double minValue, double maxValue)
+        /// <param name="min">Минимальное значение параметра.</param>
+        /// <param name="max">Максимальное значение параметра</param>
+        /// <param name="parameters">Тип параметра.</param>
+        /// <param name="errors">Текст ошибок.</param>
+        public void RangeCheck(double value, double min, double max,
+           MugParametersType parameters, Dictionary<MugParametersType, string> errors)
         {
-            _minValue = minValue;
-            _maxValue = maxValue;
-            Value = value;
-        }
-
-        /// <summary>
-        /// Проверка принадлежности параметра к диапазону допустимых значений.
-        /// </summary>
-        /// <param name="value">Значение параметра.</param>
-        /// <returns></returns>
-        private bool IsRangeOut(double value)
-        {
-            return value < _minValue || value > _maxValue;
+            errors.Remove(parameters);
+            if (value < min || value > max)
+            {
+                errors.Add(parameters, "One filed data is out of range");
+                throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

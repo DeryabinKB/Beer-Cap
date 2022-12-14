@@ -12,104 +12,182 @@ namespace BeerMug.Model
     public class MugParameters
     {
         /// <summary>
-        /// Хранение типов параметров и их значений.
+        /// Диаметр нижнего дна пивной кружки. 
         /// </summary>
-        private readonly Dictionary<MugParametersType, BeerMugParametr> _parameters;
+        private double _belowBottomDiameter;
 
         /// <summary>
-        /// Конструктор пивной кружки.
+        /// Диаметр верхнего дна пивной кружки.
         /// </summary>
-        public MugParameters()
+        private double _highBottomDiameter;
+
+        /// <summary>
+        /// Толщина дна пивной кружки.
+        /// </summary>
+        private double _bottomThickness;
+
+        /// <summary>
+        /// Высота пивной кружки
+        /// </summary>
+        private double _high;
+
+        /// <summary>
+        /// Толщина стенок пивной кружки.
+        /// </summary>
+        private double _wallThickness;
+
+        /// <summary>
+        /// Диамитер горла кружки.
+        /// </summary>
+        private double _mugNeckDiameter;
+
+        /// <summary>
+        /// Словарь перечисления параметров и ошибки.
+        /// </summary>
+        public Dictionary<MugParametersType, string> Parameters =
+            new Dictionary<MugParametersType, string>();
+
+        /// <summary>
+        /// Экземпляр класса BeerMugParametr.
+        /// </summary>
+        private BeerMugParametr _beerMigParameter = new BeerMugParametr();
+
+        /// <summary>
+        /// Установка и возврат значения нижнего дна пивной кружки.
+        /// </summary>
+        public double BelowBottomRadius
         {
-            _parameters = new Dictionary<MugParametersType, BeerMugParametr>()
+            get
             {
-                { MugParametersType.BelowBottomDiametr, new BeerMugParametr(60, 50, 70) },
-                { MugParametersType.HighBottomDiametr, new BeerMugParametr(90, 80, 100) },
-                { MugParametersType.BottomThickness, new BeerMugParametr(13, 10, 16.5) },
-                { MugParametersType.HeightNeckBottom, new BeerMugParametr(130, 100, 165) },
-                { MugParametersType.WallThickness, new BeerMugParametr(6, 5, 7) },
-                { MugParametersType.MugNeckDiametr, new BeerMugParametr(90, 80, 100) },
-            };
-        }
-
-        /// <summary>
-        /// Установка значения параметра.
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="value"></param>
-        public void SetParametrValue(MugParametersType type, double value)
-        {
-            if (!_parameters.TryGetValue(type, out var parameter)) return;
-
-            CheckDependencies(type, value);
-            parameter.Value = value;
-        }
-
-        /// <summary>
-        /// Получение значения параметра.
-        /// </summary>
-        /// <param name="type">Тип параметра пивной кружки.</param>
-        /// <returns>Значение параметра.</returns>
-        /// <exception cref="Exception">Если параметр не существует.</exception>
-        public double GetParameterValue(MugParametersType type)
-        {
-            if (_parameters.TryGetValue(type, out var parameter))
-            {
-                return parameter.Value;
+                return _belowBottomDiameter;
             }
-            throw new Exception("Parameter does not exist");
+            set
+            {
+                const double min = 50;
+                const double max = 70;
+                _beerMigParameter.RangeCheck
+                    (value, min, max,
+                    MugParametersType.BelowBottomDiameter, Parameters);
+               if (value + 30 != HighBottomDiametr)
+                {
+                    Parameters.Add(MugParametersType.BelowBottomDiameter,
+                        "Below bottom diametr must be = high bottom diametr - 30");
+                    throw new Exception();
+                }
+                _belowBottomDiameter = value;
+            }
         }
 
         /// <summary>
-        /// Checks dependent parameters.
+        /// Установка и возврат значения верхнего дна пивной кружки.
         /// </summary>
-        /// <param name="type">Тип параметра пивной кружки.</param>
-        /// <param name="value">Значение параметра.</param>
-        /// <exception cref="Exception">Если значение параметра некорректно.</exception>
-        private void CheckDependencies(MugParametersType type, double value)
+        public double HighBottomDiametr
         {
-            switch (type)
+            get
             {
-                case MugParametersType.BottomThickness:
-                    {
-                        _parameters.TryGetValue(MugParametersType.HeightNeckBottom, out var parameter);
-                        double checkValue = value;
-                        double checkParametr = parameter.Value;
-                        if (checkValue * 10 == checkParametr)
-                        {
-                            throw new Exception(
-                                "Height depends on the bottom thickness in the ratio (Bottom thickness * 10)");
-                        }
-                        break;
-                    }
-                case MugParametersType.HighBottomDiametr:
-                    {
-                        _parameters.TryGetValue(MugParametersType.MugNeckDiametr, out var parameter);
-                        double checkValue = value;
-                        double checkParametr = parameter.Value;
-                        if (checkValue == checkParametr)
-                        {
-                            throw new Exception(
-                                "High bottom diametr depends on the Mug neck diametr in the ratio (Bottom diametr * 1)");
-                        }
-                        break;
-                    }
-                case MugParametersType.BelowBottomDiametr:
-                    {
-                        _parameters.TryGetValue(MugParametersType.HighBottomDiametr, out var parameter);
-                        double checkValue = value;
-                        double checkParametr = parameter.Value;
-                        if ((checkParametr - 30) == checkValue)
-                        {
-                            throw new Exception(
-                                "Below bottom diametr depends on the Mug neck diametr in the ratio (Below bottom diametr +30)");
-                        }
-                        break;
-                    }
-                default:
-                    {
-                        return;
-                    }
+                return _highBottomDiameter;
+            }
+            set
+            {
+                const double min = 80;
+                const double max = 100;
+                _beerMigParameter.RangeCheck
+                    (value, min, max,
+                    MugParametersType.HighBottomDiameter, Parameters);
+                if (value != MugNeckDiametr)
+                {
+                    Parameters.Add(MugParametersType.HighBottomDiameter,
+                        "High bottom diametr must be = below bottom diametr + 30");
+                    throw new Exception();
+                }
+                _highBottomDiameter = value;
+            }
+        }
+
+        /// <summary>
+        /// Установка и возврат значения толщины дна.
+        /// </summary>
+        public double BottomThickness
+        {
+            get
+            {
+                return _bottomThickness;
+            }
+            set
+            {
+                const double min = 10;
+                const double max = 16.5;
+                _beerMigParameter.RangeCheck
+                    (value, min, max,
+                    MugParametersType.BottomThickness, Parameters);
+                if (value * 10 != High)
+                {
+                    Parameters.Add(MugParametersType.BottomThickness,
+                        "Bottom thickness must be = Height neck bottom * 0.1");
+                    throw new Exception();
+                }
+                _bottomThickness = value;
+            }
+        }
+
+        /// <summary>
+        /// Установка и возврат значения высоты от горла до дна пивной кружки.
+        /// </summary>
+        public double High
+        {
+            get
+            {
+                return _high;
+            }
+            set
+            {
+                const double min = 100;
+                const double max = 165;
+                double valueCheck = value;
+                _beerMigParameter.RangeCheck
+                    (value, min, max,
+                    MugParametersType.High, Parameters);
+                _high = value;
+            }
+        }
+
+        /// <summary>
+        /// Установка и возврат значения толщины стенок пивной кружки.
+        /// </summary>
+        public double WallThickness
+        {
+            get
+            {
+                return _wallThickness;
+            }
+            set
+            {
+                const double min = 5;
+                const double max = 7;
+                _beerMigParameter.RangeCheck
+                    (value, min, max,
+                    MugParametersType.WallThickness, Parameters);
+                _wallThickness = value;
+            }
+        }
+
+        /// <summary>
+        /// Установка и возврат значения диаметра горлышка кружки.
+        /// </summary>
+        public double MugNeckDiametr
+        {
+            get
+            {
+                return _mugNeckDiameter;
+            }
+            set
+            {
+                const double min = 80;
+                const double max = 100;
+                _beerMigParameter.RangeCheck
+                    (value, min, max,
+                    MugParametersType.MugNeckDiametr, Parameters);
+                _mugNeckDiameter = value;
             }
         }
     }
