@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj",
+      "projectUniqueName": "C:\\Users\\Kein\\Source\\Repos1\\Beer-Mug\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj",
       "projectName": "BeerMug.Model",
-      "projectPath": "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj",
+      "projectPath": "C:\\Users\\Kein\\Source\\Repos1\\Beer-Mug\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj",
       "packagesPath": "C:\\Users\\Kein\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\BeerMug.Model\\obj\\",
+      "outputPath": "C:\\Users\\Kein\\Source\\Repos1\\Beer-Mug\\src\\BeerMug\\BeerMug.Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

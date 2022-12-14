@@ -55,7 +55,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.errorLable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -323,22 +322,12 @@
             this.label3.TabIndex = 37;
             this.label3.Text = "E - F = 30";
             // 
-            // errorLable
-            // 
-            this.errorLable.AutoSize = true;
-            this.errorLable.Location = new System.Drawing.Point(17, 399);
-            this.errorLable.Name = "errorLable";
-            this.errorLable.Size = new System.Drawing.Size(10, 15);
-            this.errorLable.TabIndex = 38;
-            this.errorLable.Text = "l";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1244, 424);
-            this.Controls.Add(this.errorLable);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -403,6 +392,5 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label errorLable;
     }
 }

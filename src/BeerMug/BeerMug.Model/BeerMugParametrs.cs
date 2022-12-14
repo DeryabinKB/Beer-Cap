@@ -71,7 +71,7 @@ namespace BeerMug.Model
                if (value + 30 != HighBottomDiametr)
                 {
                     Parameters.Add(MugParametersType.BelowBottomDiameter,
-                        "Below bottom diametr must be = high bottom diametr - 30");
+                        "Below bottom diametr must be equal high bottom diametr - 30");
                     throw new Exception();
                 }
                 _belowBottomDiameter = value;
@@ -97,7 +97,8 @@ namespace BeerMug.Model
                 if (value != MugNeckDiametr)
                 {
                     Parameters.Add(MugParametersType.HighBottomDiameter,
-                        "High bottom diametr must be = below bottom diametr + 30");
+                        "High bottom diametr must be equal below bottom diametr + 30 \n " +
+                        "High bottom diametr must be equal outer diametr");
                     throw new Exception();
                 }
                 _highBottomDiameter = value;
@@ -123,7 +124,7 @@ namespace BeerMug.Model
                 if (value * 10 != High)
                 {
                     Parameters.Add(MugParametersType.BottomThickness,
-                        "Bottom thickness must be = Height neck bottom * 0.1");
+                        "Bottom thickness must be equal Height neck bottom * 0.1");
                     throw new Exception();
                 }
                 _bottomThickness = value;
