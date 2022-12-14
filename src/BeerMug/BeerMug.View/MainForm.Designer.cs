@@ -51,28 +51,30 @@
             this.label12 = new System.Windows.Forms.Label();
             this.MinimumSizeButtom = new System.Windows.Forms.Button();
             this.MaximumSizeButton = new System.Windows.Forms.Button();
-            this.AverageSizeButton = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.correctLable = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.errorLable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // buildButton
             // 
-            this.buildButton.Location = new System.Drawing.Point(144, 408);
+            this.buildButton.Location = new System.Drawing.Point(154, 363);
             this.buildButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buildButton.Name = "buildButton";
             this.buildButton.Size = new System.Drawing.Size(122, 27);
             this.buildButton.TabIndex = 0;
             this.buildButton.Text = "Build model";
             this.buildButton.UseVisualStyleBackColor = true;
-            this.buildButton.Click += new System.EventHandler(this.buildButton_Click_1);
+            this.buildButton.Click += new System.EventHandler(this.buildButton_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(433, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(461, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(383, 398);
@@ -92,7 +94,7 @@
             // ThicknessLabel
             // 
             this.ThicknessLabel.AutoSize = true;
-            this.ThicknessLabel.Location = new System.Drawing.Point(14, 89);
+            this.ThicknessLabel.Location = new System.Drawing.Point(14, 92);
             this.ThicknessLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ThicknessLabel.Name = "ThicknessLabel";
             this.ThicknessLabel.Size = new System.Drawing.Size(76, 15);
@@ -101,34 +103,38 @@
             // 
             // outerDiametrTextBox
             // 
-            this.outerDiametrTextBox.Location = new System.Drawing.Point(302, 33);
+            this.outerDiametrTextBox.Location = new System.Drawing.Point(337, 30);
             this.outerDiametrTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.outerDiametrTextBox.Name = "outerDiametrTextBox";
             this.outerDiametrTextBox.Size = new System.Drawing.Size(116, 23);
             this.outerDiametrTextBox.TabIndex = 4;
-            //this.outerDiametrTextBox.TextChanged += new System.EventHandler(this.outerDiametrTextBox_TextChanged);
+            this.outerDiametrTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.outerDiametrTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // thicknessTextBox
             // 
-            this.thicknessTextBox.Location = new System.Drawing.Point(302, 89);
+            this.thicknessTextBox.Location = new System.Drawing.Point(337, 89);
             this.thicknessTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.thicknessTextBox.Name = "thicknessTextBox";
             this.thicknessTextBox.Size = new System.Drawing.Size(116, 23);
             this.thicknessTextBox.TabIndex = 5;
-            //this.thicknessTextBox.TextChanged += new System.EventHandler(this.thicknessTextBox_TextChanged);
+            this.thicknessTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.thicknessTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // highTextBox
             // 
-            this.highTextBox.Location = new System.Drawing.Point(302, 143);
+            this.highTextBox.Location = new System.Drawing.Point(337, 143);
             this.highTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.highTextBox.Name = "highTextBox";
             this.highTextBox.Size = new System.Drawing.Size(116, 23);
             this.highTextBox.TabIndex = 6;
+            this.highTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.highTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // HighLabel
             // 
             this.HighLabel.AutoSize = true;
-            this.HighLabel.Location = new System.Drawing.Point(14, 143);
+            this.HighLabel.Location = new System.Drawing.Point(14, 146);
             this.HighLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.HighLabel.Name = "HighLabel";
             this.HighLabel.Size = new System.Drawing.Size(52, 15);
@@ -137,11 +143,13 @@
             // 
             // upperRadiusOfTheBottomTextBox
             // 
-            this.upperRadiusOfTheBottomTextBox.Location = new System.Drawing.Point(302, 250);
+            this.upperRadiusOfTheBottomTextBox.Location = new System.Drawing.Point(337, 250);
             this.upperRadiusOfTheBottomTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.upperRadiusOfTheBottomTextBox.Name = "upperRadiusOfTheBottomTextBox";
             this.upperRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
             this.upperRadiusOfTheBottomTextBox.TabIndex = 8;
+            this.upperRadiusOfTheBottomTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.upperRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // UpperRadiusOfTheBottomLabel
             // 
@@ -155,16 +163,18 @@
             // 
             // lowerRadiusOfTheBottomTextBox
             // 
-            this.lowerRadiusOfTheBottomTextBox.Location = new System.Drawing.Point(302, 308);
+            this.lowerRadiusOfTheBottomTextBox.Location = new System.Drawing.Point(337, 303);
             this.lowerRadiusOfTheBottomTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lowerRadiusOfTheBottomTextBox.Name = "lowerRadiusOfTheBottomTextBox";
             this.lowerRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
             this.lowerRadiusOfTheBottomTextBox.TabIndex = 10;
+            this.lowerRadiusOfTheBottomTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.lowerRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
             // 
             // LowerRadiusOfTheBottomLabel
             // 
             this.LowerRadiusOfTheBottomLabel.AutoSize = true;
-            this.LowerRadiusOfTheBottomLabel.Location = new System.Drawing.Point(14, 312);
+            this.LowerRadiusOfTheBottomLabel.Location = new System.Drawing.Point(14, 306);
             this.LowerRadiusOfTheBottomLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LowerRadiusOfTheBottomLabel.Name = "LowerRadiusOfTheBottomLabel";
             this.LowerRadiusOfTheBottomLabel.Size = new System.Drawing.Size(168, 15);
@@ -174,7 +184,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(133, 33);
+            this.label6.Location = new System.Drawing.Point(122, 33);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 15);
@@ -184,7 +194,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(106, 89);
+            this.label7.Location = new System.Drawing.Point(98, 92);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 15);
@@ -194,7 +204,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(78, 143);
+            this.label8.Location = new System.Drawing.Point(74, 146);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 15);
@@ -203,11 +213,13 @@
             // 
             // bottomThicknessTextBox
             // 
-            this.bottomThicknessTextBox.Location = new System.Drawing.Point(302, 193);
+            this.bottomThicknessTextBox.Location = new System.Drawing.Point(337, 193);
             this.bottomThicknessTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.bottomThicknessTextBox.Name = "bottomThicknessTextBox";
             this.bottomThicknessTextBox.Size = new System.Drawing.Size(116, 23);
             this.bottomThicknessTextBox.TabIndex = 15;
+            this.bottomThicknessTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
+            this.bottomThicknessTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForCommasAndNumbers_KeyPress);
             // 
             // BottomThicknessLabel
             // 
@@ -222,7 +234,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(154, 196);
+            this.label10.Location = new System.Drawing.Point(140, 196);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 15);
@@ -232,7 +244,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(214, 254);
+            this.label11.Location = new System.Drawing.Point(190, 253);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 15);
@@ -242,7 +254,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(211, 312);
+            this.label12.Location = new System.Drawing.Point(190, 306);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(69, 15);
@@ -258,58 +270,79 @@
             this.MinimumSizeButtom.TabIndex = 31;
             this.MinimumSizeButtom.Text = "Minimum size";
             this.MinimumSizeButtom.UseVisualStyleBackColor = true;
-            this.MinimumSizeButtom.Click += new System.EventHandler(this.MinimumSizeButtom_Click_1);
+            this.MinimumSizeButtom.Click += new System.EventHandler(this.MinimumSizeButtom_Click);
             // 
             // MaximumSizeButton
             // 
-            this.MaximumSizeButton.Location = new System.Drawing.Point(144, 363);
+            this.MaximumSizeButton.Location = new System.Drawing.Point(296, 363);
             this.MaximumSizeButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximumSizeButton.Name = "MaximumSizeButton";
             this.MaximumSizeButton.Size = new System.Drawing.Size(122, 27);
             this.MaximumSizeButton.TabIndex = 32;
             this.MaximumSizeButton.Text = "Maximum size";
             this.MaximumSizeButton.UseVisualStyleBackColor = true;
-            this.MaximumSizeButton.Click += new System.EventHandler(this.MaximumSizeButton_Click_1);
-            // 
-            // AverageSizeButton
-            // 
-            this.AverageSizeButton.Location = new System.Drawing.Point(273, 363);
-            this.AverageSizeButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.AverageSizeButton.Name = "AverageSizeButton";
-            this.AverageSizeButton.Size = new System.Drawing.Size(122, 27);
-            this.AverageSizeButton.TabIndex = 33;
-            this.AverageSizeButton.Text = "Average size";
-            this.AverageSizeButton.UseVisualStyleBackColor = true;
-            this.AverageSizeButton.Click += new System.EventHandler(this.AverageSizeButton_Click_1);
+            this.MaximumSizeButton.Click += new System.EventHandler(this.MaximumSizeButton_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(824, 14);
+            this.pictureBox2.Location = new System.Drawing.Point(852, 12);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(385, 397);
             this.pictureBox2.TabIndex = 34;
             this.pictureBox2.TabStop = false;
             // 
-            // correctLable
+            // label1
             // 
-            this.correctLable.AutoSize = true;
-            this.correctLable.Location = new System.Drawing.Point(219, 9);
-            this.correctLable.Name = "correctLable";
-            this.correctLable.Size = new System.Drawing.Size(13, 15);
-            this.correctLable.TabIndex = 35;
-            this.correctLable.Text = "1";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(264, 33);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 15);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "A : E = 1 : 1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(256, 146);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 15);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "C : D = 10 : 1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(273, 254);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 15);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "E - F = 30";
+            // 
+            // errorLable
+            // 
+            this.errorLable.AutoSize = true;
+            this.errorLable.Location = new System.Drawing.Point(17, 399);
+            this.errorLable.Name = "errorLable";
+            this.errorLable.Size = new System.Drawing.Size(10, 15);
+            this.errorLable.TabIndex = 38;
+            this.errorLable.Text = "l";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1223, 449);
-            this.Controls.Add(this.correctLable);
+            this.ClientSize = new System.Drawing.Size(1244, 424);
+            this.Controls.Add(this.errorLable);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.AverageSizeButton);
             this.Controls.Add(this.MaximumSizeButton);
             this.Controls.Add(this.MinimumSizeButtom);
             this.Controls.Add(this.label12);
@@ -335,7 +368,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
             this.Text = "Beer mug";
-            this.Load += new System.EventHandler(this.MainForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -367,8 +399,10 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button MinimumSizeButtom;
         private System.Windows.Forms.Button MaximumSizeButton;
-        private System.Windows.Forms.Button AverageSizeButton;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private Label correctLable;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label errorLable;
     }
 }

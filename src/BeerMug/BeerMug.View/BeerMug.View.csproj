@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BeerMug.Model\BeerMug.Model.csproj" />
+    <ProjectReference Include="..\KompasConnector\KompasConnector.csproj" />
   </ItemGroup>
 
   <ItemGroup>

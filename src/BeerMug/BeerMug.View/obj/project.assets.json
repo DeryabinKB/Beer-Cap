@@ -11,6 +11,19 @@
         "runtime": {
           "bin/placeholder/BeerMug.Model.dll": {}
         }
+      },
+      "KompasConnector/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "BeerMug.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/KompasConnector.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/KompasConnector.dll": {}
+        }
       }
     }
   },
@@ -19,31 +32,37 @@
       "type": "project",
       "path": "../BeerMug.Model/BeerMug.Model.csproj",
       "msbuildProject": "../BeerMug.Model/BeerMug.Model.csproj"
+    },
+    "KompasConnector/1.0.0": {
+      "type": "project",
+      "path": "../KompasConnector/KompasConnector.csproj",
+      "msbuildProject": "../KompasConnector/KompasConnector.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "BeerMug.Model >= 1.0.0"
+      "BeerMug.Model >= 1.0.0",
+      "KompasConnector >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Users\\Kein\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\NewBeerMug\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
+      "projectUniqueName": "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
       "projectName": "BeerMug.View",
-      "projectPath": "E:\\NewBeerMug\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\NewBeerMug\\src\\BeerMug\\BeerMug.View\\obj\\",
+      "projectPath": "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
+      "packagesPath": "C:\\Users\\Kein\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\BeerMug.View\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kein\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -52,15 +71,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "E:\\NewBeerMug\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj": {
-              "projectPath": "E:\\NewBeerMug\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj"
+            "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj": {
+              "projectPath": "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\BeerMug.Model\\BeerMug.Model.csproj"
+            },
+            "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\KompasConnector\\KompasConnector.csproj": {
+              "projectPath": "C:\\Users\\Kein\\Desktop\\Beer-Mug-try5\\src\\BeerMug\\KompasConnector\\KompasConnector.csproj"
             }
           }
         }
