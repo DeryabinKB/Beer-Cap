@@ -147,13 +147,18 @@ namespace KompasConnector
             //_connector.Extrude(sketch, 3, true);
             //_connector.Extrude(sketch,bottomThickness*1.5, true);
             double step;
-            if (high > 130)
+
+            if (high > 125)
             {
-                step = 4.4;
+                step = 4.3;
+            }
+            else if (high < 115)
+            {
+                step = 2.6;
             }
             else
             {
-                step = 2.6;
+                step = 3;
             }
             //var sketch = _connector.CreateSketch(2, neck + bottomThickness / 2.85 - step);
             //var circleCoord2 = new Point2D(0, -high * 0.2);
