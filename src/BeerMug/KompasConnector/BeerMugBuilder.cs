@@ -149,11 +149,11 @@ namespace KompasConnector
             double step;
             if (high > 130)
             {
-                step = 2.5;
+                step = 4.4;
             }
             else
             {
-                step = 2.4;
+                step = 2.6;
             }
             //var sketch = _connector.CreateSketch(2, neck + bottomThickness / 2.85 - step);
             //var circleCoord2 = new Point2D(0, -high * 0.2);
@@ -164,10 +164,18 @@ namespace KompasConnector
             var pointOne = new Point2D(0, -high / 2 - 5);
             var PointTwo = new Point2D(100, -high / 2 - 5);
             sketch.CreateLineSeg(pointOne, PointTwo, 3);
-            var circleCoord3 = new Point2D(0, -high * 0.2);
-            sketch.CreateCircle(circleCoord3, bottomThickness / 3);
+            var circleCoord3 = new Point2D(0, -high * 0.17);
+            sketch.CreateCircle(circleCoord3, bottomThickness / 2.5);
             sketch.EndEdit();
-            _connector.ExtrudeRotation180(sketch);
+            if (high > 130)
+            {
+                _connector.ExtrudeRotation178(sketch);
+            }
+            else
+            {
+                _connector.ExtrudeRotation180(sketch);
+            }
+            
         }
     }
 }

@@ -177,7 +177,17 @@ namespace KompasConnector
             ksBossRotatedDefinition bossRotatedDefinition = (ksBossRotatedDefinition)bossRotated.GetDefinition();
             bossRotatedDefinition.directionType = (short)Direction_Type.dtNormal;
             bossRotatedDefinition.SetSketch(kompasSketch.Sketch);
-            bossRotatedDefinition.SetSideParam(true, 181);
+            bossRotatedDefinition.SetSideParam(true, 180);
+            bossRotated.Create();
+        }
+
+        public void ExtrudeRotation178(KompasSketch kompasSketch)
+        {
+            ksEntity bossRotated = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_bossRotated);
+            ksBossRotatedDefinition bossRotatedDefinition = (ksBossRotatedDefinition)bossRotated.GetDefinition();
+            bossRotatedDefinition.directionType = (short)Direction_Type.dtNormal;
+            bossRotatedDefinition.SetSketch(kompasSketch.Sketch);
+            bossRotatedDefinition.SetSideParam(true, 178.5);
             bossRotated.Create();
         }
 
