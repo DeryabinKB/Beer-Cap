@@ -112,13 +112,13 @@ namespace KompasConnector
         /// <param name="bottomThickness">Толщина дна пивной кружки</param>
         private void BuildHandle(double high, double neck, double bottomThickness)
         {
+            // Здесь также запрятаны выдавливания кругов, относительно которых 
+            //планировалось выдавить ручку (некий отступ)
+
             //Ручка кругом
-            var sketch = _connector.CreateSketch(2, neck + bottomThickness / 2.85);
-            var pointOne = new Point2D(0, -high / 2 - 5);
-            var PointTwo = new Point2D(100, -high / 2 - 5);
-            var circleCoord = new Point2D(0, -high * 0.78);
-            sketch.CreateLineSeg(pointOne, PointTwo, 3);
-            sketch.CreateCircle(circleCoord, bottomThickness / 3);
+            //var sketch = _connector.CreateSketch(2, neck + bottomThickness / 2.85);
+            //var circleCoord = new Point2D(0, -high * 0.78);
+            //sketch.CreateCircle(circleCoord, bottomThickness / 3);
 
             ////ручка дугой
             //var sketch = _connector.CreateSketch(2);
@@ -143,8 +143,30 @@ namespace KompasConnector
             //sketch.CreateLineSeg(start, middleHigh, 1);
             //sketch.CreateLineSeg(middleHigh, middleDown, 1);
             //sketch.CreateLineSeg(middleDown, end, 1);
-            sketch.EndEdit();
+            //sketch.EndEdit();
             //_connector.Extrude(sketch, 3, true);
+            //_connector.Extrude(sketch,bottomThickness*1.5, true);
+            double step;
+            if (high > 130)
+            {
+                step = 2.5;
+            }
+            else
+            {
+                step = 2.4;
+            }
+            //var sketch = _connector.CreateSketch(2, neck + bottomThickness / 2.85 - step);
+            //var circleCoord2 = new Point2D(0, -high * 0.2);
+            //sketch.CreateCircle(circleCoord2, bottomThickness / 3);
+            //sketch.EndEdit();
+            //_connector.Extrude(sketch, bottomThickness * 1.5 + 1, true);
+            var sketch = _connector.CreateSketch(2, neck + bottomThickness / 2.85 - step);
+            var pointOne = new Point2D(0, -high / 2 - 5);
+            var PointTwo = new Point2D(100, -high / 2 - 5);
+            sketch.CreateLineSeg(pointOne, PointTwo, 3);
+            var circleCoord3 = new Point2D(0, -high * 0.2);
+            sketch.CreateCircle(circleCoord3, bottomThickness / 3);
+            sketch.EndEdit();
             _connector.ExtrudeRotation180(sketch);
         }
     }
