@@ -75,13 +75,9 @@ namespace BeerMug.View
                 textBox.BackColor = _correctColor;
                 if (textBox == outerDiametrTextBox)
                 {
-                    TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+                    TextBoxValidator_TextChanged(thicknessTextBox, e);
                 }
-                if (textBox == upperRadiusOfTheBottomTextBox)
-                {
-                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
-                }
-                if (textBox == lowerRadiusOfTheBottomTextBox)
+                if (textBox == thicknessTextBox)
                 {
                     TextBoxValidator_TextChanged(highTextBox, e);
                 }
@@ -91,7 +87,11 @@ namespace BeerMug.View
                 }
                 if (textBox == bottomThicknessTextBox)
                 {
-                    TextBoxValidator_TextChanged(thicknessTextBox, e);
+                    TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+                }
+                if (textBox == upperRadiusOfTheBottomTextBox)
+                {
+                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
                 }
             }
             catch
@@ -199,13 +199,28 @@ namespace BeerMug.View
                 MessageBox.Show(_beerMugParametr.Parameters.Last().Value, "Error data",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-
             }
             else
             {
                 var builder = new BeerMugBuilder();
                 builder.Builder(_beerMugParametr);
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            outerDiametrTextBox.Text = "0";
+            thicknessTextBox.Text = "0";
+            highTextBox.Text = "0";
+            bottomThicknessTextBox.Text = "0";
+            upperRadiusOfTheBottomTextBox.Text = "0";
+            lowerRadiusOfTheBottomTextBox.Text = "0";
+            TextBoxValidator_TextChanged(outerDiametrTextBox, e);
+            TextBoxValidator_TextChanged(thicknessTextBox, e);
+            TextBoxValidator_TextChanged(highTextBox, e);
+            TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
+            TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+            TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
         }
     }
 }
