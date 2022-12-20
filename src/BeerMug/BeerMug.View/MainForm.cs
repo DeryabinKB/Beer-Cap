@@ -207,5 +207,21 @@ namespace BeerMug.View
                 builder.Builder(_beerMugParametr);
             }
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            outerDiametrTextBox.Text = "0";
+            thicknessTextBox.Text = "0";
+            highTextBox.Text = "0";
+            bottomThicknessTextBox.Text = "0";
+            upperRadiusOfTheBottomTextBox.Text = "0";
+            lowerRadiusOfTheBottomTextBox.Text = "0";
+            TextBoxValidator_TextChanged(outerDiametrTextBox, e);
+            TextBoxValidator_TextChanged(thicknessTextBox, e);
+            TextBoxValidator_TextChanged(highTextBox, e);
+            TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
+            TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+            TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
+        }
     }
 }
