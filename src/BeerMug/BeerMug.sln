@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerMug.View", "BeerMug.Vie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerMug.Model", "BeerMug.Model\BeerMug.Model.csproj", "{9B576ECC-506D-4089-9483-BD982E9C4383}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasConnector", "KompasConnector\KompasConnector.csproj", "{AE131C78-52BF-4BD4-A6EA-FB4ED9C7AB3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KompasConnector", "KompasConnector\KompasConnector.csproj", "{AE131C78-52BF-4BD4-A6EA-FB4ED9C7AB3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerMug.Test", "BeerMug.Test\BeerMug.Test.csproj", "{AA4BC7A3-2881-430B-A383-68E9258D930F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{AE131C78-52BF-4BD4-A6EA-FB4ED9C7AB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE131C78-52BF-4BD4-A6EA-FB4ED9C7AB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE131C78-52BF-4BD4-A6EA-FB4ED9C7AB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA4BC7A3-2881-430B-A383-68E9258D930F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA4BC7A3-2881-430B-A383-68E9258D930F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA4BC7A3-2881-430B-A383-68E9258D930F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA4BC7A3-2881-430B-A383-68E9258D930F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

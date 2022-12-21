@@ -63,7 +63,7 @@ namespace BeerMug.View
         private void TextBoxValidator_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            textBox.Focus();
+
             if (textBox.Text == string.Empty || textBox.Text == ",")
             {
                 textBox.Text = string.Empty;
