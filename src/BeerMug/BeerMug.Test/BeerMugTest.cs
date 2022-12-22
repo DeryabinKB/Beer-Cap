@@ -62,7 +62,7 @@ namespace BeerMug.Test
             "диапазон от 50 до 70");
         }
 
-        [TestCase(40, Description = "Негативный тест сеттера BelowBottomRadius")]
+        [TestCase(60, Description = "Негативный тест сеттера BelowBottomRadius")]
         public void Test_BelowBottomRadius_Set_IncorrectValueAddiction(double wrongBelowBottomRadius)
         {
             _mugParameters = new MugParameters();
