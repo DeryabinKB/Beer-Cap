@@ -209,12 +209,12 @@ namespace BeerMug.View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            outerDiametrTextBox.Text = "0";
-            thicknessTextBox.Text = "0";
-            highTextBox.Text = "0";
-            bottomThicknessTextBox.Text = "0";
-            upperRadiusOfTheBottomTextBox.Text = "0";
-            lowerRadiusOfTheBottomTextBox.Text = "0";
+            outerDiametrTextBox.Text = "90";
+            thicknessTextBox.Text = "6";
+            highTextBox.Text = "132,5";
+            bottomThicknessTextBox.Text = "13,25";
+            upperRadiusOfTheBottomTextBox.Text = "90";
+            lowerRadiusOfTheBottomTextBox.Text = "60";
             TextBoxValidator_TextChanged(outerDiametrTextBox, e);
             TextBoxValidator_TextChanged(thicknessTextBox, e);
             TextBoxValidator_TextChanged(highTextBox, e);

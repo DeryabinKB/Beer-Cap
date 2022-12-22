@@ -9,7 +9,7 @@
       "BeerMug.View/1.0.0": {
         "dependencies": {
           "BeerMug.Model": "1.0.0",
-          "KompasConnector": "1.0.0"
+          "KompassConnector": "1.0.0"
         },
         "runtime": {
           "BeerMug.View.dll": {}
@@ -17,23 +17,15 @@
       },
       "BeerMug.Model/1.0.0": {
         "runtime": {
-          "BeerMug.Model.dll": {}
+          "BeerMug.Models.dll": {}
         }
       },
-      "KompasConnector/1.0.0": {
+      "KompassConnector/1.0.0": {
         "dependencies": {
           "BeerMug.Model": "1.0.0"
         },
         "runtime": {
-          "KompasConnector.dll": {}
-        }
-      },
-      "Kompas6API5/1.0.0.0": {
-        "runtime": {
-          "Kompas6API5.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "KompassConnector.dll": {}
         }
       }
     }
@@ -49,13 +41,8 @@
       "serviceable": false,
       "sha512": ""
     },
-    "KompasConnector/1.0.0": {
+    "KompassConnector/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Kompas6API5/1.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }
