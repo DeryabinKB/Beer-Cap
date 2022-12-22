@@ -42,7 +42,7 @@ namespace BeerMug.Model
         private double _mugNeckDiameter;
 
         /// <summary>
-        /// Словарь перечисления параметров и ошибки.
+        /// Словарь перечисления ошибки.
         /// </summary>
         public Dictionary<MugParametersType, string> Parameters =
             new Dictionary<MugParametersType, string>();
