@@ -63,7 +63,7 @@ namespace BeerMug.View
         private void TextBoxValidator_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-
+            textBox.Focus();
             if (textBox.Text == string.Empty || textBox.Text == ",")
             {
                 textBox.Text = string.Empty;
@@ -203,10 +203,15 @@ namespace BeerMug.View
             else
             {
                 var builder = new BeerMugBuilder();
-                builder.Builder(_beerMugParametr);
+                builder.Builder(_beerMugParametr, capTypeComboBox.SelectedItem.ToString());
             }
         }
 
+        /// <summary>
+        /// ¬вод значений при загрузке формы.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
             outerDiametrTextBox.Text = "90";
@@ -221,6 +226,7 @@ namespace BeerMug.View
             TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
             TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
             TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
+            capTypeComboBox.SelectedItem = "Without cap";
         }
     }
 }

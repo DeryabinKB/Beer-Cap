@@ -72,7 +72,6 @@ namespace BeerMug.Test
             double high = 100;
             double bottomThickness = 10;
             double wallThickness = 5;
-            _mugParameters.BelowBottomRadius = wrongBelowBottomRadius;
             _mugParameters.High = high;
             _mugParameters.BottomThickness = bottomThickness;
             _mugParameters.WallThickness = wallThickness;
@@ -133,6 +132,7 @@ namespace BeerMug.Test
         public void Test_HighBottomDiametr_Set_IncorrectValue(double wrongHighBottomDiametr)
         {
             _mugParameters = new MugParameters();
+
             Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
                 _mugParameters.HighBottomDiametr = wrongHighBottomDiametr;
@@ -145,7 +145,6 @@ namespace BeerMug.Test
         {
             _mugParameters = new MugParameters();
             _mugParameters.MugNeckDiametr = 90;
-            _mugParameters.HighBottomDiametr = 80;
             Assert.Throws<Exception>(() =>
             {
                 _mugParameters.HighBottomDiametr = wrongHighBottomDiametr;

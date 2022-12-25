@@ -226,7 +226,6 @@ namespace KompasConnector
             {
                 return new List<ksFaceDefinition>();
             }
-
             var cylinderFaces = new List<ksFaceDefinition>();
             var i = 0;
             while (faces.Next() != null)

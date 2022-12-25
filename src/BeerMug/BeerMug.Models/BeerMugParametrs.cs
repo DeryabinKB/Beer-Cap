@@ -44,7 +44,7 @@ namespace BeerMug.Model
         /// <summary>
         /// Словарь перечисления ошибки.
         /// </summary>
-        public Dictionary<MugParametersType, string> Parameters =
+        public Dictionary<MugParametersType, string> Errors =
             new Dictionary<MugParametersType, string>();
 
         /// <summary>
@@ -67,10 +67,10 @@ namespace BeerMug.Model
                 const double max = 70;
                 _beerMigParameter.RangeCheck
                     (value, min, max,
-                    MugParametersType.BelowBottomDiameter, Parameters);
+                    MugParametersType.BelowBottomDiameter, Errors);
                if (value + 30 != HighBottomDiametr)
                 {
-                    Parameters.Add(MugParametersType.BelowBottomDiameter,
+                    Errors.Add(MugParametersType.BelowBottomDiameter,
                         "Below bottom diametr must be equal high bottom diametr - 30");
                     throw new Exception();
                 }
@@ -93,10 +93,10 @@ namespace BeerMug.Model
                 const double max = 100;
                 _beerMigParameter.RangeCheck
                     (value, min, max,
-                    MugParametersType.HighBottomDiameter, Parameters);
+                    MugParametersType.HighBottomDiameter, Errors);
                 if (value != MugNeckDiametr)
                 {
-                    Parameters.Add(MugParametersType.HighBottomDiameter,
+                    Errors.Add(MugParametersType.HighBottomDiameter,
                         "High bottom diametr must be equal below bottom diametr + 30 \n " +
                         "High bottom diametr must be equal outer diametr");
                     throw new Exception();
@@ -120,10 +120,10 @@ namespace BeerMug.Model
                 const double max = 16.5;
                 _beerMigParameter.RangeCheck
                     (value, min, max,
-                    MugParametersType.BottomThickness, Parameters);
+                    MugParametersType.BottomThickness, Errors);
                 if (value * 10 != High)
                 {
-                    Parameters.Add(MugParametersType.BottomThickness,
+                    Errors.Add(MugParametersType.BottomThickness,
                         "Bottom thickness must be equal Height neck bottom * 0.1");
                     throw new Exception();
                 }
@@ -147,7 +147,7 @@ namespace BeerMug.Model
                 double valueCheck = value;
                 _beerMigParameter.RangeCheck
                     (value, min, max,
-                    MugParametersType.High, Parameters);
+                    MugParametersType.High, Errors);
                 _high = value;
             }
         }
@@ -167,7 +167,7 @@ namespace BeerMug.Model
                 const double max = 7;
                 _beerMigParameter.RangeCheck
                     (value, min, max,
-                    MugParametersType.WallThickness, Parameters);
+                    MugParametersType.WallThickness, Errors);
                 _wallThickness = value;
             }
         }
@@ -187,7 +187,7 @@ namespace BeerMug.Model
                 const double max = 100;
                 _beerMigParameter.RangeCheck
                     (value, min, max,
-                    MugParametersType.MugNeckDiametr, Parameters);
+                    MugParametersType.MugNeckDiametr, Errors);
                 _mugNeckDiameter = value;
             }
         }
