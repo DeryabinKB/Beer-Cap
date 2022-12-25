@@ -70,7 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BeerMugBuilder.cs" />
-    <Compile Include="KompasKonnector.cs" />
+    <Compile Include="KompasConnector.cs" />
     <Compile Include="KompasSketch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

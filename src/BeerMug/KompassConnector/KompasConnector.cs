@@ -99,14 +99,14 @@ namespace KompasConnector
         /// </summary>
         /// <param name="type">Плоскость скетча.</param>
         /// <param name="offset">Отступ скетча от начала координат.</param>
-        /// <returns></returns>
+        /// <returns>Скетч.</returns>
         public KompasSketch CreateSketch(int type, double offset = 0)
         {
             return new KompasSketch(_part, type, offset);
         }
 
         /// <summary>
-        /// Выдавливание.
+        /// Выдавливание скетча.
         /// </summary>
         /// <param name="kompasSketch">Скетч.</param>
         /// <param name="depth">Глубина выдавливания.</param>
@@ -181,6 +181,10 @@ namespace KompasConnector
             bossRotated.Create();
         }
 
+        /// <summary>
+        /// Выдавливание вращением на 178 градусов.
+        /// </summary>
+        /// <param name="kompasSketch">Скетч.</param>
         public void ExtrudeRotation178(KompasSketch kompasSketch)
         {
             ksEntity bossRotated = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_bossRotated);
@@ -238,7 +242,6 @@ namespace KompasConnector
 
                 ++i;
             }
-
             return cylinderFaces;
         }
 
@@ -255,8 +258,5 @@ namespace KompasConnector
             bossRotatedDefinition.SetSideParam(true, angle);
             bossRotated.Create();
         }
-
-
-
     }
 }

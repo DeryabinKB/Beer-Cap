@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BeerMugParametr.cs" />
-    <Compile Include="BeerMugParametrs.cs" />
-    <Compile Include="ParametrTypes.cs" />
+    <Compile Include="BeerMugParameter.cs" />
+    <Compile Include="BeerMugParameters.cs" />
+    <Compile Include="ParameterTypes.cs" />
     <Compile Include="Point2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -50,7 +50,7 @@ namespace BeerMug.Model
         /// <summary>
         /// Экземпляр класса BeerMugParametr.
         /// </summary>
-        private BeerMugParametr _beerMigParameter = new BeerMugParametr();
+        private BeerMugParameter _beerMigParameter = new BeerMugParameter();
 
         /// <summary>
         /// Установка и возврат значения нижнего дна пивной кружки.

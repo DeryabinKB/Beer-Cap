@@ -9,7 +9,7 @@ namespace BeerMug.Model
     /// <summary>
     /// Класс для обработки значений параметра пивной кружки.
     /// </summary>
-    public class BeerMugParametr
+    public class BeerMugParameter
     {
         /// <summary>
         /// Проверка диапазона.

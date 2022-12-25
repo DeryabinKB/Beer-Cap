@@ -11,7 +11,6 @@ namespace BeerMug.Model
     /// </summary>
     public enum MugParametersType
     {
-
         /// <summary>
         /// Диаметр дна кружки снизу.
         /// </summary>
