@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BeerMug.Model\BeerMug.Model.csproj" />
-    <ProjectReference Include="..\KompasConnector\KompasConnector.csproj" />
+    <ProjectReference Include="..\BeerMug.Models\BeerMug.Model.csproj" />
+    <ProjectReference Include="..\KompassConnector\KompassConnector.csproj" />
   </ItemGroup>
 
   <ItemGroup>

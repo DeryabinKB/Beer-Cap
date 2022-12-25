@@ -55,13 +55,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.capTypeComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // buildButton
             // 
-            this.buildButton.Location = new System.Drawing.Point(154, 363);
+            this.buildButton.Location = new System.Drawing.Point(156, 385);
             this.buildButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buildButton.Name = "buildButton";
             this.buildButton.Size = new System.Drawing.Size(122, 27);
@@ -108,7 +110,7 @@
             this.outerDiametrTextBox.Size = new System.Drawing.Size(116, 23);
             this.outerDiametrTextBox.TabIndex = 4;
             this.outerDiametrTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
-            this.outerDiametrTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
+            this.outerDiametrTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForCommasAndNumbers_KeyPress);
             // 
             // thicknessTextBox
             // 
@@ -118,7 +120,7 @@
             this.thicknessTextBox.Size = new System.Drawing.Size(116, 23);
             this.thicknessTextBox.TabIndex = 5;
             this.thicknessTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
-            this.thicknessTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
+            this.thicknessTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForCommasAndNumbers_KeyPress);
             // 
             // highTextBox
             // 
@@ -128,7 +130,7 @@
             this.highTextBox.Size = new System.Drawing.Size(116, 23);
             this.highTextBox.TabIndex = 6;
             this.highTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
-            this.highTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
+            this.highTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForCommasAndNumbers_KeyPress);
             // 
             // HighLabel
             // 
@@ -148,7 +150,7 @@
             this.upperRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
             this.upperRadiusOfTheBottomTextBox.TabIndex = 8;
             this.upperRadiusOfTheBottomTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
-            this.upperRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
+            this.upperRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForCommasAndNumbers_KeyPress);
             // 
             // UpperRadiusOfTheBottomLabel
             // 
@@ -168,7 +170,7 @@
             this.lowerRadiusOfTheBottomTextBox.Size = new System.Drawing.Size(116, 23);
             this.lowerRadiusOfTheBottomTextBox.TabIndex = 10;
             this.lowerRadiusOfTheBottomTextBox.TextChanged += new System.EventHandler(this.TextBoxValidator_TextChanged);
-            this.lowerRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_KeyPress);
+            this.lowerRadiusOfTheBottomTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForCommasAndNumbers_KeyPress);
             // 
             // LowerRadiusOfTheBottomLabel
             // 
@@ -262,7 +264,7 @@
             // 
             // MinimumSizeButtom
             // 
-            this.MinimumSizeButtom.Location = new System.Drawing.Point(14, 363);
+            this.MinimumSizeButtom.Location = new System.Drawing.Point(13, 385);
             this.MinimumSizeButtom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MinimumSizeButtom.Name = "MinimumSizeButtom";
             this.MinimumSizeButtom.Size = new System.Drawing.Size(122, 27);
@@ -273,7 +275,7 @@
             // 
             // MaximumSizeButton
             // 
-            this.MaximumSizeButton.Location = new System.Drawing.Point(296, 363);
+            this.MaximumSizeButton.Location = new System.Drawing.Point(302, 385);
             this.MaximumSizeButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximumSizeButton.Name = "MaximumSizeButton";
             this.MaximumSizeButton.Size = new System.Drawing.Size(122, 27);
@@ -322,12 +324,36 @@
             this.label3.TabIndex = 37;
             this.label3.Text = "E - F = 30";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 347);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 15);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Cap type";
+            // 
+            // capTypeComboBox
+            // 
+            this.capTypeComboBox.FormattingEnabled = true;
+            this.capTypeComboBox.Items.AddRange(new object[] {
+            "Without cap",
+            "Handle ring",
+            "Handle circle"});
+            this.capTypeComboBox.Location = new System.Drawing.Point(333, 347);
+            this.capTypeComboBox.Name = "capTypeComboBox";
+            this.capTypeComboBox.Size = new System.Drawing.Size(121, 23);
+            this.capTypeComboBox.TabIndex = 39;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1244, 424);
+            this.Controls.Add(this.capTypeComboBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -357,6 +383,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
             this.Text = "Beer mug";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -392,5 +419,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Label label4;
+        private ComboBox capTypeComboBox;
     }
 }

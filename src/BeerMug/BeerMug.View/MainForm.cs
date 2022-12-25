@@ -18,7 +18,7 @@ namespace BeerMug.View
         /// <summary>
         /// Экземпляр класса MugParameters.
         /// </summary>
-        private MugParameters _beerMugParametr = new MugParameters();
+        private MugParameters _beerMugParametrs = new MugParameters();
 
         /// <summary>
         /// Цвет корректно заполненного поля.
@@ -31,8 +31,7 @@ namespace BeerMug.View
         private Color _incorrectColor = Color.LightPink;
 
         /// <summary>
-        /// Словарь, cвязывающий параметр пивной кружки
-        /// и его текстбокс.
+        /// Словарь, cвязывающий параметр пивной кружки и его текстбокс.
         /// </summary>
         private Dictionary<TextBox, Action<double>> _textBox
             = new Dictionary<TextBox, Action<double>>();
@@ -42,17 +41,17 @@ namespace BeerMug.View
             InitializeComponent();
             _textBox = new Dictionary<TextBox, Action<double>>();
             _textBox.Add(outerDiametrTextBox, (outerDiametr)
-                => _beerMugParametr.MugNeckDiametr = outerDiametr);
+                => _beerMugParametrs.MugNeckDiametr = outerDiametr);
             _textBox.Add(thicknessTextBox, (wallThickness)
-                => _beerMugParametr.WallThickness = wallThickness);
+                => _beerMugParametrs.WallThickness = wallThickness);
             _textBox.Add(highTextBox, (high)
-                => _beerMugParametr.High = high);
+                => _beerMugParametrs.High = high);
             _textBox.Add(bottomThicknessTextBox, (bottomThickness)
-                => _beerMugParametr.BottomThickness = bottomThickness);
+                => _beerMugParametrs.BottomThickness = bottomThickness);
             _textBox.Add(upperRadiusOfTheBottomTextBox, (highBottomDiametr)
-                => _beerMugParametr.HighBottomDiametr = highBottomDiametr);
+                => _beerMugParametrs.HighBottomDiametr = highBottomDiametr);
             _textBox.Add(lowerRadiusOfTheBottomTextBox, (lowBottomDiametr)
-                => _beerMugParametr.BelowBottomRadius = lowBottomDiametr);
+                => _beerMugParametrs.BelowBottomRadius = lowBottomDiametr);
         }
 
         /// <summary>
@@ -75,13 +74,9 @@ namespace BeerMug.View
                 textBox.BackColor = _correctColor;
                 if (textBox == outerDiametrTextBox)
                 {
-                    TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+                    TextBoxValidator_TextChanged(thicknessTextBox, e);
                 }
-                if (textBox == upperRadiusOfTheBottomTextBox)
-                {
-                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
-                }
-                if (textBox == lowerRadiusOfTheBottomTextBox)
+                if (textBox == thicknessTextBox)
                 {
                     TextBoxValidator_TextChanged(highTextBox, e);
                 }
@@ -91,7 +86,11 @@ namespace BeerMug.View
                 }
                 if (textBox == bottomThicknessTextBox)
                 {
-                    TextBoxValidator_TextChanged(thicknessTextBox, e);
+                    TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
+                }
+                if (textBox == upperRadiusOfTheBottomTextBox)
+                {
+                    TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
                 }
             }
             catch
@@ -101,7 +100,7 @@ namespace BeerMug.View
         }
 
         /// <summary>
-        /// Проверка, чтобы textbox содержал только одну запятую и цифры.
+        /// Проверка содержания текстбоксом только одной запятой и цифры.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -147,12 +146,6 @@ namespace BeerMug.View
             bottomThicknessTextBox.Text ="10";
             upperRadiusOfTheBottomTextBox.Text ="80";
             lowerRadiusOfTheBottomTextBox.Text ="50";
-            TextBoxValidator_TextChanged(outerDiametrTextBox, e);
-            TextBoxValidator_TextChanged(thicknessTextBox, e);
-            TextBoxValidator_TextChanged(highTextBox, e);
-            TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
-            TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
-            TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
         }
 
         /// <summary>
@@ -168,12 +161,6 @@ namespace BeerMug.View
             bottomThicknessTextBox.Text = "16,5";
             upperRadiusOfTheBottomTextBox.Text = "100";
             lowerRadiusOfTheBottomTextBox.Text = "70";
-            TextBoxValidator_TextChanged(outerDiametrTextBox, e);
-            TextBoxValidator_TextChanged(thicknessTextBox, e);
-            TextBoxValidator_TextChanged(highTextBox, e);
-            TextBoxValidator_TextChanged(bottomThicknessTextBox, e);
-            TextBoxValidator_TextChanged(upperRadiusOfTheBottomTextBox, e);
-            TextBoxValidator_TextChanged(lowerRadiusOfTheBottomTextBox, e);
         }
 
         /// <summary>
@@ -189,23 +176,33 @@ namespace BeerMug.View
                  bottomThicknessTextBox.Text == string.Empty ||
                  upperRadiusOfTheBottomTextBox.Text == string.Empty ||
                  lowerRadiusOfTheBottomTextBox.Text == string.Empty ||
-                 _beerMugParametr.Parameters.Count > 0)
+                 _beerMugParametrs.Errors.Count > 0)
             {
-                
-                //MessageBox.Show("Fill all fields correctly", "Error data",
-                //    MessageBoxButtons.OK,
-                //    MessageBoxIcon.Error);
-
-                MessageBox.Show(_beerMugParametr.Parameters.Last().Value, "Error data",
+                MessageBox.Show(_beerMugParametrs.Errors.Last().Value, "Error data",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-
             }
             else
             {
                 var builder = new BeerMugBuilder();
-                builder.Builder(_beerMugParametr);
+                builder.Builder(_beerMugParametrs, capTypeComboBox.SelectedItem.ToString());
             }
+        }
+
+        /// <summary>
+        /// Ввод значений при загрузке формы.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            outerDiametrTextBox.Text = "90";
+            thicknessTextBox.Text = "6";
+            highTextBox.Text = "132,5";
+            bottomThicknessTextBox.Text = "13,25";
+            upperRadiusOfTheBottomTextBox.Text = "90";
+            lowerRadiusOfTheBottomTextBox.Text = "60";
+            capTypeComboBox.SelectedItem = "Without cap";
         }
     }
 }
