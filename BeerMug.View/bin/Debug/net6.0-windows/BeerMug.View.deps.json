@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "BeerMug.View/1.0.0": {
+        "dependencies": {
+          "BeerMug.Model": "1.0.0",
+          "KompassConnector": "1.0.0"
+        },
+        "runtime": {
+          "BeerMug.View.dll": {}
+        }
+      },
+      "BeerMug.Model/1.0.0": {
+        "runtime": {
+          "BeerMug.Models.dll": {}
+        }
+      },
+      "KompassConnector/1.0.0": {
+        "dependencies": {
+          "BeerMug.Model": "1.0.0"
+        },
+        "runtime": {
+          "KompassConnector.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BeerMug.View/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BeerMug.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "KompassConnector/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
