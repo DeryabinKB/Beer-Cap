@@ -189,14 +189,14 @@ namespace BeerMug.View
                  bottomThicknessTextBox.Text == string.Empty ||
                  upperRadiusOfTheBottomTextBox.Text == string.Empty ||
                  lowerRadiusOfTheBottomTextBox.Text == string.Empty ||
-                 _beerMugParametr.Parameters.Count > 0)
+                 _beerMugParametr.Errors.Count > 0)
             {
                 
                 //MessageBox.Show("Fill all fields correctly", "Error data",
                 //    MessageBoxButtons.OK,
                 //    MessageBoxIcon.Error);
 
-                MessageBox.Show(_beerMugParametr.Parameters.Last().Value, "Error data",
+                MessageBox.Show(_beerMugParametr.Errors.Last().Value, "Error data",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
