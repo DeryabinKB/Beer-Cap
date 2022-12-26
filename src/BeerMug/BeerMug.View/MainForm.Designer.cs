@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.capTypeComboBox = new System.Windows.Forms.ComboBox();
             this.buildButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.OuterDiametrLabel = new System.Windows.Forms.Label();
@@ -56,10 +57,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.capTypeComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // capTypeComboBox
+            // 
+            this.capTypeComboBox.AllowDrop = true;
+            this.capTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.capTypeComboBox.Items.AddRange(new object[] {
+            "Round shape",
+            "Faceted shape"});
+            this.capTypeComboBox.Location = new System.Drawing.Point(333, 347);
+            this.capTypeComboBox.Name = "capTypeComboBox";
+            this.capTypeComboBox.Size = new System.Drawing.Size(121, 23);
+            this.capTypeComboBox.TabIndex = 39;
             // 
             // buildButton
             // 
@@ -330,21 +342,9 @@
             this.label4.Location = new System.Drawing.Point(14, 347);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 15);
+            this.label4.Size = new System.Drawing.Size(58, 15);
             this.label4.TabIndex = 38;
-            this.label4.Text = "Cap type";
-            // 
-            // capTypeComboBox
-            // 
-            this.capTypeComboBox.FormattingEnabled = true;
-            this.capTypeComboBox.Items.AddRange(new object[] {
-            "Without cap",
-            "Handle ring",
-            "Handle circle"});
-            this.capTypeComboBox.Location = new System.Drawing.Point(333, 347);
-            this.capTypeComboBox.Name = "capTypeComboBox";
-            this.capTypeComboBox.Size = new System.Drawing.Size(121, 23);
-            this.capTypeComboBox.TabIndex = 39;
+            this.label4.Text = "Mug type";
             // 
             // MainForm
             // 
@@ -380,8 +380,12 @@
             this.Controls.Add(this.OuterDiametrLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buildButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximumSize = new System.Drawing.Size(1260, 463);
+            this.MinimizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Beer mug";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

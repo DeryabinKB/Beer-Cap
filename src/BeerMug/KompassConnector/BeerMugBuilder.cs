@@ -37,16 +37,15 @@ namespace KompasConnector
             var wallThickness = mugParameters.WallThickness/2;
             var lowerBottom = mugParameters.BelowBottomRadius/2;
             BuildBottom(lowerBottom, upperBottom, bottomThickness);
-            BuildBody(upperBottom, bottomThickness, high, wallThickness, neck);
+            if (capType == "Faceted shape")
+            {
+                BuildFacetedBody(upperBottom, bottomThickness, high, wallThickness, neck);
+            }
+            if (capType == "Round shape")
+            {
+                BuildRoundBody(upperBottom, bottomThickness, high, wallThickness, neck);
+            }
             BuildHandle(high, neck, bottomThickness);
-            if (capType == "Handle ring")
-            {
-                BuildHandleRingCap(high, neck, wallThickness);
-            }
-            if (capType == "Handle circle")
-            {
-                BuildHandleCircleCap(high, neck, wallThickness);
-            }
             _connector.Fillet(wallThickness/5);
         }
 
@@ -85,7 +84,7 @@ namespace KompasConnector
         /// <param name="high">Высота кружки.</param>
         /// <param name="wallThickness">Толщина стенок кружки.</param>
         /// <param name="neck">Радиус горла кружки.</param>
-        private void BuildBody(double upperBottom, double bottomThickness, double high, double wallThickness, double neck)
+        private void BuildRoundBody(double upperBottom, double bottomThickness, double high, double wallThickness, double neck)
         {
             // Построение основы кружки
             //Создание осевой линии
@@ -115,6 +114,35 @@ namespace KompasConnector
             sketch.ArcBy3Point(insideStart, insadeMiddle, insideEnd);
             sketch.EndEdit();
             _connector.CutExtrudeRotation(sketch, 360);
+        }
+
+        private void BuildFacetedBody(double upperBottom, double bottomThickness, double high, double wallThickness, double neck)
+        {
+            BuildRoundBody(upperBottom, bottomThickness, high, wallThickness, neck);
+            //var sketch = _connector.CreateSketch(2, bottomThickness);
+            //var pointStart = new Point2D(neck + 5, 0);
+
+            //var pointMiddle = new Point2D(neck, 5);
+            //sketch.CreateLineSeg(pointStart, pointMiddle, 3);
+
+            //var pointEnd = new Point2D(neck + 5, 10);
+            //sketch.CreateLineSeg(pointMiddle, pointEnd, 3);
+            //sketch.EndEdit();
+            //_connector.Extrude(sketch, high, true);
+
+            ////var sketchHandleUnevenness = _connector.CreateSketch
+            ////    (_ksPart, planeYOZ, out var sketchHandleUnevennessDefinition);
+            ////_connector = sketchHandleUnevennessDefinition.BeginEdit();
+            //////Дистанция от середины окружности, вырезающих грани у отвертки.
+            ////double _radius = 20 / 16 * 23;
+            ////for (int i = 0; i < 360; i += 60)
+            ////{
+            ////    ksDocument2D.ksCircle(CartesianFromPolar(true, _radius, i),
+            ////        CartesianFromPolar(false, _radius, i), D, 1);
+            ////}
+            ////sketchHandleUnevennessDefinition.EndEdit();
+            ////_kompasWrapper.CutExtrusion(_ksPart, sketchHandleUnevenness, false,
+            ////    Direction_Type.dtReverse, Lh);
         }
 
         /// <summary>

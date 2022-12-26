@@ -17,19 +17,59 @@ namespace BeerMug.Model
         private double _belowBottomDiameter;
 
         /// <summary>
+        /// Минимальное значение нижнего дна пивной кружки. 
+        /// </summary>
+        private const double _belowBottomDiameterMin = 50;
+
+        /// <summary>
+        /// Максимальное значение нижнего дна пивной кружки. 
+        /// </summary>
+        private const double _belowBottomDiameterMax = 70;
+
+        /// <summary>
         /// Диаметр верхнего дна пивной кружки.
         /// </summary>
         private double _highBottomDiameter;
 
         /// <summary>
-        /// Толщина дна пивной кружки.
+        /// Диаметр верхнего дна пивной кружки минимальное значение.
+        /// </summary>
+        private double _highBottomDiameterMin = 80;
+
+        /// <summary>
+        /// Диаметр верхнего дна пивной кружки максимальное значение.
+        /// </summary>
+        private double _highBottomDiameterMax = 100;
+
+        /// <summary>
+        /// Толщина дна пивной кружки .
         /// </summary>
         private double _bottomThickness;
 
         /// <summary>
-        /// Высота пивной кружки
+        /// Толщина дна пивной кружки минимальное значение.
+        /// </summary>
+        private double _bottomThicknessMin = 10;
+
+        /// <summary>
+        /// Толщина дна пивной кружки максимальное значение.
+        /// </summary>
+        private string _bottomThicknessMax = "16,5";
+
+        /// <summary>
+        /// Высота пивной кружки.
         /// </summary>
         private double _high;
+
+        /// <summary>
+        /// Высота пивной кружки минимальное значение.
+        /// </summary>
+        private double _highMin = 100;
+
+        /// <summary>
+        /// Высота пивной кружки максимальное значение.
+        /// </summary>
+        private double _highMax = 165;
 
         /// <summary>
         /// Толщина стенок пивной кружки.
@@ -37,9 +77,29 @@ namespace BeerMug.Model
         private double _wallThickness;
 
         /// <summary>
+        /// Толщина стенок пивной кружки минимальное значение.
+        /// </summary>
+        private double _wallThicknessMin = 5;
+
+        /// <summary>
+        /// Толщина стенок пивной кружки максимальное значение.
+        /// </summary>
+        private double _wallThicknessMax = 7;
+
+        /// <summary>
         /// Диамитер горла кружки.
         /// </summary>
         private double _mugNeckDiameter;
+
+        /// <summary>
+        /// Диамитер горла кружки минимальное значение.
+        /// </summary>
+        private double _mugNeckDiameterMin = 80;
+
+        /// <summary>
+        /// Диамитер горла кружки максимальное значение.
+        /// </summary>
+        private double _mugNeckDiameterMax = 100;
 
         /// <summary>
         /// Словарь перечисления ошибки.
@@ -50,7 +110,7 @@ namespace BeerMug.Model
         /// <summary>
         /// Экземпляр класса BeerMugParametr.
         /// </summary>
-        private BeerMugParameter _beerMigParameter = new BeerMugParameter();
+        private BeerMugParameter _beerMugParameter = new BeerMugParameter();
 
         /// <summary>
         /// Установка и возврат значения нижнего дна пивной кружки.
@@ -63,10 +123,8 @@ namespace BeerMug.Model
             }
             set
             {
-                const double min = 50;
-                const double max = 70;
-                _beerMigParameter.RangeCheck
-                    (value, min, max,
+                _beerMugParameter.RangeCheck
+                    (value, _belowBottomDiameterMin, _belowBottomDiameterMax,
                     MugParametersType.BelowBottomDiameter, Errors);
                if (value + 30 != HighBottomDiametr)
                 {
@@ -75,6 +133,26 @@ namespace BeerMug.Model
                     throw new Exception();
                 }
                 _belowBottomDiameter = value;
+            }
+        }
+
+        /// <summary>
+        /// Возврат минимального значения диаметра нижнего дна.
+        /// </summary>
+        public double BelowBottomDiametrMin
+        {
+            get { return _belowBottomDiameterMin; }
+
+        }
+
+        /// <summary>
+        /// Возврат максимального значения диаметра нижнего дна.
+        /// </summary>
+        public double BelowBottomDiametrMax
+        {
+            get
+            {
+                return _belowBottomDiameterMax;
             }
         }
 
@@ -89,10 +167,8 @@ namespace BeerMug.Model
             }
             set
             {
-                const double min = 80;
-                const double max = 100;
-                _beerMigParameter.RangeCheck
-                    (value, min, max,
+                _beerMugParameter.RangeCheck
+                    (value, _highBottomDiameterMin, _highBottomDiameterMax,
                     MugParametersType.HighBottomDiameter, Errors);
                 if (value != MugNeckDiametr)
                 {
@@ -102,6 +178,28 @@ namespace BeerMug.Model
                     throw new Exception();
                 }
                 _highBottomDiameter = value;
+            }
+        }
+
+        /// <summary>
+        /// Возрат минимального значения высоты.
+        /// </summary>
+        public double HighBottomDiametrMin
+        {
+            get
+            {
+                return _highBottomDiameterMin;
+            }
+        }
+
+        /// <summary>
+        /// Возрат максимального значения высоты.
+        /// </summary>
+        public double HighBottomDiametrMax
+        {
+            get
+            {
+                return _highBottomDiameterMax;
             }
         }
 
@@ -116,10 +214,9 @@ namespace BeerMug.Model
             }
             set
             {
-                const double min = 10;
-                const double max = 16.5;
-                _beerMigParameter.RangeCheck
-                    (value, min, max,
+                var max = 16.5;
+                _beerMugParameter.RangeCheck
+                    (value, _bottomThicknessMin, max,
                     MugParametersType.BottomThickness, Errors);
                 if (value * 10 != High)
                 {
@@ -128,6 +225,27 @@ namespace BeerMug.Model
                     throw new Exception();
                 }
                 _bottomThickness = value;
+            }
+        }
+        /// <summary>
+        /// Возрат минимального значения толщины дна.
+        /// </summary>
+        public double BottomThicknessMin
+        {
+            get
+            {
+                return _bottomThicknessMin;
+            }
+        }
+
+        /// <summary>
+        /// Возрат максимального значения толщины дна.
+        /// </summary>
+        public string BottomThicknessMax
+        {
+            get
+            {
+                return _bottomThicknessMax;
             }
         }
 
@@ -142,13 +260,33 @@ namespace BeerMug.Model
             }
             set
             {
-                const double min = 100;
-                const double max = 165;
                 double valueCheck = value;
-                _beerMigParameter.RangeCheck
-                    (value, min, max,
+                _beerMugParameter.RangeCheck
+                    (value, _highMin, _highMax,
                     MugParametersType.High, Errors);
                 _high = value;
+            }
+        }
+
+        /// <summary>
+        /// Возрат минимального значения высоты.
+        /// </summary>
+        public double HighMin
+        {
+            get
+            {
+                return _highMin;
+            }
+        }
+
+        /// <summary>
+        /// Возрат максимального значения высоты.
+        /// </summary>
+        public double HighMax
+        {
+            get
+            {
+                return _highMax;
             }
         }
 
@@ -165,10 +303,32 @@ namespace BeerMug.Model
             {
                 const double min = 5;
                 const double max = 7;
-                _beerMigParameter.RangeCheck
+                _beerMugParameter.RangeCheck
                     (value, min, max,
                     MugParametersType.WallThickness, Errors);
                 _wallThickness = value;
+            }
+        }
+
+        /// <summary>
+        /// Возрат максимального значения толщины стен.
+        /// </summary>
+        public double WallThicknessMin
+        {
+            get
+            {
+                return _wallThicknessMin;
+            }
+        }
+
+        /// <summary>
+        /// Возрат минимального значения толщины стен.
+        /// </summary>
+        public double WallThicknessMax
+        {
+            get
+            {
+                return _wallThicknessMax;
             }
         }
 
@@ -185,10 +345,32 @@ namespace BeerMug.Model
             {
                 const double min = 80;
                 const double max = 100;
-                _beerMigParameter.RangeCheck
+                _beerMugParameter.RangeCheck
                     (value, min, max,
                     MugParametersType.MugNeckDiametr, Errors);
                 _mugNeckDiameter = value;
+            }
+        }
+
+        /// <summary>
+        /// Возрат минимального значения диаметра горла кружки.
+        /// </summary>
+        public double MugNeckDiametrMin
+        {
+            get
+            {
+                return _mugNeckDiameterMin;
+            }
+        }
+
+        /// <summary>
+        /// Возрат максимального значения диаметра горла кружки.
+        /// </summary>
+        public double MugNeckDiametrMax
+        {
+            get
+            {
+                return _mugNeckDiameterMax;
             }
         }
     }

@@ -140,12 +140,13 @@ namespace BeerMug.View
         /// <param name="e"></param>
         private void MinimumSizeButtom_Click(object sender, EventArgs e)
         {
-            outerDiametrTextBox.Text = "80";
-            thicknessTextBox.Text = "5";
-            highTextBox.Text = "100";
-            bottomThicknessTextBox.Text ="10";
-            upperRadiusOfTheBottomTextBox.Text ="80";
-            lowerRadiusOfTheBottomTextBox.Text ="50";
+            // to do в модель
+            outerDiametrTextBox.Text = _beerMugParametrs.MugNeckDiametrMin.ToString();
+            thicknessTextBox.Text = _beerMugParametrs.WallThicknessMin.ToString();
+            highTextBox.Text = _beerMugParametrs.HighMin.ToString();
+            bottomThicknessTextBox.Text = _beerMugParametrs.BottomThicknessMin.ToString();
+            upperRadiusOfTheBottomTextBox.Text = _beerMugParametrs.HighBottomDiametrMin.ToString();
+            lowerRadiusOfTheBottomTextBox.Text = _beerMugParametrs.BelowBottomDiametrMin.ToString();
         }
 
         /// <summary>
@@ -155,12 +156,13 @@ namespace BeerMug.View
         /// <param name="e"></param>
         private void MaximumSizeButton_Click(object sender, EventArgs e)
         {
-            outerDiametrTextBox.Text = "100";
-            thicknessTextBox.Text = "7";
-            highTextBox.Text = "165";
-            bottomThicknessTextBox.Text = "16,5";
-            upperRadiusOfTheBottomTextBox.Text = "100";
-            lowerRadiusOfTheBottomTextBox.Text = "70";
+            // to do в модель
+            outerDiametrTextBox.Text = _beerMugParametrs.MugNeckDiametrMax.ToString();
+            thicknessTextBox.Text = _beerMugParametrs.WallThicknessMax.ToString();
+            highTextBox.Text = _beerMugParametrs.HighMax.ToString();
+            bottomThicknessTextBox.Text = _beerMugParametrs.BottomThicknessMax.ToString();
+            upperRadiusOfTheBottomTextBox.Text = _beerMugParametrs.HighBottomDiametrMax.ToString();
+            lowerRadiusOfTheBottomTextBox.Text = _beerMugParametrs.BelowBottomDiametrMax.ToString();
         }
 
         /// <summary>
@@ -188,7 +190,7 @@ namespace BeerMug.View
                 builder.Builder(_beerMugParametrs, capTypeComboBox.SelectedItem.ToString());
             }
         }
-
+        // to do выпадающий список не меняется и размер окна фиксирован
         /// <summary>
         /// Ввод значений при загрузке формы.
         /// </summary>
@@ -196,13 +198,14 @@ namespace BeerMug.View
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            outerDiametrTextBox.Text = "90";
-            thicknessTextBox.Text = "6";
-            highTextBox.Text = "132,5";
-            bottomThicknessTextBox.Text = "13,25";
-            upperRadiusOfTheBottomTextBox.Text = "90";
-            lowerRadiusOfTheBottomTextBox.Text = "60";
-            capTypeComboBox.SelectedItem = "Without cap";
+            // to do в модель
+            outerDiametrTextBox.Text = _beerMugParametrs.MugNeckDiametrMin.ToString();
+            thicknessTextBox.Text = _beerMugParametrs.WallThicknessMin.ToString();
+            highTextBox.Text = _beerMugParametrs.HighMin.ToString();
+            bottomThicknessTextBox.Text = _beerMugParametrs.BottomThicknessMin.ToString();
+            upperRadiusOfTheBottomTextBox.Text = _beerMugParametrs.HighBottomDiametrMin.ToString();
+            lowerRadiusOfTheBottomTextBox.Text = _beerMugParametrs.BelowBottomDiametrMin.ToString();
+            capTypeComboBox.Text = "Faceted shape";
         }
     }
 }
