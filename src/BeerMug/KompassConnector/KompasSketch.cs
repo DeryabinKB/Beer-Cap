@@ -25,7 +25,7 @@ namespace KompasConnector
         /// Возвращает эскиз.
         /// </summary>
         public ksEntity Sketch { get; set; }
-
+        
         /// <summary>
         /// Конструктор.
         /// </summary>
@@ -56,6 +56,8 @@ namespace KompasConnector
             Sketch.Create();
             _document2D = (ksDocument2D)_sketchDefinition.BeginEdit();
         }
+
+        
 
         /// <summary>
         /// Завершить редактирование скетча.
