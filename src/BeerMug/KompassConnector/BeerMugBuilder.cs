@@ -121,34 +121,37 @@ namespace KompasConnector
         private void BuildFacetedBody(double upperBottom, double bottomThickness, double high, double wallThickness, double neck)
         {
             BuildRoundBody(upperBottom, bottomThickness, high, wallThickness, neck);
-            //var sketch = _connector.CreateSketch(2, bottomThickness);
-            //var pointStart = new Point2D(neck + 5, 0);
-
-            //var pointMiddle = new Point2D(neck, 5);
-            //sketch.CreateLineSeg(pointStart, pointMiddle, 3);
-
-            //var pointEnd = new Point2D(neck + 5, 10);
-            //sketch.CreateLineSeg(pointMiddle, pointEnd, 3);
-            //sketch.EndEdit();
-            //_connector.Extrude(sketch, high, true);
-
-            //Создаем неровную поверхность в держащей части рукоятки.
-            ksEntity planeXOZ = _connector._part.GetDefaultEntity((short)ksObj3dTypeEnum.o3d_planeXOY);
-            var sketchHandleUnevenness = _connector.CreateSketch2
-                (_connector._part, planeXOZ, out var sketchHandleUnevennessDefinition);
-            var ksDocument2D = sketchHandleUnevennessDefinition.BeginEdit();
-            _connector = sketchHandleUnevennessDefinition.BeginEdit();
-
+            KompasSketch sketch = _connector.CreateSketch(3, high);
             //Дистанция от середины окружности, вырезающих грани у отвертки.
-            double _radius = 20 / 16 * 23;
-            for (int i = 0; i < 360; i += 60)
+            if (high <= 110)
             {
-                ksDocument2D.ksCircle(CartesianFromPolar(true, _radius, i),
-                    CartesianFromPolar(false, _radius, i), 10, 1);
+                for (int i = 0; i < 360; i += 20)
+                {
+                    var pointOne = new Point2D(CartesianFromPolar(true, neck + 15, i),
+                        CartesianFromPolar(false, neck + 15, i));
+                    sketch.CreateCircle(pointOne, 10);
+                }
             }
-            sketchHandleUnevennessDefinition.EndEdit();
-            _connector.CutExtrusion(_connector._part, sketchHandleUnevenness, false,
-                Direction_Type.dtReverse, high);
+            if (high > 110 && high <= 140)
+            {
+                for (int i = 0; i < 360; i += 20)
+                {
+                    var pointOne = new Point2D(CartesianFromPolar(true, neck + 16, i),
+                        CartesianFromPolar(false, neck + 16, i));
+                    sketch.CreateCircle(pointOne, 10);
+                }
+            }
+            if (high > 140)
+            {
+                for (int i = 0; i < 360; i += 20)
+                {
+                    var pointOne = new Point2D(CartesianFromPolar(true, neck + 18, i),
+                        CartesianFromPolar(false, neck + 18, i));
+                    sketch.CreateCircle(pointOne, 10);
+                }
+            }
+            sketch.EndEdit();
+            _connector.CutExtrude(sketch, 500, true);
         }
 
         /// <summary>
@@ -189,73 +192,6 @@ namespace KompasConnector
             }
         }
 
-        ///// <summary>
-        ///// Построение крышки с ручкой кольцом.
-        ///// </summary>
-        ///// <param name="high">Высота кружки.</param>
-        ///// <param name="neck">Радиус горла кружки.</param>
-        ///// <param name="wallThickness">Толщина стенок кружки.</param>
-        //private void BuildHandleRingCap(double high, double neck, double wallThickness)
-        //{
-        //    BuildCapBase(high, neck, wallThickness);
-        //    var sketch = _connector.CreateSketch(3, high);
-        //    var pointAxisX = new Point2D(0, 0);
-        //    var pointAxisY = new Point2D(0, 5);
-        //    sketch.CreateLineSeg(pointAxisX, pointAxisY, 3);
-        //    var circle = new Point2D(neck / 2, 0);
-        //    sketch.CreateCircle(circle, 6);
-        //    sketch.EndEdit();
-        //    _connector.ExtrudeRotation180(sketch);
-        //}
-
-        ///// <summary>
-        ///// Построение основы крышки.
-        ///// </summary>
-        ///// <param name="high">Высота кружки.</param>
-        ///// <param name="neck">Радиус горла кружки.</param>
-        ///// <param name="wallThickness">Толщина стен кружки.</param>
-        //private void BuildCapBase(double high, double neck, double wallThickness)
-        //{
-        //    var sketch = _connector.CreateSketch(2);
-        //    var pointAxisX = new Point2D(0, -high - 5);
-        //    var pointAxisY = new Point2D(0, -high);
-        //    sketch.CreateLineSeg(pointAxisX, pointAxisY, 3);
-        //    var pointOne = new Point2D(0, -high);
-        //    var pointTwo = new Point2D(neck - wallThickness - 5, -high);
-        //    sketch.CreateLineSeg(pointOne, pointTwo, 1);
-        //    var pointThree = new Point2D(neck - wallThickness - 2, -high + 5);
-        //    sketch.CreateLineSeg(pointTwo, pointThree, 1);
-        //    var pointFour = new Point2D(neck - wallThickness - 0.5, -high - 0.5);
-        //    sketch.CreateLineSeg(pointThree, pointFour, 1);
-        //    var pointFive = new Point2D(neck + 6, -high - 0.5);
-        //    sketch.CreateLineSeg(pointFour, pointFive, 1);
-        //    var pointSix = new Point2D(neck - neck / 3, -high - 5);
-        //    sketch.CreateLineSeg(pointFive, pointSix, 1);
-        //    var pointSeven = new Point2D(0, -high - 8);
-        //    sketch.CreateLineSeg(pointSix, pointSeven, 1);
-        //    sketch.EndEdit();
-        //    _connector.ExtrudeRotation360(sketch);
-        //}
-
-        ///// <summary>
-        ///// Построение крышки с ручкой выдавленным кругом.
-        ///// </summary>
-        ///// <param name="high">Высота кружки.</param>
-        ///// <param name="neck">Радиус горла кружки.</param>
-        ///// <param name="wallThickness">Толщина стенок кружки.</param>
-        //private void BuildHandleCircleCap(double high, double neck, double wallThickness)
-        //{
-        //    BuildCapBase(high, neck, wallThickness);
-        //    var sketch = _connector.CreateSketch(3, high);
-        //    var pointAxisX = new Point2D(0, 0);
-        //    var pointAxisY = new Point2D(0, 5);
-        //    sketch.CreateLineSeg(pointAxisX, pointAxisY, 3);
-        //    var circle = new Point2D(0, 0);
-        //    sketch.CreateCircle(circle, 6);
-        //    sketch.EndEdit();
-        //    _connector.Extrude(sketch, wallThickness*6, true);
-        //}
-
         /// <summary>
         /// Функция, рассчитывающая координату точки по ее расстоянию и углу от другой точки.
         /// (Переводит из полярных координат в Декартовые).
@@ -266,7 +202,7 @@ namespace KompasConnector
         /// <param name="x0">Положение по Х для первой точки.</param>
         /// <param name="y0">Положение по Y для первой точки.</param>
         /// <returns>Координату X или Y.</returns>
-        private double CartesianFromPolar(bool isX, double radius, double angle,
+        public double CartesianFromPolar(bool isX, double radius, double angle,
             double x0 = 0, double y0 = 0)
         {
             if (isX)

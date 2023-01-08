@@ -50,9 +50,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Source\\Repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
       "projectName": "BeerMug.View",
-      "projectPath": "C:\\Users\\Admin\\Source\\Repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
+      "projectPath": "C:\\Users\\Admin\\source\\repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Admin\\Source\\Repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.View\\obj\\",
       "projectStyle": "PackageReference",
@@ -76,11 +76,11 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\Admin\\Source\\Repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.Models\\BeerMug.Model.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Source\\Repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.Models\\BeerMug.Model.csproj"
+            "C:\\Users\\Admin\\source\\repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.Models\\BeerMug.Model.csproj": {
+              "projectPath": "C:\\Users\\Admin\\source\\repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.Models\\BeerMug.Model.csproj"
             },
-            "C:\\Users\\Admin\\Source\\Repos\\Beer-Mug12\\src\\BeerMug\\KompassConnector\\KompassConnector.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Source\\Repos\\Beer-Mug12\\src\\BeerMug\\KompassConnector\\KompassConnector.csproj"
+            "C:\\Users\\Admin\\source\\repos\\Beer-Mug12\\src\\BeerMug\\KompassConnector\\KompassConnector.csproj": {
+              "projectPath": "C:\\Users\\Admin\\source\\repos\\Beer-Mug12\\src\\BeerMug\\KompassConnector\\KompassConnector.csproj"
             }
           }
         }

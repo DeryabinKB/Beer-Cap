@@ -56,9 +56,7 @@ namespace KompasConnector
             Sketch.Create();
             _document2D = (ksDocument2D)_sketchDefinition.BeginEdit();
         }
-
         
-
         /// <summary>
         /// Завершить редактирование скетча.
         /// </summary>

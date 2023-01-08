@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6rbMi5xB4q+PHtY/BNT4wp0GHKL/beuzO9QHd8KLaqd/Mk/J/hYQ/VAzeQxdzYF+VvkdzcGUnYQpdJLY1Uz3WQ==",
+  "dgSpecHash": "9BV4WoBSaM+V++/37u/P9yfu9Caxy4c/6irHdqUMKjgbm5wotbXb0aQgmJ0E9JLZl2jeRF/I2Kivz3Ut8eWBIA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Source\\Repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.Test\\BeerMug.Test.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\source\\repos\\Beer-Mug12\\src\\BeerMug\\BeerMug.Test\\BeerMug.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.codecoverage\\17.3.2\\microsoft.codecoverage.17.3.2.nupkg.sha512",

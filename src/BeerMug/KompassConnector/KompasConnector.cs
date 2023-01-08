@@ -284,6 +284,23 @@ namespace KompasConnector
         }
 
         /// <summary>
+        /// Sketch cut extrusion.
+        /// </summary>
+        /// <param name="kompasSketch">Kompas sketch.</param>
+        /// <param name="depth">Extrusion depth.</param>
+        /// <param name="type">Extrusion direction.</param>
+        public void CutExtrude(KompasSketch kompasSketch, double depth)
+        {
+            ksEntity extrudeEntity = (ksEntity)_part.NewEntity((int)Obj3dType.o3d_cutExtrusion);
+            ksCutExtrusionDefinition extrudeDefinition = (ksCutExtrusionDefinition)extrudeEntity.GetDefinition();
+            extrudeDefinition.directionType = (short)Direction_Type.dtNormal;
+            extrudeDefinition.SetSketch(kompasSketch.Sketch);
+            ksExtrusionParam extrudeParam = (ksExtrusionParam)extrudeDefinition.ExtrusionParam();
+            extrudeParam.depthNormal = depth;
+            extrudeEntity.Create();
+        }
+
+        /// <summary>
         /// Создать новый эскиз.
         /// </summary>
         /// <param name="ksPart">Документ детали, в котором нужно создать эскиз.</param>
