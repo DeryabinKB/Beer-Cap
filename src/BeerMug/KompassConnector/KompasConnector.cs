@@ -258,65 +258,7 @@ namespace KompasConnector
             bossRotatedDefinition.SetSideParam(true, angle);
             bossRotated.Create();
         }
-
-        /// <summary>
-        /// Вырезание выдавливанием по эскизу.
-        /// </summary>
-        /// <param name="ksPart">Документ детали, в котором нужно сделать выдавливание.</param>
-        /// <param name="sketch">Эскиз, который нужно выдавить.</param>
-        /// <param name="forward">Направление выдавливания: true - вперед, false - назад.</param>
-        /// <param name="direction_Type">Вариант направления выдавливания.</param>
-        /// <param name="depth">Длина выдавливания.</param>
-        /// <param name="draftValue">Угол наклона выдавливания.</param>
-        /// <param name="draftOutward">
-        /// Направление уклона: true - уклон внутрь, false - уклон наружу.</param>
-        public void CutExtrusion(ksPart ksPart, ksEntity sketch, bool forward,
-            Direction_Type direction_Type, double depth, double draftValue = 0,
-            bool draftOutward = false)
-        {
-            ksEntity entity = ksPart.NewEntity((short)ksObj3dTypeEnum.o3d_cutExtrusion);
-            ksCutExtrusionDefinition definition = entity.GetDefinition();
-            definition.cut = true;
-            definition.directionType = (short)direction_Type;
-            definition.SetSideParam(forward, (short)End_Type.etBlind, depth, draftValue, draftOutward);
-            definition.SetSketch(sketch);
-            entity.Create();
-        }
-
-        /// <summary>
-        /// Sketch cut extrusion.
-        /// </summary>
-        /// <param name="kompasSketch">Kompas sketch.</param>
-        /// <param name="depth">Extrusion depth.</param>
-        /// <param name="type">Extrusion direction.</param>
-        public void CutExtrude(KompasSketch kompasSketch, double depth)
-        {
-            ksEntity extrudeEntity = (ksEntity)_part.NewEntity((int)Obj3dType.o3d_cutExtrusion);
-            ksCutExtrusionDefinition extrudeDefinition = (ksCutExtrusionDefinition)extrudeEntity.GetDefinition();
-            extrudeDefinition.directionType = (short)Direction_Type.dtNormal;
-            extrudeDefinition.SetSketch(kompasSketch.Sketch);
-            ksExtrusionParam extrudeParam = (ksExtrusionParam)extrudeDefinition.ExtrusionParam();
-            extrudeParam.depthNormal = depth;
-            extrudeEntity.Create();
-        }
-
-        /// <summary>
-        /// Создать новый эскиз.
-        /// </summary>
-        /// <param name="ksPart">Документ детали, в котором нужно создать эскиз.</param>
-        /// <param name="plane">Плоскость, на которой нужно создать эскиз.</param>
-        /// <param name="sketchDefinition">Определение эскиза</param>
-        /// <returns>Указатель на созданный эскиз</returns>
-        public ksEntity CreateSketch2
-            (ksPart ksPart, ksEntity plane, out ksSketchDefinition sketchDefinition)
-        {
-            ksEntity sketch = ksPart.NewEntity((short)ksObj3dTypeEnum.o3d_sketch);
-            sketchDefinition = sketch.GetDefinition();
-            sketchDefinition.SetPlane(plane);
-            sketch.Create();
-            return sketch;
-        }
-
+        
         /// <summary>
         /// Функция, рассчитывающая координату точки по ее расстоянию и углу от другой точки.
         /// (Переводит из полярных координат в Декартовые).
