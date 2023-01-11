@@ -316,5 +316,28 @@ namespace KompasConnector
             sketch.Create();
             return sketch;
         }
+
+        /// <summary>
+        /// Функция, рассчитывающая координату точки по ее расстоянию и углу от другой точки.
+        /// (Переводит из полярных координат в Декартовые).
+        /// </summary>
+        /// <param name="isX">Рассчитывает ли функция X или Y: true - X, false - Y.</param>
+        /// <param name="radius">Расстояние между точками.</param>
+        /// <param name="angle">Угол, по которому точка исказилась относительно другой точки.</param>
+        /// <param name="x0">Положение по Х для первой точки.</param>
+        /// <param name="y0">Положение по Y для первой точки.</param>
+        /// <returns>Координату X или Y.</returns>
+        public double CartesianFromPolar(bool isX, double radius, double angle,
+            double x0 = 0, double y0 = 0)
+        {
+            if (isX)
+            {
+                return x0 + radius * Math.Cos(angle * (Math.PI / 180.0));
+            }
+            else
+            {
+                return y0 + radius * Math.Sin(angle * (Math.PI / 180.0));
+            }
+        }
     }
 }

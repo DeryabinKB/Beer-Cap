@@ -140,7 +140,6 @@ namespace BeerMug.View
         /// <param name="e"></param>
         private void MinimumSizeButtom_Click(object sender, EventArgs e)
         {
-            // to do в модель
             outerDiametrTextBox.Text = _beerMugParametrs.MugNeckDiametrMin.ToString();
             thicknessTextBox.Text = _beerMugParametrs.WallThicknessMin.ToString();
             highTextBox.Text = _beerMugParametrs.HighMin.ToString();
@@ -156,7 +155,6 @@ namespace BeerMug.View
         /// <param name="e"></param>
         private void MaximumSizeButton_Click(object sender, EventArgs e)
         {
-            // to do в модель
             outerDiametrTextBox.Text = _beerMugParametrs.MugNeckDiametrMax.ToString();
             thicknessTextBox.Text = _beerMugParametrs.WallThicknessMax.ToString();
             highTextBox.Text = _beerMugParametrs.HighMax.ToString();
@@ -190,7 +188,7 @@ namespace BeerMug.View
                 builder.Builder(_beerMugParametrs, capTypeComboBox.SelectedItem.ToString());
             }
         }
-        // to do выпадающий список не меняется и размер окна фиксирован
+        
         /// <summary>
         /// Ввод значений при загрузке формы.
         /// </summary>
@@ -198,14 +196,13 @@ namespace BeerMug.View
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // to do в модель
             outerDiametrTextBox.Text = _beerMugParametrs.MugNeckDiametrMin.ToString();
             thicknessTextBox.Text = _beerMugParametrs.WallThicknessMin.ToString();
             highTextBox.Text = _beerMugParametrs.HighMin.ToString();
             bottomThicknessTextBox.Text = _beerMugParametrs.BottomThicknessMin.ToString();
             upperRadiusOfTheBottomTextBox.Text = _beerMugParametrs.HighBottomDiametrMin.ToString();
             lowerRadiusOfTheBottomTextBox.Text = _beerMugParametrs.BelowBottomDiametrMin.ToString();
-            capTypeComboBox.Text = "Faceted shape";
+            capTypeComboBox.Text = "Round shape";
         }
     }
 }

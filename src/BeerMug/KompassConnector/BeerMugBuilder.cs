@@ -118,6 +118,14 @@ namespace KompasConnector
             _connector.CutExtrudeRotation(sketch, 360);
         }
 
+        /// <summary>
+        /// Построение гранёной пивной кружки.
+        /// </summary>
+        /// <param name="upperBottom">Радиус верхнего дна кружки.</param>
+        /// <param name="bottomThickness">Толщина дна кружки.</param>
+        /// <param name="high">Высота кружки.</param>
+        /// <param name="wallThickness">Толщина стенок кружки.</param>
+        /// <param name="neck">Радиус горла кружки.</param>
         private void BuildFacetedBody(double upperBottom, double bottomThickness, double high, double wallThickness, double neck)
         {
             BuildRoundBody(upperBottom, bottomThickness, high, wallThickness, neck);
@@ -127,8 +135,8 @@ namespace KompasConnector
             {
                 for (int i = 0; i < 360; i += 20)
                 {
-                    var pointOne = new Point2D(CartesianFromPolar(true, neck + 15, i),
-                        CartesianFromPolar(false, neck + 15, i));
+                    var pointOne = new Point2D(_connector.CartesianFromPolar(true, neck + 15, i),
+                        _connector.CartesianFromPolar(false, neck + 15, i));
                     sketch.CreateCircle(pointOne, 10);
                 }
             }
@@ -136,8 +144,8 @@ namespace KompasConnector
             {
                 for (int i = 0; i < 360; i += 20)
                 {
-                    var pointOne = new Point2D(CartesianFromPolar(true, neck + 16, i),
-                        CartesianFromPolar(false, neck + 16, i));
+                    var pointOne = new Point2D(_connector.CartesianFromPolar(true, neck + 16, i),
+                        _connector.CartesianFromPolar(false, neck + 16, i));
                     sketch.CreateCircle(pointOne, 10);
                 }
             }
@@ -145,8 +153,8 @@ namespace KompasConnector
             {
                 for (int i = 0; i < 360; i += 20)
                 {
-                    var pointOne = new Point2D(CartesianFromPolar(true, neck + 18, i),
-                        CartesianFromPolar(false, neck + 18, i));
+                    var pointOne = new Point2D(_connector.CartesianFromPolar(true, neck + 18, i),
+                        _connector.CartesianFromPolar(false, neck + 18, i));
                     sketch.CreateCircle(pointOne, 10);
                 }
             }
@@ -189,29 +197,6 @@ namespace KompasConnector
             else
             {
                 _connector.ExtrudeRotation180(sketch);
-            }
-        }
-
-        /// <summary>
-        /// Функция, рассчитывающая координату точки по ее расстоянию и углу от другой точки.
-        /// (Переводит из полярных координат в Декартовые).
-        /// </summary>
-        /// <param name="isX">Рассчитывает ли функция X или Y: true - X, false - Y.</param>
-        /// <param name="radius">Расстояние между точками.</param>
-        /// <param name="angle">Угол, по которому точка исказилась относительно другой точки.</param>
-        /// <param name="x0">Положение по Х для первой точки.</param>
-        /// <param name="y0">Положение по Y для первой точки.</param>
-        /// <returns>Координату X или Y.</returns>
-        public double CartesianFromPolar(bool isX, double radius, double angle,
-            double x0 = 0, double y0 = 0)
-        {
-            if (isX)
-            {
-                return x0 + radius * Math.Cos(angle * (Math.PI / 180.0));
-            }
-            else
-            {
-                return y0 + radius * Math.Sin(angle * (Math.PI / 180.0));
             }
         }
     }
