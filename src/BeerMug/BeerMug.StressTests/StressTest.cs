@@ -38,7 +38,7 @@ namespace BeerMug.StressTest
             ulong usedMemory = 0;
             while (usedMemory * 0.96 <= computerInfo.TotalPhysicalMemory)
             {
-                beerMugBuilder.Builder(beerMugParameters, "Without cap");
+                beerMugBuilder.Builder(beerMugParameters, "Round shape");
                 usedMemory = (computerInfo.TotalPhysicalMemory - computerInfo.AvailablePhysicalMemory);
                 streamWriter.WriteLine(
                     $"{++modelCounter}\t{stopWatch.Elapsed:hh\\:mm\\:ss}\t{usedMemory}\t{cpuCounter.NextValue()}%");

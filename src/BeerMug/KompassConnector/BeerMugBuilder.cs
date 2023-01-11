@@ -26,8 +26,8 @@ namespace KompasConnector
         /// Построение кружки по её параметрам.
         /// </summary>
         /// <param name="mugParameters">Параметры пивной кружки.</param>
-        /// <param name="capType">Тип крышки пивной кружки.</param>
-        public void Builder(MugParameters mugParameters, string capType)
+        /// <param name="shapeType">Тип крышки пивной кружки.</param>
+        public void Builder(MugParameters mugParameters, string shapeType)
         {
             _connector.StartKompas();
             _connector.CreateDocument();
@@ -39,11 +39,11 @@ namespace KompasConnector
             var wallThickness = mugParameters.WallThickness/2;
             var lowerBottom = mugParameters.BelowBottomRadius/2;
             BuildBottom(lowerBottom, upperBottom, bottomThickness);
-            if (capType == "Faceted shape")
+            if (shapeType == "Faceted shape")
             {
                 BuildFacetedBody(upperBottom, bottomThickness, high, wallThickness, neck);
             }
-            if (capType == "Round shape")
+            if (shapeType == "Round shape")
             {
                 BuildRoundBody(upperBottom, bottomThickness, high, wallThickness, neck);
             }
