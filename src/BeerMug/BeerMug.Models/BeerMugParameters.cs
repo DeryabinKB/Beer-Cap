@@ -102,6 +102,11 @@ namespace BeerMug.Model
         private double _mugNeckDiameterMax = 100;
 
         /// <summary>
+        /// Тип кружки.
+        /// </summary>
+        private string _mugShapeType = "Round shape";
+
+        /// <summary>
         /// Словарь перечисления ошибки.
         /// </summary>
         public Dictionary<MugParametersType, string> Errors =
@@ -111,6 +116,17 @@ namespace BeerMug.Model
         /// Экземпляр класса BeerMugParametr.
         /// </summary>
         private BeerMugParameter _beerMugParameter = new BeerMugParameter();
+
+        /// <summary>
+        /// Возврат типа кружки.
+        /// </summary>
+        public string MugType
+        {
+            get
+            {
+                return _mugShapeType;
+            }
+        }
 
         /// <summary>
         /// Установка и возврат значения нижнего дна пивной кружки.

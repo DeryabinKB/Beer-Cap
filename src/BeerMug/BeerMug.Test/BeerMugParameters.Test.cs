@@ -408,5 +408,14 @@ namespace BeerMug.Test
             var actual = _mugParameters.MugNeckDiametrMax;
             Assert.AreEqual(expected, actual, "Значение должно быть равно 100");
         }
+
+        [TestCase(Description = "Позитивный тест геттера MugType")]
+        public void Test_MugType_Get_CorrectValue()
+        {
+            _mugParameters = new MugParameters();
+            var expected = "Round shape";
+            var actual = _mugParameters.MugType;
+            Assert.AreEqual(expected, actual, "Значение должно быть равно Round shape");
+        }
     }
 }

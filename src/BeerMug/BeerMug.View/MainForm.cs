@@ -202,7 +202,7 @@ namespace BeerMug.View
             bottomThicknessTextBox.Text = _beerMugParametrs.BottomThicknessMin.ToString();
             upperRadiusOfTheBottomTextBox.Text = _beerMugParametrs.HighBottomDiametrMin.ToString();
             lowerRadiusOfTheBottomTextBox.Text = _beerMugParametrs.BelowBottomDiametrMin.ToString();
-            capTypeComboBox.Text = "Round shape";
+            capTypeComboBox.Text = _beerMugParametrs.MugType;
         }
     }
 }
