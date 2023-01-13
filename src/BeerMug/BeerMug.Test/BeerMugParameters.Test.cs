@@ -309,12 +309,12 @@ namespace BeerMug.Test
             Assert.AreEqual(expected, actual, "Значение должно быть равно 50");
         }
 
-        [TestCase(Description = "Позитивный тест геттера BelowBottomDiametrMax")]
+        [TestCase(Description = "Позитивный тест геттера BelowBottomDiameterMax")]
         public void Test_BelowBottomDiametrMax_Get_CorrectValue()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 70;
-            var actual = mugParameters.BelowBottomDiametrMax;
+            var actual = mugParameters.BelowBottomDiameterMax;
             Assert.AreEqual(expected, actual, "Значение должно быть равно 70");
         }
 

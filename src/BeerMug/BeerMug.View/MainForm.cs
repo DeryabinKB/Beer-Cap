@@ -160,7 +160,7 @@ namespace BeerMug.View
             highTextBox.Text = _beerMugParametrs.HighMax.ToString();
             bottomThicknessTextBox.Text = _beerMugParametrs.BottomThicknessMax.ToString();
             upperRadiusOfTheBottomTextBox.Text = _beerMugParametrs.HighBottomDiametrMax.ToString();
-            lowerRadiusOfTheBottomTextBox.Text = _beerMugParametrs.BelowBottomDiametrMax.ToString();
+            lowerRadiusOfTheBottomTextBox.Text = _beerMugParametrs.BelowBottomDiameterMax.ToString();
         }
 
         /// <summary>

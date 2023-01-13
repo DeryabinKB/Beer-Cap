@@ -22,9 +22,9 @@ namespace BeerMug.Model
         private const double _bottomsDiametersDifferences = 30;
 
         /// <summary>
-        /// Во сколько раз толщина дна меньше высоты кружки.
+        /// Во сколько раз высоты кружки больше толщины дна.
         /// </summary>
-        private const double _bottomThicknessSmallerHighIn = 0.1;
+        private const double _highBiggerBottomThicknessIn = 10;
 
         /// <summary>
         /// Минимальное значение нижнего дна пивной кружки. 
@@ -152,7 +152,7 @@ namespace BeerMug.Model
                 _beerMugParameter.RangeCheck
                     (value, _belowBottomDiameterMin, _belowBottomDiameterMax,
                     MugParametersType.BelowBottomDiameter, Errors);
-               if (value + 30 != HighBottomDiametr)
+               if (value + _bottomsDiametersDifferences != HighBottomDiametr)
                 {
                     Errors.Add(MugParametersType.BelowBottomDiameter,
                         "Below bottom diametr must be equal high bottom diametr - " + 
@@ -169,13 +169,12 @@ namespace BeerMug.Model
         public double BelowBottomDiametrMin
         {
             get { return _belowBottomDiameterMin; }
-
         }
 
         /// <summary>
         /// Возврат максимального значения диаметра нижнего дна.
         /// </summary>
-        public double BelowBottomDiametrMax
+        public double BelowBottomDiameterMax
         {
             get
             {
@@ -246,10 +245,10 @@ namespace BeerMug.Model
                 _beerMugParameter.RangeCheck
                     (value, _bottomThicknessMin, max,
                     MugParametersType.BottomThickness, Errors);
-                if (value * 10 != High)
+                if (value * _highBiggerBottomThicknessIn != High)
                 {
                     Errors.Add(MugParametersType.BottomThickness,
-                        "Bottom thickness must be equal Height neck bottom * " + _bottomThicknessSmallerHighIn);
+                        "Bottom thickness must be equal Height neck bottom / " + _highBiggerBottomThicknessIn);
                     throw new Exception();
                 }
                 _bottomThickness = value;
@@ -329,10 +328,8 @@ namespace BeerMug.Model
             }
             set
             {
-                const double min = 5;
-                const double max = 7;
-                _beerMugParameter.RangeCheck
-                    (value, min, max,
+               _beerMugParameter.RangeCheck
+                    (value, WallThicknessMin, WallThicknessMax,
                     MugParametersType.WallThickness, Errors);
                 _wallThickness = value;
             }
@@ -371,10 +368,9 @@ namespace BeerMug.Model
             }
             set
             {
-                const double min = 80;
-                const double max = 100;
+               
                 _beerMugParameter.RangeCheck
-                    (value, min, max,
+                    (value, MugNeckDiametrMin, MugNeckDiametrMax,
                     MugParametersType.MugNeckDiametr, Errors);
                 _mugNeckDiameter = value;
             }
