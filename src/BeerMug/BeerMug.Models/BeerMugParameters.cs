@@ -17,6 +17,16 @@ namespace BeerMug.Model
         private double _belowBottomDiameter;
 
         /// <summary>
+        /// Разница между верхним и нижним диаметрами дна.
+        /// </summary>
+        private const double _bottomsDiametersDifferences = 30;
+
+        /// <summary>
+        /// Во сколько раз толщина дна меньше высоты кружки.
+        /// </summary>
+        private const double _bottomThicknessSmallerHighIn = 0.1;
+
+        /// <summary>
         /// Минимальное значение нижнего дна пивной кружки. 
         /// </summary>
         private const double _belowBottomDiameterMin = 50;
@@ -145,7 +155,8 @@ namespace BeerMug.Model
                if (value + 30 != HighBottomDiametr)
                 {
                     Errors.Add(MugParametersType.BelowBottomDiameter,
-                        "Below bottom diametr must be equal high bottom diametr - 30");
+                        "Below bottom diametr must be equal high bottom diametr - " + 
+                        _bottomsDiametersDifferences);
                     throw new Exception();
                 }
                 _belowBottomDiameter = value;
@@ -189,7 +200,8 @@ namespace BeerMug.Model
                 if (value != MugNeckDiametr)
                 {
                     Errors.Add(MugParametersType.HighBottomDiameter,
-                        "High bottom diametr must be equal below bottom diametr + 30 \n " +
+                        "High bottom diametr must be equal below bottom diametr + " + 
+                        _bottomsDiametersDifferences + " \n " +
                         "High bottom diametr must be equal outer diametr");
                     throw new Exception();
                 }
@@ -237,7 +249,7 @@ namespace BeerMug.Model
                 if (value * 10 != High)
                 {
                     Errors.Add(MugParametersType.BottomThickness,
-                        "Bottom thickness must be equal Height neck bottom * 0.1");
+                        "Bottom thickness must be equal Height neck bottom * " + _bottomThicknessSmallerHighIn);
                     throw new Exception();
                 }
                 _bottomThickness = value;
