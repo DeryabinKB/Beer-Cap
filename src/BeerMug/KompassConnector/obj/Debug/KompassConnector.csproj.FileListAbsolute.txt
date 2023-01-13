@@ -34,3 +34,12 @@ C:\Users\Kein\Source\ReposFinish\Beer-Mug\src\BeerMug\KompassConnector\obj\Debug
 C:\Users\Kein\Source\ReposFinish\Beer-Mug\src\BeerMug\KompassConnector\obj\Debug\KompassConnector.csproj.CopyComplete
 C:\Users\Kein\Source\ReposFinish\Beer-Mug\src\BeerMug\KompassConnector\obj\Debug\KompassConnector.dll
 C:\Users\Kein\Source\ReposFinish\Beer-Mug\src\BeerMug\KompassConnector\obj\Debug\KompassConnector.pdb
+C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\KompassConnector\bin\Debug\KompassConnector.dll
+C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\KompassConnector\bin\Debug\KompassConnector.pdb
+C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\KompassConnector\bin\Debug\BeerMug.Models.dll
+C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\KompassConnector\bin\Debug\BeerMug.Models.pdb
+C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\KompassConnector\obj\Debug\KompassConnector.csproj.AssemblyReference.cache
+C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\KompassConnector\obj\Debug\KompassConnector.csproj.CoreCompileInputs.cache
+C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\KompassConnector\obj\Debug\KompassConnector.csproj.CopyComplete
+C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\KompassConnector\obj\Debug\KompassConnector.dll
+C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\KompassConnector\obj\Debug\KompassConnector.pdb
