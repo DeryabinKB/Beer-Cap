@@ -50,11 +50,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kein\\Source\\ReposFinish\\Beer-Mug\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
+      "projectUniqueName": "C:\\Users\\Kein\\source\\ReposMain\\Beer-Mug\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
       "projectName": "BeerMug.View",
-      "projectPath": "C:\\Users\\Kein\\Source\\ReposFinish\\Beer-Mug\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
+      "projectPath": "C:\\Users\\Kein\\source\\ReposMain\\Beer-Mug\\src\\BeerMug\\BeerMug.View\\BeerMug.View.csproj",
       "packagesPath": "C:\\Users\\Kein\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kein\\Source\\ReposFinish\\Beer-Mug\\src\\BeerMug\\BeerMug.View\\obj\\",
+      "outputPath": "C:\\Users\\Kein\\source\\ReposMain\\Beer-Mug\\src\\BeerMug\\BeerMug.View\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -75,11 +75,11 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\Kein\\Source\\ReposFinish\\Beer-Mug\\src\\BeerMug\\BeerMug.Models\\BeerMug.Model.csproj": {
-              "projectPath": "C:\\Users\\Kein\\Source\\ReposFinish\\Beer-Mug\\src\\BeerMug\\BeerMug.Models\\BeerMug.Model.csproj"
+            "C:\\Users\\Kein\\source\\ReposMain\\Beer-Mug\\src\\BeerMug\\BeerMug.Models\\BeerMug.Model.csproj": {
+              "projectPath": "C:\\Users\\Kein\\source\\ReposMain\\Beer-Mug\\src\\BeerMug\\BeerMug.Models\\BeerMug.Model.csproj"
             },
-            "C:\\Users\\Kein\\Source\\ReposFinish\\Beer-Mug\\src\\BeerMug\\KompassConnector\\KompassConnector.csproj": {
-              "projectPath": "C:\\Users\\Kein\\Source\\ReposFinish\\Beer-Mug\\src\\BeerMug\\KompassConnector\\KompassConnector.csproj"
+            "C:\\Users\\Kein\\source\\ReposMain\\Beer-Mug\\src\\BeerMug\\KompassConnector\\KompassConnector.csproj": {
+              "projectPath": "C:\\Users\\Kein\\source\\ReposMain\\Beer-Mug\\src\\BeerMug\\KompassConnector\\KompassConnector.csproj"
             }
           }
         }
