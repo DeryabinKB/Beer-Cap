@@ -27,7 +27,7 @@ namespace BeerMug.StressTest
             double belowBottom = 60;
             beerMugParameters.MugNeckDiametr = neck;
             beerMugParameters.HighBottomDiametr = highBottom;
-            beerMugParameters.BelowBottomDiameter = belowBottom;
+            beerMugParameters.BelowBottomRadius = belowBottom;
             beerMugParameters.High = high;
             beerMugParameters.BottomThickness = bottomThickness;
             beerMugParameters.WallThickness = wallThickness;
