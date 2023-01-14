@@ -199,9 +199,9 @@ namespace BeerMug.Model
                 if (value != MugNeckDiametr)
                 {
                     Errors.Add(MugParametersType.HighBottomDiameter,
-                        "High bottom diametr must be equal below bottom diametr + " + 
+                        "High bottom diameter must be equal below bottom diameter + " + 
                         _bottomsDiametersDifferences + " \n " +
-                        "High bottom diametr must be equal outer diametr");
+                        "High bottom diameter must be equal outer diameter");
                     throw new Exception();
                 }
                 _highBottomDiameter = value;

@@ -7,9 +7,8 @@ namespace BeerMug.Test
     public class BeerMugParametersTest
     {
         public void FieldsData(double belowBottom, double highBottom, double neck, 
-            double high, double bottomThickness, double wallThickness)
+            double high, double bottomThickness, double wallThickness, MugParameters mugParameters)
         {
-             MugParameters mugParameters = new MugParameters();
             mugParameters.MugNeckDiametr = neck;
             mugParameters.HighBottomDiametr = highBottom;
             mugParameters.High = high;
@@ -22,6 +21,7 @@ namespace BeerMug.Test
         public void Test_BelowBottomRadius_Get_CorrectValue()
         {
             MugParameters mugParameters = new MugParameters();
+            
             double belowBottom = 50;
             double expected = 50;
             double highBottom = 80;
@@ -30,7 +30,7 @@ namespace BeerMug.Test
             double bottomThickness = 10;
             double wallThickness = 5;
             FieldsData(belowBottom, highBottom, neck,
-                high, bottomThickness, wallThickness);
+                high, bottomThickness, wallThickness, mugParameters);
             Assert.AreEqual(expected, mugParameters.BelowBottomRadius, "Значение должно входить в " +
                                                                         "диапазон от 50 до 70");/// диаметр верхнего дна -30 = диаметр нижнего дна
         }
@@ -46,7 +46,7 @@ namespace BeerMug.Test
             double bottomThickness = 10;
             double wallThickness = 5;
             FieldsData(belowBottom, highBottom, neck,
-                high, bottomThickness, wallThickness);
+                high, bottomThickness, wallThickness, mugParameters);
             Assert.AreEqual(value, mugParameters.BelowBottomRadius,
                 "Значение должно входить в диапазон от 50 до 70");
         }
@@ -75,7 +75,7 @@ namespace BeerMug.Test
             double bottomThickness = 10;
             double wallThickness = 5;
             FieldsData(50, highBottom, neck,
-                high, bottomThickness, wallThickness);
+                high, bottomThickness, wallThickness, _mugParameters);
             Assert.Throws<Exception>(() =>
             {
                 _mugParameters.BelowBottomRadius = wrongBelowBottomRadius;
@@ -86,16 +86,16 @@ namespace BeerMug.Test
         public void Test_HighBottomDiametr_Get_CorrectValue()
         {
             MugParameters _mugParameters = new MugParameters();
-            var expected = 80;
+            double expected = 80;
             double belowBottom = 50;
             double highBottom = 80;
             double neck = 80;
             double high = 100;
             double bottomThickness = 10;
             double wallThickness = 5;
-            FieldsData(belowBottom, highBottom, neck,
-                high, bottomThickness, wallThickness);
-            var actual = _mugParameters.HighBottomDiametr;
+            FieldsData(50, highBottom, neck,
+                high, bottomThickness, wallThickness, _mugParameters);
+            var actual = expected;
             Assert.AreEqual(expected, actual, "Значение должно входить в " +
                                               "диапазон от 80 до 100");
 
@@ -111,8 +111,8 @@ namespace BeerMug.Test
             double high = 100;
             double bottomThickness = 10;
             double wallThickness = 5;
-            FieldsData(belowBottom, highBottom, neck,
-                high, bottomThickness, wallThickness);
+            FieldsData(50, highBottom, neck,
+                high, bottomThickness, wallThickness, mugParameters);
             Assert.AreEqual(value, mugParameters.HighBottomDiametr,
                 "Значение должно входить в диапазон от 80 до 100");
 
@@ -164,8 +164,8 @@ namespace BeerMug.Test
             double high = 100;
             double bottomThickness = 10;
             double wallThickness = 5;
-            FieldsData(belowBottom, highBottom, neck,
-                high, bottomThickness, wallThickness);
+            FieldsData(50, highBottom, neck,
+                high, bottomThickness, wallThickness, mugParameters);
             Assert.AreEqual(value, mugParameters.BottomThickness,
                 "Значение должно входить в диапазон от 10 до 16,5"); ///1 к 10
         }
@@ -180,8 +180,8 @@ namespace BeerMug.Test
             double high = 100;
             double bottomThickness = 10;
             double wallThickness = 5;
-            FieldsData(belowBottom, highBottom, neck,
-                high, bottomThickness, wallThickness);
+            FieldsData(50, highBottom, neck,
+                high, bottomThickness, wallThickness, mugParameters);
             Assert.Throws<Exception>(() =>
             {
                 mugParameters.BottomThickness = wrongBottomThickness;
@@ -301,7 +301,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера BelowBottomDiametrMin")]
-        public void Test_BelowBottomDiametrMin_Get_CorrectValue()
+        public void Test_BelowBottomDiametrMin_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 50;
@@ -310,7 +310,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера BelowBottomDiameterMax")]
-        public void Test_BelowBottomDiametrMax_Get_CorrectValue()
+        public void Test_BelowBottomDiametrMax_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 70;
@@ -319,7 +319,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера HighBottomDiametrMin")]
-        public void Test_HighBottomDiametrMin_Get_CorrectValue()
+        public void Test_HighBottomDiametrMin_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 80;
@@ -328,7 +328,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера HighBottomDiametrMax")]
-        public void Test_HighBottomDiametrMax_Get_CorrectValue()
+        public void Test_HighBottomDiametrMax_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 100;
@@ -337,7 +337,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера BottomThicknessMin")]
-        public void Test_BottomThicknessMin_Get_CorrectValue()
+        public void Test_BottomThicknessMin_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 10;
@@ -346,7 +346,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера BottomThicknessMax")]
-        public void Test_BottomThicknessMax_Get_CorrectValue()
+        public void Test_BottomThicknessMax_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = "16,5";
@@ -355,7 +355,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера HighMin")]
-        public void Test_HighMin_Get_CorrectValue()
+        public void Test_HighMin_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 100;
@@ -363,8 +363,8 @@ namespace BeerMug.Test
             Assert.AreEqual(expected, actual, "Значение должно быть равно 100");
         }
 
-        [TestCase(Description = "Позитивный тест геттера HighMam")]
-        public void Test_HighMax_Get_CorrectValue()
+        [TestCase(Description = "Позитивный тест геттера HighMax")]
+        public void Test_HighMax_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 165;
@@ -373,7 +373,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера WallThicknessMin")]
-        public void Test_WallThicknessMin_Get_CorrectValue()
+        public void Test_WallThicknessMin_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 5;
@@ -382,7 +382,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера WallThicknessMax")]
-        public void Test_WallThicknessMax_Get_CorrectValue()
+        public void Test_WallThicknessMax_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 7;
@@ -391,7 +391,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера MugNeckDiametrMin")]
-        public void Test_MugNeckDiametrMin_Get_CorrectValue()
+        public void Test_MugNeckDiametrMin_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 80;
@@ -400,7 +400,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера MugNeckDiametrMax")]
-        public void Test_MugNeckDiametrMax_Get_CorrectValue()
+        public void Test_MugNeckDiametrMax_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = 100;
@@ -409,7 +409,7 @@ namespace BeerMug.Test
         }
 
         [TestCase(Description = "Позитивный тест геттера MugType")]
-        public void Test_MugType_Get_CorrectValue()
+        public void Test_MugType_Get_Value()
         {
             MugParameters mugParameters = new MugParameters();
             var expected = "Round shape";

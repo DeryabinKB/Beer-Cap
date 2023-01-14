@@ -22,3 +22,9 @@ C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\BeerMug.Models\obj\Debug\Bee
 C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\BeerMug.Models\obj\Debug\BeerMug.Model.csproj.CoreCompileInputs.cache
 C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\BeerMug.Models\obj\Debug\BeerMug.Models.dll
 C:\Users\Kein\Source\ReposMain\Beer-Mug\src\BeerMug\BeerMug.Models\obj\Debug\BeerMug.Models.pdb
+C:\Users\Admin\Source\ReposL\Beer-Mug\src\BeerMug\BeerMug.Models\bin\Debug\BeerMug.Models.dll
+C:\Users\Admin\Source\ReposL\Beer-Mug\src\BeerMug\BeerMug.Models\bin\Debug\BeerMug.Models.pdb
+C:\Users\Admin\Source\ReposL\Beer-Mug\src\BeerMug\BeerMug.Models\obj\Debug\BeerMug.Model.csproj.AssemblyReference.cache
+C:\Users\Admin\Source\ReposL\Beer-Mug\src\BeerMug\BeerMug.Models\obj\Debug\BeerMug.Model.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\ReposL\Beer-Mug\src\BeerMug\BeerMug.Models\obj\Debug\BeerMug.Models.dll
+C:\Users\Admin\Source\ReposL\Beer-Mug\src\BeerMug\BeerMug.Models\obj\Debug\BeerMug.Models.pdb
